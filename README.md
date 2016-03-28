@@ -1,4 +1,0 @@
-####LearningRecord
-
-
-**Learning experience**
