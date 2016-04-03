@@ -14,6 +14,7 @@ class ViewController: UIViewController {
   weak var currentViewController: UIViewController?
   
   override func viewDidLoad() {
+    
     //隱藏navigationBar
     self.navigationController?.navigationBarHidden = true
     
