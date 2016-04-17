@@ -76,7 +76,7 @@ extension ViewController : AVCaptureMetadataOutputObjectsDelegate{
     //Not detected anything.
     if metadataObjects == nil || metadataObjects.count == 0 {
       qrCodeFrameView?.frame = CGRectZero
-      messageLabel.text = "No QR  Code is detected"
+      messageLabel.text = "No QRCode is detected"
       return
     }
     
