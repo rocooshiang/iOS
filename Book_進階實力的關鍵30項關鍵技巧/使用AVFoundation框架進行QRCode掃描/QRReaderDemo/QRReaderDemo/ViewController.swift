@@ -56,7 +56,6 @@ class ViewController: UIViewController{
       view.bringSubviewToFront(qrCodeFrameView!)
       
       
-      
     }catch let error {
       print("error: \(error)")
     }
@@ -83,7 +82,7 @@ extension ViewController : AVCaptureMetadataOutputObjectsDelegate{
     //Detected data and determine the type , if type is QRCode , set qrCodeFrame , show metadata value.
     let metadataObject = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
     if metadataObject.type == AVMetadataObjectTypeQRCode{
-        let barCodeObject = videoPreviewLayer?.transformedMetadataObjectForMetadataObject(metadataObject)
+      let barCodeObject = videoPreviewLayer?.transformedMetadataObjectForMetadataObject(metadataObject)
       qrCodeFrameView?.frame = (barCodeObject?.bounds)!
       if let metadataObjectString = metadataObject.stringValue{
         messageLabel.text = metadataObjectString
