@@ -11,7 +11,6 @@
 		F2B5C32E1CC6108400E5FE87 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B5C32D1CC6108400E5FE87 /* ViewController.swift */; };
 		F2B5C3311CC6108400E5FE87 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2B5C32F1CC6108400E5FE87 /* Main.storyboard */; };
 		F2B5C3331CC6108400E5FE87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2B5C3321CC6108400E5FE87 /* Assets.xcassets */; };
-		F2B5C3361CC6108400E5FE87 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2B5C3341CC6108400E5FE87 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,7 +19,6 @@
 		F2B5C32D1CC6108400E5FE87 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F2B5C3301CC6108400E5FE87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F2B5C3321CC6108400E5FE87 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F2B5C3351CC6108400E5FE87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F2B5C3371CC6108400E5FE87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -58,7 +56,6 @@
 				F2B5C32D1CC6108400E5FE87 /* ViewController.swift */,
 				F2B5C32F1CC6108400E5FE87 /* Main.storyboard */,
 				F2B5C3321CC6108400E5FE87 /* Assets.xcassets */,
-				F2B5C3341CC6108400E5FE87 /* LaunchScreen.storyboard */,
 				F2B5C3371CC6108400E5FE87 /* Info.plist */,
 			);
 			path = TextReader;
@@ -122,7 +119,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F2B5C3361CC6108400E5FE87 /* LaunchScreen.storyboard in Resources */,
 				F2B5C3331CC6108400E5FE87 /* Assets.xcassets in Resources */,
 				F2B5C3311CC6108400E5FE87 /* Main.storyboard in Resources */,
 			);
@@ -149,14 +145,6 @@
 				F2B5C3301CC6108400E5FE87 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		F2B5C3341CC6108400E5FE87 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F2B5C3351CC6108400E5FE87 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -251,7 +239,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TextReader/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = geosat.TextReader;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rocoo.TextReader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -262,7 +250,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TextReader/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = geosat.TextReader;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rocoo.TextReader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -286,6 +274,7 @@
 				F2B5C33C1CC6108400E5FE87 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

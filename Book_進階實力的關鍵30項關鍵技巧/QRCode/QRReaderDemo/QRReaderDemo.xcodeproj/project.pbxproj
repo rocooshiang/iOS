@@ -11,7 +11,6 @@
 		F4973AB31A21DD6D00E2F44E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4973AB21A21DD6D00E2F44E /* ViewController.swift */; };
 		F4973AB61A21DD6D00E2F44E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4973AB41A21DD6D00E2F44E /* Main.storyboard */; };
 		F4973AB81A21DD6D00E2F44E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4973AB71A21DD6D00E2F44E /* Images.xcassets */; };
-		F4973ABB1A21DD6D00E2F44E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4973AB91A21DD6D00E2F44E /* LaunchScreen.xib */; };
 		F4973AC71A21DD6E00E2F44E /* QRReaderDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4973AC61A21DD6E00E2F44E /* QRReaderDemoTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -32,7 +31,6 @@
 		F4973AB21A21DD6D00E2F44E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F4973AB51A21DD6D00E2F44E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F4973AB71A21DD6D00E2F44E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		F4973ABA1A21DD6D00E2F44E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		F4973AC01A21DD6E00E2F44E /* QRReaderDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QRReaderDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4973AC51A21DD6E00E2F44E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4973AC61A21DD6E00E2F44E /* QRReaderDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRReaderDemoTests.swift; sourceTree = "<group>"; };
@@ -81,7 +79,6 @@
 				F4973AB21A21DD6D00E2F44E /* ViewController.swift */,
 				F4973AB41A21DD6D00E2F44E /* Main.storyboard */,
 				F4973AB71A21DD6D00E2F44E /* Images.xcassets */,
-				F4973AB91A21DD6D00E2F44E /* LaunchScreen.xib */,
 				F4973AAE1A21DD6D00E2F44E /* Supporting Files */,
 			);
 			path = QRReaderDemo;
@@ -194,7 +191,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4973AB61A21DD6D00E2F44E /* Main.storyboard in Resources */,
-				F4973ABB1A21DD6D00E2F44E /* LaunchScreen.xib in Resources */,
 				F4973AB81A21DD6D00E2F44E /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -243,14 +239,6 @@
 				F4973AB51A21DD6D00E2F44E /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		F4973AB91A21DD6D00E2F44E /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F4973ABA1A21DD6D00E2F44E /* Base */,
-			);
-			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -340,7 +328,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = QRReaderDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.appcoda.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rocoo.QRReaderDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -351,7 +339,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = QRReaderDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.appcoda.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rocoo.QRReaderDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

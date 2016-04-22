@@ -10,7 +10,6 @@
 		F41EB4AF1A1A561400DAF540 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41EB4AE1A1A561400DAF540 /* AppDelegate.swift */; };
 		F41EB4B41A1A561400DAF540 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F41EB4B21A1A561400DAF540 /* Main.storyboard */; };
 		F41EB4B61A1A561400DAF540 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F41EB4B51A1A561400DAF540 /* Images.xcassets */; };
-		F41EB4B91A1A561400DAF540 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F41EB4B71A1A561400DAF540 /* LaunchScreen.xib */; };
 		F41EB4C51A1A561400DAF540 /* TableCellAnimationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41EB4C41A1A561400DAF540 /* TableCellAnimationTests.swift */; };
 		F41EB4CF1A1A57B400DAF540 /* ArticleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41EB4CE1A1A57B400DAF540 /* ArticleTableViewController.swift */; };
 		F41EB4D11A1A582100DAF540 /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41EB4D01A1A582100DAF540 /* ArticleTableViewCell.swift */; };
@@ -32,7 +31,6 @@
 		F41EB4AE1A1A561400DAF540 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F41EB4B31A1A561400DAF540 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F41EB4B51A1A561400DAF540 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		F41EB4B81A1A561400DAF540 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		F41EB4BE1A1A561400DAF540 /* TableCellAnimationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TableCellAnimationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F41EB4C31A1A561400DAF540 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F41EB4C41A1A561400DAF540 /* TableCellAnimationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCellAnimationTests.swift; sourceTree = "<group>"; };
@@ -82,7 +80,6 @@
 				F41EB4AE1A1A561400DAF540 /* AppDelegate.swift */,
 				F41EB4B21A1A561400DAF540 /* Main.storyboard */,
 				F41EB4B51A1A561400DAF540 /* Images.xcassets */,
-				F41EB4B71A1A561400DAF540 /* LaunchScreen.xib */,
 				F41EB4AC1A1A561400DAF540 /* Supporting Files */,
 				F41EB4CE1A1A57B400DAF540 /* ArticleTableViewController.swift */,
 				F41EB4D01A1A582100DAF540 /* ArticleTableViewCell.swift */,
@@ -197,7 +194,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F41EB4B41A1A561400DAF540 /* Main.storyboard in Resources */,
-				F41EB4B91A1A561400DAF540 /* LaunchScreen.xib in Resources */,
 				F41EB4B61A1A561400DAF540 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -247,14 +243,6 @@
 				F41EB4B31A1A561400DAF540 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		F41EB4B71A1A561400DAF540 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F41EB4B81A1A561400DAF540 /* Base */,
-			);
-			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -344,7 +332,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TableCellAnimation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.appcoda.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rocoo.TableCellAnimation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -355,7 +343,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TableCellAnimation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.appcoda.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rocoo.TableCellAnimation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

@@ -2,8 +2,8 @@
 //  ViewController.swift
 //  SimpleCamera
 //
-//  Created by Simon Ng on 25/11/14.
-//  Copyright (c) 2014 AppCoda. All rights reserved.
+//  Created by Rocoo on 2016/4/22
+//  Copyright (c) 2016年 Rocoo. All rights reserved.
 //
 
 import UIKit

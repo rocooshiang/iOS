@@ -3,7 +3,7 @@
 //  MapKitDirectionDemoTests
 //
 //  Created by Rocoo on 2016/4/22
-//  Copyright (c) 2014 AppCoda. All rights reserved.
+//  Copyright (c) 2016年 Rocoo. All rights reserved.
 //
 
 import UIKit
