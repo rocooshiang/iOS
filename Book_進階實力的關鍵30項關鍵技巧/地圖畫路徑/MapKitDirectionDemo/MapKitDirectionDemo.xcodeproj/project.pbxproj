@@ -11,7 +11,6 @@
 		F41EB4E11A1AEB1100DAF540 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41EB4E01A1AEB1100DAF540 /* AppDelegate.swift */; };
 		F41EB4E61A1AEB1100DAF540 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F41EB4E41A1AEB1100DAF540 /* Main.storyboard */; };
 		F41EB4E81A1AEB1100DAF540 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F41EB4E71A1AEB1100DAF540 /* Images.xcassets */; };
-		F41EB4EB1A1AEB1100DAF540 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F41EB4E91A1AEB1100DAF540 /* LaunchScreen.xib */; };
 		F41EB4F71A1AEB1100DAF540 /* MapKitDirectionDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41EB4F61A1AEB1100DAF540 /* MapKitDirectionDemoTests.swift */; };
 		F41EB5011A1AEBC100DAF540 /* RestaurantTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41EB5001A1AEBC100DAF540 /* RestaurantTableViewController.swift */; };
 		F41EB5071A1AF11C00DAF540 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F41EB5061A1AF11C00DAF540 /* MapKit.framework */; };
@@ -36,7 +35,6 @@
 		F41EB4E01A1AEB1100DAF540 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F41EB4E51A1AEB1100DAF540 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F41EB4E71A1AEB1100DAF540 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		F41EB4EA1A1AEB1100DAF540 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		F41EB4F01A1AEB1100DAF540 /* MapKitDirectionDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MapKitDirectionDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F41EB4F51A1AEB1100DAF540 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F41EB4F61A1AEB1100DAF540 /* MapKitDirectionDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitDirectionDemoTests.swift; sourceTree = "<group>"; };
@@ -94,7 +92,6 @@
 				F41EB4E01A1AEB1100DAF540 /* AppDelegate.swift */,
 				F41EB4E41A1AEB1100DAF540 /* Main.storyboard */,
 				F41EB4E71A1AEB1100DAF540 /* Images.xcassets */,
-				F41EB4E91A1AEB1100DAF540 /* LaunchScreen.xib */,
 				F41EB4DE1A1AEB1100DAF540 /* Supporting Files */,
 			);
 			path = MapKitDirectionDemo;
@@ -213,7 +210,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F41EB4E61A1AEB1100DAF540 /* Main.storyboard in Resources */,
-				F41EB4EB1A1AEB1100DAF540 /* LaunchScreen.xib in Resources */,
 				F41EB4E81A1AEB1100DAF540 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -265,14 +261,6 @@
 				F41EB4E51A1AEB1100DAF540 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		F41EB4E91A1AEB1100DAF540 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F41EB4EA1A1AEB1100DAF540 /* Base */,
-			);
-			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -362,7 +350,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MapKitDirectionDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.appcoda.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rocoo.MapKitDirectionDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -373,7 +361,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MapKitDirectionDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.appcoda.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rocoo.MapKitDirectionDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

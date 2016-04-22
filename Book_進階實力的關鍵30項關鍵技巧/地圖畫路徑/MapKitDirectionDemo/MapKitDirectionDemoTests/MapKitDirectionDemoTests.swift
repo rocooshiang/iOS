@@ -2,7 +2,7 @@
 //  MapKitDirectionDemoTests.swift
 //  MapKitDirectionDemoTests
 //
-//  Created by Simon Ng on 18/11/14.
+//  Created by Rocoo on 2016/4/22
 //  Copyright (c) 2014 AppCoda. All rights reserved.
 //
 
