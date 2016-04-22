@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  TextReader
 //
-//  Created by Geosat-RD01 on 2016/4/19.
-//  Copyright © 2016年 Geosat-RD01. All rights reserved.
+//  Created by Rocoo on 2016/4/22.
+//  Copyright (c) 2016 Rocoo. All rights reserved.
 //
 
 import UIKit

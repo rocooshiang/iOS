@@ -2,8 +2,8 @@
 //  ViewController.swift
 //  QRReaderDemo
 //
-//  Created by Simon Ng on 23/11/14.
-//  Copyright (c) 2014 AppCoda. All rights reserved.
+//  Created by Rocoo on 2016/4/22.
+//  Copyright (c) 2016 Rocoo. All rights reserved.
 //
 
 import UIKit

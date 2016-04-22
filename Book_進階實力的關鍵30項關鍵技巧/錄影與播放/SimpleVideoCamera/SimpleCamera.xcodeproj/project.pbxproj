@@ -11,7 +11,6 @@
 		F44C58431A241BE8008B1749 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44C58421A241BE8008B1749 /* ViewController.swift */; };
 		F44C58461A241BE8008B1749 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F44C58441A241BE8008B1749 /* Main.storyboard */; };
 		F44C58481A241BE8008B1749 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F44C58471A241BE8008B1749 /* Images.xcassets */; };
-		F44C584B1A241BE8008B1749 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F44C58491A241BE8008B1749 /* LaunchScreen.xib */; };
 		F44C58571A241BE8008B1749 /* SimpleCameraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44C58561A241BE8008B1749 /* SimpleCameraTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -32,7 +31,6 @@
 		F44C58421A241BE8008B1749 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F44C58451A241BE8008B1749 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F44C58471A241BE8008B1749 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		F44C584A1A241BE8008B1749 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		F44C58501A241BE8008B1749 /* SimpleCameraTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleCameraTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F44C58551A241BE8008B1749 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F44C58561A241BE8008B1749 /* SimpleCameraTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCameraTests.swift; sourceTree = "<group>"; };
@@ -81,7 +79,6 @@
 				F44C58421A241BE8008B1749 /* ViewController.swift */,
 				F44C58441A241BE8008B1749 /* Main.storyboard */,
 				F44C58471A241BE8008B1749 /* Images.xcassets */,
-				F44C58491A241BE8008B1749 /* LaunchScreen.xib */,
 				F44C583E1A241BE8008B1749 /* Supporting Files */,
 			);
 			path = SimpleCamera;
@@ -194,7 +191,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F44C58461A241BE8008B1749 /* Main.storyboard in Resources */,
-				F44C584B1A241BE8008B1749 /* LaunchScreen.xib in Resources */,
 				F44C58481A241BE8008B1749 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -243,14 +239,6 @@
 				F44C58451A241BE8008B1749 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		F44C58491A241BE8008B1749 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F44C584A1A241BE8008B1749 /* Base */,
-			);
-			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -340,7 +328,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SimpleCamera/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.appcoda.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rocoo.SimpleCamera;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -351,7 +339,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SimpleCamera/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.appcoda.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rocoo.SimpleCamera;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
