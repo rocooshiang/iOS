@@ -180,3 +180,98 @@ for index in 0..<peopleList.count{
 // Curry
 ```
 
+Functions and Closures
+-----------
+function:
+- 可以回傳1個或多個不同type的回傳值，多個稱為tuple
+- 參數可以使用...表示有多個，在function裡面會以Array的方式呈現(注意: ...在一個function的參數列裡只能出現一次)
+```swift
+func gameWinner(players: [String] , scores: Int...) -> (winner: String, score: Int){
+  
+  var indexOfWinner = 0
+  
+  for index in 0..<scores.count-1{
+    
+    if scores[index]<scores[index+1]{
+      
+      indexOfWinner = index+1
+      
+    }
+    
+  }
+  
+  return(players[indexOfWinner],scores[indexOfWinner])
+}
+
+let game = gameWinner(["Irving","Curry","Rose"], scores: 97,96,92)
+print("\(game.winner) got \(game.score) points.")
+
+// Prints: "Irving got 97 points."
+```
+
+巢狀function：
+```swift
+func returnFifteen() -> Int {
+    var y = 10
+    func add() {
+        y += 5
+    }
+    add()
+    return y
+}
+returnFifteen()
+```
+
+function回傳的type也可以是個function：
+```swift
+func makeIncrementer() -> ((Int) -> Int) {
+    func addOne(number: Int) -> Int {
+        return 1 + number
+    }
+    return addOne
+}
+var increment = makeIncrementer()
+increment(7)
+```
+
+function的參數也可以是一個function：
+```swift
+func hasAnyMatches(list: [Int], condition: (Int) -> Bool) -> Bool {
+    for item in list {
+        if condition(item) {
+            return true
+        }
+    }
+    return false
+}
+func lessThanTen(number: Int) -> Bool {
+    return number < 10
+}
+var numbers = [20, 19, 7, 12]
+hasAnyMatches(numbers, condition: lessThanTen)
+```
+
+Closure：
+- 寫Closure用 ({}) 包起來
+- in是用來分開arguments與來自body的return type
+```swift
+let numbers = [20, 19, 7, 12]
+
+let originalMappedNumbers = numbers.map ({(number: Int) -> Int in
+  return number % 2 == 1 ? 0 : number
+})
+
+print(originalMappedNumbers)
+
+// Prints: "[20, 0, 0, 12]"
+```
+
+如果已經知道Closure的type(numbers傳進去的值一定是Int)，那參數與回傳值的type都可以省略不寫，回傳的關鍵字return也可省略：
+```swift
+let shorthandMappedNumbers = numbers.map({ number in number % 2 == 1 ? 0 : number })
+```
+
+如果Closure是作為function的唯一參數，那可以更精簡：
+```swift
+let simplestMappedNumbers  = numbers.map{ $0 % 2 == 1 ? 0 : $0}
+```
