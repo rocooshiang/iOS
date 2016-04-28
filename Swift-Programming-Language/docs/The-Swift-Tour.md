@@ -277,7 +277,7 @@ let simplestMappedNumbers  = numbers.map{ $0 % 2 == 1 ? 0 : $0}
 ```
 
 Objects and Classes
------------賦與
+-----------
 
 Class:
 - init的function是初始化一些值，一個class可以有多個不同參數的init function，也可以一個都沒有(那屬性的初始值在宣告時就要賦與)
