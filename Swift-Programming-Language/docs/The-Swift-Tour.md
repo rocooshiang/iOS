@@ -275,3 +275,152 @@ let shorthandMappedNumbers = numbers.map({ number in number % 2 == 1 ? 0 : numbe
 ```swift
 let simplestMappedNumbers  = numbers.map{ $0 % 2 == 1 ? 0 : $0}
 ```
+
+Objects and Classes
+-----------賦與
+
+Class:
+- init的function是初始化一些值，一個class可以有多個不同參數的init function，也可以一個都沒有(那屬性的初始值在宣告時就要賦與)
+- 一定要賦與所有參數初始值，可以宣告時給值，或是在init裡給
+- self是區隔參數與class的屬性
+- deinit是在該物件要被釋放前會被呼叫的，可以清掉妳不要的東西
+```swift
+class Introduction {  
+  var name: String
+  var age: Int = 18
+  
+  init(name: String) {
+    self.name = name
+  }
+  
+  init(name: String,age: Int) {
+    self.name = name
+    self.age = age
+  }
+  
+  deinit{
+    self.name = "Bye Bye"
+    self.age = 0
+  }
+  
+  func simpleDescription() -> String {
+    return "My name is \(name)."
+  }
+}
+
+let rocoo = Introduction(name: "Rocoo")
+let irving = Introduction(name: "Irving", age: 26)
+```
+
+SubClass:
+- init function呼叫super.init前，一定要先賦與值給SubClass的所有屬性(順序顛倒會錯誤，猜測應該是呼叫super.init後，SubClass就正式被初始化，那在前面提過，每個Class的屬性一定要賦與初始值，為了確保這點，所以不能顛倒)，最後才能賦與SuperClass的屬性值
+- SubClass覆寫SuperClass的方法，一定要用override關鍵字
+
+init順序 懶人包：
+  1. 賦與subClass的所有屬性值 
+  2. 初始化superClass 
+  3. 賦與superClass屬性值 
+```swift
+class MoreIntroduction : Introduction{
+  var starSide : String
+  
+  init(name: String,starSide: String){
+    self.starSide = starSide  //1
+    super.init(name: name)  //2
+    age = 26  //3
+  }
+  
+  override func simpleDescription() -> String {
+    return "My name is \(name), the star side is \(starSide)."
+  }
+  
+}
+
+let rocoo = MoreIntroduction(name: "rocoo", starSide: "Aquarius")
+rocoo.simpleDescription()
+
+// Prints: "My name is rocoo, the star side is Aquarius."
+```
+
+SubClass如果寫自己的init function，那想用SuperClass的init function，就要覆寫並加上override，若是沒有寫自己的init function，那可以直接沿用，屬性如需經過一些計算才能給值，那可以設定set與get來讓其他人取得，在set可以設定新值的參數名稱，或是使用內建的newValue：
+```swift
+class OtherIntroduction : Introduction{
+  
+  var doubleAge : Int{
+    set{
+      age = newValue / 2
+    }
+    get{
+      return age * 2
+    }
+  }
+  
+}
+
+let rocoo = OtherIntroduction(name: "rocoo", age: 26)
+rocoo.doubleAge
+
+// 52
+
+rocoo.age = 30
+rocoo.doubleAge
+
+// 60
+```
+
+willSet是當class屬性值有改變時會被呼叫的：
+```swift
+class ClassA{
+  var a : Int
+  init(a: Int){
+    self.a = a
+  }
+}
+
+class ClassB{
+  var b : Int
+  init(b: Int){
+    self.b = b
+  }
+}
+
+class ClassC{
+  
+  var classA: ClassA{
+    willSet{
+      classB.b = newValue.a
+    }
+  }
+  
+  var classB: ClassB{
+    willSet{
+      classA.a = newValue.b
+    }
+  }
+  
+  init(value: Int){
+    classA = ClassA(a: value)
+    classB = ClassB(b: value)
+  }
+  
+}
+
+let classC = ClassC(value: 10)
+classC.classA.a
+classC.classB.b
+
+// 10
+// 10
+
+classC.classA = ClassA(a: 20)
+classC.classB.b
+
+// 20
+
+```
+
+class也可以設定optional，如果取到的是nil，那?之後的code都會被忽略，反之則自動unwrap：
+```swift
+let optionalSquare: Square? = Square(sideLength: 2.5, name: "optional square")
+let sideLength = optionalSquare?.sideLength
+```
