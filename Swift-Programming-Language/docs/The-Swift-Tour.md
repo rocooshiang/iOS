@@ -336,10 +336,10 @@ class MoreIntroduction : Introduction{
   
 }
 
-let rocoo = MoreIntroduction(name: "rocoo", starSide: "Aquarius")
+let rocoo = MoreIntroduction(name: "Rocoo", starSide: "Aquarius")
 rocoo.simpleDescription()
 
-// Prints: "My name is rocoo, the star side is Aquarius."
+// Prints: "My name is Rocoo, the star side is Aquarius."
 ```
 
 SubClass如果寫自己的init function，那想用SuperClass的init function，就要覆寫並加上override，若是沒有寫自己的init function，那可以直接沿用，屬性如需經過一些計算才能給值，那可以設定set與get來讓其他人取得，在set可以設定新值的參數名稱，或是使用內建的newValue：
@@ -357,7 +357,7 @@ class OtherIntroduction : Introduction{
   
 }
 
-let rocoo = OtherIntroduction(name: "rocoo", age: 26)
+let rocoo = OtherIntroduction(name: "Rocoo", age: 26)
 rocoo.doubleAge
 
 // 52
