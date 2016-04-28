@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="GestureRecognizer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hGs-iL-nRD">
+                                <rect key="frame" x="20" y="20" width="103" height="36"/>
+                                <state key="normal" title="Reset"/>
+                                <connections>
+                                    <action selector="resetClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Z2g-eG-2jD"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B2n-ZG-JI8">
+                                <rect key="frame" x="249" y="273" width="103" height="54"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="45"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Counter" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wl3-iH-BGq">
+                                <rect key="frame" x="249" y="20" width="103" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mvb-lP-ur5">
+                                <rect key="frame" x="249" y="343" width="103" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Tap or Hold"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hGs-iL-nRD" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="5Qf-Dt-7cS"/>
+                            <constraint firstItem="mvb-lP-ur5" firstAttribute="width" secondItem="hGs-iL-nRD" secondAttribute="width" id="6e7-06-XJ0"/>
+                            <constraint firstItem="hGs-iL-nRD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="7cH-nq-2gh"/>
+                            <constraint firstItem="mvb-lP-ur5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="JwH-Lu-sV1"/>
+                            <constraint firstItem="B2n-ZG-JI8" firstAttribute="width" secondItem="hGs-iL-nRD" secondAttribute="width" id="LOM-lA-zIp"/>
+                            <constraint firstItem="wl3-iH-BGq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LmV-Ot-QHa"/>
+                            <constraint firstItem="wl3-iH-BGq" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Nl6-hf-XGw"/>
+                            <constraint firstItem="B2n-ZG-JI8" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="NyU-XX-dhs"/>
+                            <constraint firstItem="mvb-lP-ur5" firstAttribute="top" secondItem="B2n-ZG-JI8" secondAttribute="bottom" constant="16" id="RBf-5g-O8X"/>
+                            <constraint firstItem="wl3-iH-BGq" firstAttribute="width" secondItem="hGs-iL-nRD" secondAttribute="width" id="SPQ-aX-Nfd"/>
+                            <constraint firstItem="wl3-iH-BGq" firstAttribute="height" secondItem="hGs-iL-nRD" secondAttribute="height" id="VDi-5A-Qic"/>
+                            <constraint firstItem="mvb-lP-ur5" firstAttribute="height" secondItem="hGs-iL-nRD" secondAttribute="height" id="afu-5b-fjj"/>
+                            <constraint firstItem="B2n-ZG-JI8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="h9h-F9-eyo"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="count" destination="B2n-ZG-JI8" id="M8E-UK-K30"/>
+                        <outlet property="tap" destination="mvb-lP-ur5" id="eF1-wI-luJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
