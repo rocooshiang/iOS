@@ -424,3 +424,93 @@ class也可以設定optional，如果取到的是nil，那?之後的code都會�
 let optionalSquare: Square? = Square(sideLength: 2.5, name: "optional square")
 let sideLength = optionalSquare?.sideLength
 ```
+
+Enumerations and Structures
+----------
+Enumerations:
+- enum預設rawValue從0開始遞增，也可以自己定義
+- 可以使用init?(rawValue:)來初始化enum的成員，以下放例子而言，Rank(rawValue: 7)等於Rank.Seven
+```swift
+enum Rank: Int {
+  case Ace = 1
+  case Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten
+  case Jack, Queen, King
+  
+  func campareTo(valueB: Rank) -> String{
+    if self.rawValue > valueB.rawValue{
+      return "\(self) > \(valueB)"
+    }else{
+      return "\(self) < \(valueB)"
+    }
+  }
+  
+}
+
+let jack = Rank.Jack
+let king = Rank.King
+print(king.campareTo(jack))
+
+// Prints: "King > Jack"
+```
+
+在宣告hearts時，因為常數沒辦法明確指定是哪種type，所以要完整的寫出Suit.Hearts，在swith之所以可以縮寫.Hearts是因為確定self一定是一個Suit的值：
+```swift
+enum Suit {
+  case Spades, Hearts, Diamonds, Clubs
+  
+  func color() -> String{
+    switch self {
+    case .Spades, .Clubs:
+      return "black"
+    case .Diamonds, .Hearts:
+      return "red"
+    }
+  }
+  
+}
+
+let hearts = Suit.Hearts
+hearts.color()
+
+// red
+```
+
+Structure:
+- struct與class類似，最重要的差異性是，struct是call by value，class則是call by reference
+- struct在初始化時，會依照結構裡，變數的順序來設定參數的先後順序
+```swift
+struct Card {
+  var rank: Rank
+  var suit: Suit
+  
+  func simpleDescription() -> String{
+    return "\(suit) \(rank.rawValue)"
+  }
+  
+}
+
+let card = Card(rank: .Ace, suit: .Spades)
+print(card.simpleDescription())
+
+// Prints: "Spades 1"
+```
+
+enum case可以賦與多個關聯值，關聯值與rawValue是不同的：
+```swift
+enum ServerResponse {
+  case Result(String, String)
+  case Failure(String)
+}
+
+let success = ServerResponse.Result("6:00 am", "8:09 pm")
+let failure = ServerResponse.Failure("Out of cheese.")
+
+switch success {
+case let .Result(sunrise, sunset):
+  print("Sunrise is at \(sunrise) and sunset is at \(sunset).")
+case let .Failure(message):
+  print("Failure...  \(message)")
+}
+
+// Prints: "Sunrise is at 6:00 am and sunset is at 8:09 pm."
+```
