@@ -514,3 +514,94 @@ case let .Failure(message):
 
 // Prints: "Sunrise is at 6:00 am and sunset is at 8:09 pm."
 ```
+
+Protocols and Extensions
+----------
+Protocols:
+- Protocol可以被classes, enumerations, structs採用
+- method設定mutating關鍵字是為了讓遵循該protocol的enumerations和structs可以在此method修改其變數，因為class原本就能在method修改變數了，所以也不用特別加上
+```swift
+protocol ExampleProtocol {
+  var simpleDescription: String { get }
+  mutating func adjust()
+}
+
+class SimpleClass: ExampleProtocol {
+  var simpleDescription: String = "A simple class"
+  var anotherProperty: Int = 123
+  func adjust() {
+    simpleDescription += " (adjusted)"
+  }
+}
+
+var a = SimpleClass()
+a.adjust()
+let aDescription = a.simpleDescription
+
+// Prints: A simple class (adjusted)
+
+
+struct SimpleStructure: ExampleProtocol {
+  var simpleDescription: String = "A simple structure"
+  mutating func adjust() {
+    simpleDescription += " (adjusted)"
+  }
+}
+
+var b = SimpleStructure()
+b.adjust()
+let bDescription = b.simpleDescription
+
+// Prints: A simple structure (adjusted)
+
+
+enum SimpleEnumeration : ExampleProtocol{
+  case Original, Adjust
+  
+  var simpleDescription: String{
+    get{
+      return getDescription()
+    }
+  }
+  
+  func getDescription() -> String{
+    switch self{
+    case .Original:
+      return "A simple enumeration"
+    case .Adjust:
+      return "A simple enumeration (adjusted)"
+    }
+  }
+  
+  mutating func adjust() {
+   self = SimpleEnumeration.Adjust
+  }
+}
+
+var c = SimpleEnumeration.Original
+c.adjust()
+let cDescription = c.simpleDescription
+
+// Prints: "A simple enumeration (adjusted)"
+```
+
+extension關鍵字是擴充的意思，像是如果你常使用UIAlertController來顯示上傳成功或失敗，那可以擴充UIViewController來將controller及action定義好，那就不用每次都寫一堆code了：
+```swift
+extension UIViewController {
+  
+  func showAlert(title: String, message: String?, buttonText: String) {
+    
+    let controller  = UIAlertController(title: title, message: message ?? nil, preferredStyle: .Alert)
+    
+    let action = UIAlertAction(title: buttonText, style: .Default, handler: nil)
+    
+    controller.addAction(action)
+    
+    self.presentViewController(controller, animated: true, completion: nil)
+  }
+  
+}
+
+```
+
+
