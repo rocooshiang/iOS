@@ -604,4 +604,77 @@ extension UIViewController {
 
 ```
 
+Error Handling
+-----------
+- 可以自定error type來明確指出是什麼錯誤，或是只擷取預設error
+- 在參數列後方加上 throws 表示該function可以丟出error
+- 使用do...catch，在do裡面將要擷取error的code前面放try
 
+```swift 
+enum PrinterError: String, ErrorType {
+  case OutOfPaper
+  case NoToner
+  case OnFire = "There is fire."
+}
+
+func sendToPrinter(printerName: String) throws -> String {
+  
+  switch printerName{
+  case "OutOfPaper":
+    throw PrinterError.OutOfPaper
+  case "NoToner":
+    throw PrinterError.NoToner
+    case "Fire":
+    throw PrinterError.OnFire
+  default :
+    return printerName
+  }
+}
+
+
+do {
+  let printerResponse = try sendToPrinter("Fire")
+  print(printerResponse)
+} catch PrinterError.OnFire {
+  print(PrinterError.OnFire.rawValue)
+} catch let printerError as PrinterError {
+  print(printerError)
+} catch {
+  print(error)
+}
+
+// Prints: "There is fire."
+```
+
+使用try?也可以攔截error，如果回傳是一個nil代表有error，反之則無且該值是一個optional
+```swift
+let printerSuccess = try? sendToPrinter("Hello, Rocoo")
+let printerFailure = try? sendToPrinter("Fire")
+
+// nil
+// Prints: "Hello, Rocoo"
+```
+
+Generics
+--------
+- 使用角括號來宣告泛型type，放在名稱與參數列中間
+- 泛型可以是用在methods, classes, enumerations, structures
+```swift
+func repeatItem<Item>(item: Item, numberOfTimes: Int) -> [Item] {
+  var result = [Item]()
+  for _ in 0..<numberOfTimes {
+    result.append(item)
+  }
+  return result
+}
+repeatItem("knock", numberOfTimes:4)
+
+
+enum OptionalValue<Wrapped> {
+    case None
+    case Some(Wrapped)
+}
+var possibleInteger: OptionalValue<Int> = .None
+possibleInteger = .Some(100)
+
+```
