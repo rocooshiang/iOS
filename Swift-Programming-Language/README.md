@@ -2,7 +2,7 @@ Swift Programming Language
 ----------------
 
 * [The Swift Tour (Swift 2.2)](https://github.com/rocooshiang/LearningSwiftRecord/blob/master/Swift-Programming-Language/docs/The-Swift-Tour.md)
-* [The Basics (Swift2.2)](https://github.com/rocooshiang/LearningSwiftRecord/blob/master/Swift-Programming-Language/docs/The-Basics.md)
+* [The Basics (Swift 2.2)](https://github.com/rocooshiang/LearningSwiftRecord/blob/master/Swift-Programming-Language/docs/The-Basics.md)
 
 
 
