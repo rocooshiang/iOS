@@ -1,8 +1,6 @@
 The Basics
 ----------
-<br \>
-<br \>
-<br \>
+
 
 Constants and Variables
 ----------
