@@ -35,6 +35,7 @@ var orange, black, white: Float
 ```
 
 ***Naming Constants and Variables***
+
 逼不得已要使用保留字當常(變)數名稱時，可以使用 `` 包起來：
 ```swift
 let `case` = "hello"
