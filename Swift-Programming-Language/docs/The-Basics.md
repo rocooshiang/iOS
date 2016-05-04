@@ -100,7 +100,7 @@ Floating-point literals:
 ```swift
 let decimalDouble = 12.1875
 let exponentDouble = 1.21875e1
-let hexadecimalDouble = 0xC.3p0  // (12*16^2 + 0.3*16^-1) * 2^0 = 12.1875
+let hexadecimalDouble = 0xC.3p0  // (12*16^0 + 0.3*16^-1) * 2^0 = 12.1875
 ```
 
 整數和浮點數皆允許填充零或是下底線來增加可讀性：
