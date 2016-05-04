@@ -102,7 +102,7 @@ let exponentDouble = 1.21875e1
 let hexadecimalDouble = 0xC.3p0
 ```
 
-整數和浮點數接允許填充零或是下底線來增加可讀性：
+整數和浮點數皆允許填充零或是下底線來增加可讀性：
 ```swift
 let paddedDouble = 000123.456                 // 123.456
 let oneMillion = 1_000_000                    // 1000000
