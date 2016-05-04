@@ -77,6 +77,7 @@ let anotherPi = 3 + 0.14159
 
 <br \>
 ***Numeric Literals***
+<br \>
 Integer literals:
 * 十進制(decimal), with no prefix
 * 二進制(binary), with a 0b prefix
