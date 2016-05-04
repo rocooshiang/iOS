@@ -95,7 +95,8 @@ Floating-point literals:
 * 同上，十六進制則是使用大小寫p(0xFp2 means 15 x 2^2, 0xFp-2 means 15 x 2^-2)
 * 十六進制是0~9、A(10)、B(11)、C(12)、D(13)、E(14)、F(15)
 
-下方有一樣的值12.1875：
+下方有一樣的值12.1875([進制算法參考](https://market.cloud.edu.tw/content/vocation/business/tc_ct/ch3/3-2.htm))：
+
 ```swift
 let decimalDouble = 12.1875
 let exponentDouble = 1.21875e1
