@@ -48,7 +48,7 @@ let minValue = UInt8.min  // minValue is equal to 0, and is of type UInt8
 let maxValue = UInt8.max  // maxValue is equal to 255, and is of type UInt8
 ```
 
-Int and UInt:
+*Int and UInt*
 * 是依照當前平台是幾位元來設定大小，假設目前平台是64位元，那Int就是Int64
 * 避免數字間的轉換出現問題，盡量使用Int
 ```swift
@@ -78,7 +78,7 @@ let anotherPi = 3 + 0.14159
 <br \>
 ***Numeric Literals***
 <br \>
-Integer literals:
+*Integer literals*
 * 十進制(decimal), with no prefix
 * 二進制(binary), with a 0b prefix
 * 八進制(octal), with a 0o prefix
@@ -90,7 +90,7 @@ let octalInteger = 0o21           // 17 in octal notation
 let hexadecimalInteger = 0x11     // 17 in hexadecimal notation
 ```
 
-Floating-point literals:
+*Floating-point literals*
 * 十進制使用大小寫e來表示後方的數字是指數(1.25e2 means 1.25 x 10^2, 1.25e-2 means 1.25 x 10^-2)
 * 同上，十六進制則是使用大小寫p(0xFp2 means 15 x 2^2, 0xFp-2 means 15 x 2^-2)
 * 十六進制是0~9、A(10)、B(11)、C(12)、D(13)、E(14)、F(15)
@@ -108,6 +108,36 @@ let hexadecimalDouble = 0xC.3p0  // (12*16^0 + 0.3*16^-1) * 2^0 = 12.1875
 let paddedDouble = 000123.456                 // 123.456
 let oneMillion = 1_000_000                    // 1000000
 let justOverOneMillion = 1_000_000.000_000_1  // 1000000.0000001
+```
+
+<br \>
+***Numeric Type Conversion***
+<br \>
+*Integer Conversion*
+* 常(變)數在賦與整數值時，要注意其Numeric type，不能超出range及是否允許正負號
+* 不同Numeric type不能直接運算，必須先經過轉換
+```swift
+let twoThousand: UInt16 = 2_000
+let one: UInt8 = 1
+let twoThousandAndOne = twoThousand + UInt16(one)
+```
+
+*Integer and Floating-Point Conversion*
+<br \>
+整數與浮點數做運算時，同樣要先轉換到一樣的type才能執行：
+```swift
+let three = 3
+let pointOneFourOneFiveNine = 0.14159
+let pi = Double(three) + pointOneFourOneFiveNine
+// pi equals 3.14159, and is inferred to be of type Double
+```
+
+浮點數也可轉換到整數（無條件捨去法）：
+```swift
+let pi = 3.14
+let integerPi = Int(pi)  // 3
+let g = 9.8
+let integerG = Int(g)    // 9
 ```
 
 
