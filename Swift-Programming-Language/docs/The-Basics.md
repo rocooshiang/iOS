@@ -91,15 +91,15 @@ let hexadecimalInteger = 0x11     // 17 in hexadecimal notation
 ```
 
 Floating-point literals:
-* 十進制使用大小寫e來表示後方的數字是指數(1.25e2 means 1.25 x 10的2次方, 1.25e-2 means 1.25 x 10的負2次方)
-* 同上，十六進制則是使用大小寫p(0xFp2 means 15 x 2的2次方, 0xFp-2 means 15 x 2的負2次方)
+* 十進制使用大小寫e來表示後方的數字是指數(1.25e2 means 1.25 x 10^2, 1.25e-2 means 1.25 x 10^-2)
+* 同上，十六進制則是使用大小寫p(0xFp2 means 15 x 2^2, 0xFp-2 means 15 x 2^-2)
 * 十六進制是0~9、A(10)、B(11)、C(12)、D(13)、E(14)、F(15)
 
 下方有一樣的值12.1875：
 ```swift
 let decimalDouble = 12.1875
 let exponentDouble = 1.21875e1
-let hexadecimalDouble = 0xC.3p0
+let hexadecimalDouble = 0xC.3p0  // (12*16^2 + 0.3*16^-1) * 2^0 = 12.1875
 ```
 
 整數和浮點數皆允許填充零或是下底線來增加可讀性：
@@ -108,6 +108,7 @@ let paddedDouble = 000123.456                 // 123.456
 let oneMillion = 1_000_000                    // 1000000
 let justOverOneMillion = 1_000_000.000_000_1  // 1000000.0000001
 ```
+
 
 
 
