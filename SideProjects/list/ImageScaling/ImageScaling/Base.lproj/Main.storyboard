@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ImageScaling" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P8Q-Mn-imG">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="puppy" translatesAutoresizingMaskIntoConstraints="NO" id="Bd8-De-H4s">
+                                        <rect key="frame" x="0.0" y="0.0" width="1108" height="1478"/>
+                                        <gestureRecognizers/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Bd8-De-H4s" firstAttribute="leading" secondItem="P8Q-Mn-imG" secondAttribute="leading" id="162-sE-pxM"/>
+                                    <constraint firstAttribute="bottom" secondItem="Bd8-De-H4s" secondAttribute="bottom" id="UFD-bE-G47"/>
+                                    <constraint firstAttribute="trailing" secondItem="Bd8-De-H4s" secondAttribute="trailing" id="pgx-G5-0tW"/>
+                                    <constraint firstItem="Bd8-De-H4s" firstAttribute="top" secondItem="P8Q-Mn-imG" secondAttribute="top" id="xdV-5S-ajZ"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="hHA-7O-Pc3"/>
+                                </connections>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="P8Q-Mn-imG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="A2x-bl-nJ4"/>
+                            <constraint firstItem="P8Q-Mn-imG" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="gWq-po-goV"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="P8Q-Mn-imG" secondAttribute="bottom" id="jaN-eO-fl5"/>
+                            <constraint firstAttribute="trailing" secondItem="P8Q-Mn-imG" secondAttribute="trailing" id="uMS-4I-Je8"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageViewBottomConstraint" destination="UFD-bE-G47" id="th9-oQ-VH0"/>
+                        <outlet property="imageViewLeadingConstraint" destination="162-sE-pxM" id="hwC-qK-m14"/>
+                        <outlet property="imageViewTopConstraint" destination="xdV-5S-ajZ" id="OQC-gl-sDq"/>
+                        <outlet property="imageViewTrailingConstraint" destination="pgx-G5-0tW" id="5F3-zE-hda"/>
+                        <outlet property="myImage" destination="Bd8-De-H4s" id="rR6-wB-OJn"/>
+                        <outlet property="scrollView" destination="P8Q-Mn-imG" id="WBS-cU-BrK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="puppy" width="1108" height="1478"/>
+    </resources>
+</document>
