@@ -6,6 +6,7 @@ Swift Programming Language
 * [Basic Operators (Swift2.2)](https://github.com/rocooshiang/LearningSwiftRecord/blob/master/Swift-Programming-Language/docs/Basic-Operators.md)
 * [Strings and Characters (Swift 2.2)](https://github.com/rocooshiang/LearningSwiftRecord/blob/master/Swift-Programming-Language/docs/Strings-and-Characters.md)
 * [Collection Types (Swift2.2)](https://github.com/rocooshiang/LearningSwiftRecord/blob/master/Swift-Programming-Language/docs/Collection-Types.md)
+* [Control Flow (Swift2.2)](https://github.com/rocooshiang/LearningSwiftRecord/blob/master/Swift-Programming-Language/docs/Control-Flow.md)
 
 
 
