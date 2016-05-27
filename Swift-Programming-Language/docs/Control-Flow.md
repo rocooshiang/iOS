@@ -95,3 +95,100 @@ case let (x, y):
 }
 // Prints "(1, -1) is on the line x == -y"
 ```
+
+
+# Control Transfer Statements
+**Break**
+<br \>
+break可以直接跳出整個switch，從switch的}之後的第一行開始執行，當default沒有預設要做什麼時，就可以用break：
+```swift
+let number = 13
+
+switch number {
+case 0:
+  print("0")
+case 1..<5:
+  print("1~5")
+case 5...12:
+  print("5~12")
+default:
+  break
+}
+```
+
+**Fallthrough**
+* 因為Swift的switch每個case預設break的功能，也就是說，如果你想要貫穿兩個case(或是default case)，那就要在第一個case加入關鍵字fallthrough
+* 一個fallthrough只能串連兩個case，如果想要串連多個case，那就要額外加上fallthrough
+* 用fallthrough只會單純去串連下一個case，並不會在去判斷下個case的條件!!
+```swift
+let integerToDescribe = 5
+var description = "Hi"
+switch integerToDescribe {
+case 2, 3, 5, 7, 11, 13, 17, 19:
+  description += " Rocoo "
+  fallthrough
+  
+case 2:
+  description += "AAA"
+  
+case 3:
+  description += "BBB"
+  
+default:
+  break
+}
+print(description)
+// Prints "Hi Rocoo AAA"
+```
+
+**Labeled Statements**
+<br \>
+labeled statements與break或continue的搭配使用，下方例子其實continue不需指定gameLoop，因為只有一個迴圈：
+```swift  
+let finalSquare = 25
+var board = [Int](count: finalSquare + 1, repeatedValue: 0)
+board[03] = +08; board[06] = +11; board[09] = +09; board[10] = +02
+board[14] = -10; board[19] = -11; board[22] = -02; board[24] = -08
+var square = 0
+var diceRoll = 0
+
+gameLoop: while square != finalSquare {
+    diceRoll += 1
+    if diceRoll == 7 { diceRoll = 1 }
+    switch square + diceRoll {
+    case finalSquare:
+        // diceRoll will move us to the final square, so the game is over
+        break gameLoop
+    case let newSquare where newSquare > finalSquare:
+        // diceRoll will move us beyond the final square, so roll again
+        continue gameLoop
+    default:
+        // this is a valid move, so find out its effect
+        square += diceRoll
+        square += board[square]
+    }
+}
+print("Game over!")
+```
+
+**Early Exit**
+<br \>
+設定條件，如果不符合則不繼續之後的動作：
+```swift
+func checkNumber(number: Int){
+  if number <= 5{
+    return
+  }
+  print("\(number) >= 5")
+  
+  if number <= 10{
+      return
+  }
+  print("\(number) >= 10")
+}
+
+checkNumber(9)
+// Prints: "9 >= 5"
+```
+
+
