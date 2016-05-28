@@ -14,8 +14,8 @@ let say = sayGoodbye("Dave")  //()
 <br \>
 <br \>
 # Function Parameters and Return Values
-**Optional Tuple Return Types**
 <br \>
+**Optional Tuple Return Types**
 (Int, Int)? 與 (Int?, Int?)是不同的，前者是整個tuple是一個optional，後者是tuple內各別元素是optional：
 ```swift
 func minMax(array: [Int]) -> (min: Int, max: Int)? {
@@ -101,3 +101,114 @@ let result2 = someFunction(12) // Missing argument for parameter #2 in call
 <br \>
 <br \>
 **In-Out Parameters**
+* 參數預設是常數，若想要在function改變參數的值，那必須用關鍵字inout定義該參數
+* 輸入的參數不能是常數跟literal value，因為兩者都不能被改變
+* 不能有default value
+* 在呼叫方法時，要傳入的參數使用&來定義該參數是可以被修改的
+* inout參數與function的回傳值不同，是另一種來影響外部輸入參數的方法
+```swift
+func swapTwoInts(inout a: Int, inout _ b: Int) {
+    let temporaryA = a
+    a = b
+    b = temporaryA
+}
+
+var someInt = 3
+var anotherInt = 107
+swapTwoInts(&someInt, &anotherInt)
+print("someInt is now \(someInt), and anotherInt is now \(anotherInt)")
+// Prints "someInt is now 107, and anotherInt is now 3"
+```
+
+<br \>
+<br \>
+# Function Types
+<br \>
+**Using Function Types**
+<br \>
+定義一樣的參數list與function type，就可以將現有的function設定給該常(變)數：
+```swift
+func addTwoInts(a: Int, _ b: Int) -> Int {
+    return a + b
+}
+
+let mathFunction: (Int, Int) -> Int = addTwoInts
+print("Result: \(mathFunction(2, 3))")
+// Prints "Result: 5"
+
+```
+
+<br \>
+<br \>
+**Function Types as Parameter Types**
+<br \>
+function的參數可以是另一個function：
+```swift
+func addTwoInts(a: Int, _ b: Int) -> Int {
+    return a + b
+}
+
+func printMathResult(mathFunction: (Int, Int) -> Int, _ a: Int, _ b: Int) {
+    print("Result: \(mathFunction(a, b))")
+}
+printMathResult(addTwoInts, 3, 5)
+// Prints "Result: 8"
+```
+
+<br \>
+<br \>
+**Function Types as Return Types**
+<br \>
+function的回傳值也可以是一個function：
+```swift
+func stepForward(input: Int) -> Int {
+    return input + 1
+}
+func stepBackward(input: Int) -> Int {
+    return input - 1
+}
+
+func chooseStepFunction(backwards: Bool) -> (Int) -> Int {
+    return backwards ? stepBackward : stepForward
+}
+
+var currentValue = 3
+let moveNearerToZero = chooseStepFunction(currentValue > 0)
+// moveNearerToZero now refers to the stepBackward() function
+
+while currentValue != 0 {
+    print("\(currentValue)... ")
+    currentValue = moveNearerToZero(currentValue)
+}
+// 3...
+// 2...
+// 1...
+```
+
+<br \>
+<br \>
+# Nested Functions
+```swift
+func chooseStepFunction(backwards: Bool) -> (Int) -> Int {
+    func stepForward(input: Int) -> Int { return input + 1 }
+    func stepBackward(input: Int) -> Int { return input - 1 }
+    return backwards ? stepBackward : stepForward
+}
+
+var currentValue = -4
+let moveNearerToZero = chooseStepFunction(currentValue > 0)
+// moveNearerToZero now refers to the nested stepForward() function
+
+while currentValue != 0 {
+    print("\(currentValue)... ")
+    currentValue = moveNearerToZero(currentValue)
+}
+// -4...
+// -3...
+// -2...
+// -1...
+```
+
+
+
+
