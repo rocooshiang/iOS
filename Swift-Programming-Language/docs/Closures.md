@@ -7,7 +7,7 @@ Global 和 Nested functions都是屬於特殊的closures：
 * Closure expressions是沒有名稱的，使用輕量化的寫法，並且利用前後關係來捕獲值
 
 
-closure expressions的優化：
+Closure expressions的優化：
 * 從前後關係來推斷參數及回傳type
 * 單一表達式closures的回傳
 * 速記參數名稱
