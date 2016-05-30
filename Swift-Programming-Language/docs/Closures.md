@@ -245,7 +245,4 @@ print(instance.x)
 
 ```
 
-<br \>
-<br \>
-# Autoclosures
 
