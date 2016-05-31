@@ -208,7 +208,7 @@ let product = ArithmeticExpression.Multiplication(sum, ArithmeticExpression.Numb
 
 <br \>
 <br \>
-# other
+# Other
 <br \>
 將上面Recursive Enumerations的例子使用protocol：
 ```swift
