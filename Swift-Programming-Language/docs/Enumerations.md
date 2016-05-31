@@ -160,7 +160,7 @@ let possiblePlanet = Planet(rawValue: 7)
 ```
 
 因為raw value沒辦法match，所以回傳是一個nil：
-```
+```swift
 let positionToFind = 11
 if let somePlanet = Planet(rawValue: positionToFind) {
     switch somePlanet {
