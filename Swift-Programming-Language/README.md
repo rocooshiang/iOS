@@ -10,6 +10,7 @@ Swift Programming Language
 * [Functions (Swift2.2)](https://github.com/rocooshiang/LearningSwiftRecord/blob/master/Swift-Programming-Language/docs/Functions.md)
 * [Closures (Swift2.2)](https://github.com/rocooshiang/LearningSwiftRecord/blob/master/Swift-Programming-Language/docs/Closures.md)
 * [Enumerations (Swift2.2)](https://github.com/rocooshiang/LearningSwiftRecord/blob/master/Swift-Programming-Language/docs/Enumerations.md)
+* [Classes and Structures (Swift2.2)](https://github.com/rocooshiang/LearningSwiftRecord/blob/master/Swift-Programming-Language/docs/Classes-and-Structures.md)
 
 
 
