@@ -6,6 +6,7 @@
 <br \>
 **Stored Properties of Constant Structure Instances**
 <br \>
+<br \>
 因為rangeOfFourItems是constant，就算firstValue是設定為變數，但還是不能被改變：
 ```swift
 struct FixedLengthRange {
