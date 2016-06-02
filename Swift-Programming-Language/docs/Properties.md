@@ -119,6 +119,7 @@ print("square.origin is now at (\(square.origin.x), \(square.origin.y))")
 <br \>
 **Shorthand Setter Declaration**
 <br \>
+<br \>
 Swift提供一個default name，使用newValue就表示新參數名稱：
 ```swift
 set {
@@ -169,6 +170,7 @@ Global的常(變)數都是lazy stored properties，不需額外加上lazy關鍵�
 <br \>
 **Type Property Syntax**
 <br \>
+<br \>
 使用關鍵字static定義一個type property，如果是class，那可以使用關鍵字class來取代static表明可以被繼承的class override：
 ```swift
 struct SomeStructure {
@@ -197,6 +199,7 @@ class SomeClass {
 <br \>
 <br \>
 **Querying and Setting Type Properties**
+<br \>
 <br \>
 Type properties是不用利用初始化該type的物件，就能直接取得與賦與值了：
 ```swift
