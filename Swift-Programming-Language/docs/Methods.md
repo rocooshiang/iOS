@@ -3,7 +3,6 @@
 <br \>
 
 ## Instance Methods
-<br \>
 ##### Modifying Value Types from Within Instance Methods
 Structures和Enumerations是Value types，預設是不能使用他內部的方法去變動properties的值，如果想要這麼做的話，要在func前加上關鍵字**mutating**，且該物件不能被宣告為constant，即使要變動的properties是定義為variable的type，：
 ```swift
