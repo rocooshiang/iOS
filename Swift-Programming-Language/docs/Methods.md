@@ -79,3 +79,64 @@ class SomeClass {
 
 SomeClass.someTypeMethod()
 ```
+
+* type methods的內部隱含屬性self是參考type本身(SomeClase)，而不是type的實例(new SomeClass())
+* type methods內可以直接使用type的properties與methods，不需要在前面加上type name
+
+以下例子highestUnlockedLevel在type methods裡被使用時，不需要在前面加上type name：
+```swift
+struct LevelTracker {
+  static var highestUnlockedLevel = 1
+  
+  static func unlockLevel(level: Int) {
+    if level > highestUnlockedLevel { highestUnlockedLevel = level }
+  }
+  
+  static func levelIsUnlocked(level: Int) -> Bool {
+    return level <= highestUnlockedLevel
+  }
+  
+  var currentLevel = 1
+  
+  mutating func advanceToLevel(level: Int) -> Bool {
+    
+    if LevelTracker.levelIsUnlocked(level) {
+      currentLevel = level
+      
+      return true
+    } else {
+      
+      return false
+    }
+  }
+}
+```
+
+以下分別建立了兩個player，而裡面使用到的property是一個type property，所以可以共用：
+```swift
+class Player {
+  var tracker = LevelTracker()
+  let playerName: String
+  func completedLevel(level: Int) {
+    LevelTracker.unlockLevel(level + 1)
+    tracker.advanceToLevel(level + 1)
+  }
+  init(name: String) {
+    playerName = name
+  }
+}
+
+var player = Player(name: "Argyrios")
+player.completedLevel(6)
+
+print("highest unlocked level is now \(LevelTracker.highestUnlockedLevel)")
+// Prints "highest unlocked level is now 6"
+
+player = Player(name: "Beto")
+if player.tracker.advanceToLevel(6) {
+  print("player is now on level 6")
+} else {
+  print("level 6 has not yet been unlocked")
+}
+// Prints "player is now on level 6"
+```
