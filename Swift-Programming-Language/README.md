@@ -13,6 +13,7 @@ Swift Programming Language
 * [Classes and Structures (Swift 2.2)](https://github.com/rocooshiang/LearningSwiftRecord/blob/master/Swift-Programming-Language/docs/Classes-and-Structures.md)
 * [Properties (Swift 2.2)](https://github.com/rocooshiang/LearningSwiftRecord/blob/master/Swift-Programming-Language/docs/Properties.md)
 * [Methods (Swift 2.2)](https://github.com/rocooshiang/LearningSwiftRecord/blob/master/Swift-Programming-Language/docs/Methods.md)
+* [Subscripts (Swift 2.2)](https://github.com/rocooshiang/LearningSwiftRecord/blob/master/Swift-Programming-Language/docs/Subscripts.md)
 
 
 
