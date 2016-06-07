@@ -8,16 +8,33 @@
 
 /* Begin PBXBuildFile section */
 		49140586A44ECCFED18F3840 /* Pods_AlamofireDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB5BC71A473F6E8824BF5FE5 /* Pods_AlamofireDemo.framework */; };
+		F2AAB3271CF2E8E2004968BB /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2AAB3261CF2E8E2004968BB /* MBProgressHUD.framework */; };
+		F2AAB3281CF2E8E2004968BB /* MBProgressHUD.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F2AAB3261CF2E8E2004968BB /* MBProgressHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F2FA955E1CF03C53009D433E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FA955D1CF03C53009D433E /* AppDelegate.swift */; };
 		F2FA95601CF03C53009D433E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FA955F1CF03C53009D433E /* ViewController.swift */; };
 		F2FA95631CF03C53009D433E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2FA95611CF03C53009D433E /* Main.storyboard */; };
 		F2FA95651CF03C53009D433E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2FA95641CF03C53009D433E /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		F2AAB3291CF2E8E2004968BB /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F2AAB3281CF2E8E2004968BB /* MBProgressHUD.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		37397FED02612896DDF5C584 /* Pods-AlamofireDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlamofireDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-AlamofireDemo/Pods-AlamofireDemo.release.xcconfig"; sourceTree = "<group>"; };
 		80751530BA03CAC67FA573AC /* Pods-AlamofireDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlamofireDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AlamofireDemo/Pods-AlamofireDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		EB5BC71A473F6E8824BF5FE5 /* Pods_AlamofireDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AlamofireDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2AAB3261CF2E8E2004968BB /* MBProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = MBProgressHUD.framework; path = "/Users/geosat-rd01/Library/Developer/Xcode/DerivedData/AlamofireDemo-deznouvzqzoqulciruugcmjfvubb/Build/Products/Debug-iphoneos/MBProgressHUD/MBProgressHUD.framework"; sourceTree = "<absolute>"; };
 		F2DC48621CF28C4D007FC3E5 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = Alamofire.framework; path = "/Users/geosat-rd01/Library/Developer/Xcode/DerivedData/AlamofireDemo-crcjpzgkzcnvjgaxaquacwpfjkyo/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<absolute>"; };
 		F2FA955A1CF03C53009D433E /* AlamofireDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlamofireDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2FA955D1CF03C53009D433E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -32,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2AAB3271CF2E8E2004968BB /* MBProgressHUD.framework in Frameworks */,
 				49140586A44ECCFED18F3840 /* Pods_AlamofireDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -59,6 +77,7 @@
 		F2FA95511CF03C53009D433E = {
 			isa = PBXGroup;
 			children = (
+				F2AAB3261CF2E8E2004968BB /* MBProgressHUD.framework */,
 				F2DC48621CF28C4D007FC3E5 /* Alamofire.framework */,
 				F2FA955C1CF03C53009D433E /* AlamofireDemo */,
 				F2FA955B1CF03C53009D433E /* Products */,
@@ -100,6 +119,7 @@
 				F2FA95581CF03C53009D433E /* Resources */,
 				E9C6A4A3EA83D6AEDC52A3E2 /* 📦 Embed Pods Frameworks */,
 				7A87F2F0A73B9F431C598CE9 /* 📦 Copy Pods Resources */,
+				F2AAB3291CF2E8E2004968BB /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
