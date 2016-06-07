@@ -14,6 +14,7 @@ Swift Programming Language
 * [Properties (Swift 2.2)](https://github.com/rocooshiang/LearningSwiftRecord/blob/master/Swift-Programming-Language/docs/Properties.md)
 * [Methods (Swift 2.2)](https://github.com/rocooshiang/LearningSwiftRecord/blob/master/Swift-Programming-Language/docs/Methods.md)
 * [Subscripts (Swift 2.2)](https://github.com/rocooshiang/LearningSwiftRecord/blob/master/Swift-Programming-Language/docs/Subscripts.md)
+* [Inheritance (Swift 2.2)](https://github.com/rocooshiang/LearningSwiftRecord/blob/master/Swift-Programming-Language/docs/Inheritance.md)
 
 
 
