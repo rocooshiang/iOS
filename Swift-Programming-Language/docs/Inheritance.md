@@ -33,7 +33,7 @@ class Bicycle: Vehicle {
 }
 ```
 
-建立一個Subclass的實例，且使用自訂和superclass的property，
+建立一個Subclass的實例，且使用自訂和superclass的property：
 ```swift
 let bicycle = Bicycle()
 bicycle.hasBasket = true
@@ -85,3 +85,45 @@ train.makeNoise()
 // Prints "Choo Choo"
 ```
 
+##### Overriding Property Getters and Setters
+
+利用super點語法來訪問superclass的methods和properties，如下方的super.description：
+```swift
+class Car: Vehicle {
+  var gear = 1
+  override var description: String {
+    return super.description + " in gear \(gear)"
+  }
+}
+
+let car = Car()
+car.currentSpeed = 25.0
+car.gear = 3
+
+print("Car: \(car.description)")
+// Car: traveling at 25.0 miles per hour in gear 3
+```
+
+##### Overriding Property Observers
+
+下方例子是每次更改currentSpeed都會觸發property observers的didSet，所以間接的設定gear：
+```swift
+class AutomaticCar: Car {
+  override var currentSpeed: Double {
+    didSet {
+      gear = Int(currentSpeed / 10.0) + 1
+    }
+  }
+}
+
+let automatic = AutomaticCar()
+automatic.currentSpeed = 35.0
+
+print("AutomaticCar: \(automatic.description)")
+// AutomaticCar: traveling at 35.0 miles per hour in gear 4
+```
+
+<br \>
+<br \>
+## Preventing Overrides
+要防止被Override可以利用關鍵字**final**，如final var, final func, final class func,final subscript，整個class不要被繼承也可以使用final class來表達
