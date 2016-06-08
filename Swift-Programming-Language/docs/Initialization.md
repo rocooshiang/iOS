@@ -142,4 +142,19 @@ let originRect = Rect(origin: Point(x: 2.0, y: 2.0),
                       size: Size(width: 5.0, height: 5.0))
 // originRect's origin is (2.0, 2.0) and its size is (5.0, 5.0)
 
+let centerRect = Rect(center: Point(x: 4.0, y: 4.0),
+                      size: Size(width: 3.0, height: 3.0))
+// centerRect's origin is (2.5, 2.5) and its size is (3.0, 3.0)
 ```
+
+***Note: 有額外的方式可以取代initiallizer delegation，詳情請看Extensions***
+
+
+<br \>
+<br \>
+## Class Inheritance and Initialization
+任何在class的property都必須要有初始值，不管是繼承來的property或是自己的，為了確保這點，Swift提供兩種方式來確認，
+叫做Designated Initializers 和 Convenience Initializers
+
+<br \>
+##### Designated Initializers and Convenience Initializers
