@@ -158,3 +158,12 @@ let centerRect = Rect(center: Point(x: 4.0, y: 4.0),
 
 <br \>
 ##### Designated Initializers and Convenience Initializers
+***Designated initializers***
+* Designated initializers是class最主要的intializer，一個intializer要完整的intialize所有class的property
+* 通常一個class會只有幾個Designated initializers在，通常都只有一個
+* 一個class至少要有一個Designated initializers
+
+***Convenience Initializers***
+* Convenience Initializers是class次要的intializer，輔助用的
+* 呼叫同一個class的Designated initializers，並為其properties提供default value
+* 在必要食材定義Convenience Initializers，例如需要快速的初始化某個Designated initializers
