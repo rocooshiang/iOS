@@ -32,6 +32,7 @@ let freezingPointOfWater = Celsius(fromKelvin: 273.15)
 // freezingPointOfWater.temperatureInCelsius is 0.0
 ```
 
+<br \>
 ##### Optional Property Types
 
 如果有property可能為nil，就設成optional property，在initializae時會assign nil當default value：
@@ -52,6 +53,7 @@ cheeseQuestion.ask()
 cheeseQuestion.response = "Yes, I do like cheese."
 ```
 
+<br \>
 ##### Assigning Constant Properties During Initialization
 
 Constant property可以在initializer assign value，之後就不能再變更了，下面例子與上面例子一模一樣，差別在將text改成是constant property：
@@ -88,6 +90,7 @@ class ShoppingListItem {
 var item = ShoppingListItem()
 ```
 
+<br \>
 ##### Memberwise Initializers for Structure Types
 
 Structure有default initializer叫做memberwise Initializers：
@@ -167,3 +170,39 @@ let centerRect = Rect(center: Point(x: 4.0, y: 4.0),
 * Convenience Initializers是class次要的intializer，輔助用的
 * 呼叫同一個class的Designated initializers，並為其properties提供default value
 * 在必要食材定義Convenience Initializers，例如需要快速的初始化某個Designated initializers
+
+<br \>
+##### Syntax for Designated and Convenience Initializers
+***Designated initializers***
+
+![Xcode indent settings](https://github.com/rocooshiang/LearningSwiftRecord/blob/master/Swift-Programming-Language/docs/Screenshot/Initialization1.png)
+<br \>
+[(圖片轉自The Swift Programming Language , Initialization)](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Initialization.html#//apple_ref/doc/uid/TP40014097-CH18-ID203)
+
+<br \>
+***Convenience Initializers***
+
+![Xcode indent settings](https://github.com/rocooshiang/LearningSwiftRecord/blob/master/Swift-Programming-Language/docs/Screenshot/Initialization2.png)
+<br \>
+[(圖片轉自The Swift Programming Language , Initialization)](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Initialization.html#//apple_ref/doc/uid/TP40014097-CH18-ID203)
+
+<br \>
+##### Initializer Delegation for Class Types
+Swift採用下方三種規則來做initializers之間的呼叫：
+* Designated initializer必須立即呼叫superclass的Designated initializer
+* Convenience initializer必須呼叫同class的其他initializer
+* Convenience initializer最終必須呼叫一個Designated initializer
+
+***Note: Designated initializer是 delegate up， Convenience initializer是 delegate across***
+
+<br \>
+以下圖來表示上方的三種規則：
+![Xcode indent settings](https://github.com/rocooshiang/LearningSwiftRecord/blob/master/Swift-Programming-Language/docs/Screenshot/Initialization4.png)
+<br \>
+[(圖片轉自The Swift Programming Language , Initialization)](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Initialization.html#//apple_ref/doc/uid/TP40014097-CH18-ID203)
+
+* Superclass滿足了rule2和rule3
+* Subclass滿足rule1~3
+
+***Note: 以上規則只有影響到你在定義class的initializers，而不會影響到你在建立class的instances***
+
