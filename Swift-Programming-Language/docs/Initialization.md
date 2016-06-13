@@ -206,3 +206,363 @@ Swift採用下方三種規則來做initializers之間的呼叫：
 
 ***Note: 以上規則只有影響到你在定義class的initializers，而不會影響到你在建立class的instances***
 
+<br \>
+##### Designated and Convenience Initializers in Action
+
+因為classes不像structure有memberwise initializer，所以必須提供designated initializer：
+```swift
+class Food {
+  var name: String
+  
+  init(name: String) {
+    self.name = name
+  }
+  
+  convenience init() {
+    self.init(name: "[Unnamed]")
+  }
+}
+
+let namedMeat = Food(name: "Bacon")
+// namedMeat's name is "Bacon"
+
+let mysteryMeat = Food() 
+// mysteryMeat's name is "[Unnamed]"
+```
+
+以上程式碼配置如下圖：
+![Xcode indent settings](https://github.com/rocooshiang/LearningSwiftRecord/blob/master/Swift-Programming-Language/docs/Screenshot/Initialization8.png)
+<br \>
+[(圖片轉自The Swift Programming Language , Initialization)](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Initialization.html#//apple_ref/doc/uid/TP40014097-CH18-ID203)
+
+一個subclass，使用desinated initializer初始一個叫quantity的property，以及superclass的name property：
+```swift
+class RecipeIngredient: Food {
+  var quantity: Int
+  
+  init(name: String, quantity: Int) {
+    self.quantity = quantity
+    super.init(name: name)
+  }
+  
+  override convenience init(name: String) {
+    self.init(name: name, quantity: 1)
+  }
+}
+```
+
+以上程式碼配置如下圖：
+![Xcode indent settings](https://github.com/rocooshiang/LearningSwiftRecord/blob/master/Swift-Programming-Language/docs/Screenshot/Initialization9.png)
+<br \>
+[(圖片轉自The Swift Programming Language , Initialization)](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Initialization.html#//apple_ref/doc/uid/TP40014097-CH18-ID203)
+
+以下程式碼是購物清單確認表，因為沒有定義任何initializers，且每個property都有default value，ShoppingListItem會自動繼承所有superclass的designated和convenience initializers：
+```swift
+class ShoppingListItem: RecipeIngredient {
+    var purchased = false
+    
+    var description: String {
+        var output = "\(quantity) x \(name)"
+        output += purchased ? " ✔" : " ✘"
+        return output
+    }
+}
+```
+
+以上程式碼配置如下圖：
+![Xcode indent settings](https://github.com/rocooshiang/LearningSwiftRecord/blob/master/Swift-Programming-Language/docs/Screenshot/Initialization10.png)
+<br \>
+[(圖片轉自The Swift Programming Language , Initialization)](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Initialization.html#//apple_ref/doc/uid/TP40014097-CH18-ID203)
+
+以下例子使用上放3個自定的class，breakfastList是[ShoppingListItem] type：
+```swift
+var breakfastList = [
+    ShoppingListItem(),
+    ShoppingListItem(name: "Bacon"),
+    ShoppingListItem(name: "Eggs", quantity: 6),
+]
+
+breakfastList[0].name = "Orange juice"
+breakfastList[0].purchased = true
+
+for item in breakfastList {
+    print(item.description)
+}
+// 1 x Orange juice ✔
+// 1 x Bacon ✘
+// 6 x Eggs ✘
+```
+
+<br \>
+<br \>
+## Failable Initializers
+
+為了應付錯誤的參數，或是在某種條件下不讓初始化成功，利用關鍵字**init?**就可以定義一個Failable Initializers，回傳是一個Optional
+
+***Note: 不能同時定義擁有同樣名稱及參數的 failable 和 nonfailable initializer***
+
+建立一個有Failable Initializers的structure，如果輸入的參數是空的就回傳nil：
+```swift
+struct Animal {
+  let species: String
+  
+  init?(species: String) {
+    if species.isEmpty { return nil }
+    self.species = species
+  }
+}
+```
+
+利用if let判斷是否初始化成功：
+```swift
+let someCreature = Animal(species: "Giraffe")
+// someCreature is of type Animal?, not Animal
+ 
+if let giraffe = someCreature {
+    print("An animal was initialized with a species of \(giraffe.species)")
+}
+// Prints "An animal was initialized with a species of Giraffe"
+```
+
+初始化失敗：
+```swift
+let anonymousCreature = Animal(species: "")
+// anonymousCreature is of type Animal?, not Animal
+ 
+if anonymousCreature == nil {
+    print("The anonymous creature could not be initialized")
+}
+// Prints "The anonymous creature could not be initialized"
+```
+
+<br \>
+##### Failable Initializers for Enumerations
+
+如果沒有match到任何case，則回傳nil表示初始化失敗：
+```swift
+enum TemperatureUnit {
+  case Kelvin, Celsius, Fahrenheit
+  
+  init?(symbol: Character) {
+    switch symbol {
+    case "K":
+      self = .Kelvin
+    case "C":
+      self = .Celsius
+    case "F":
+      self = .Fahrenheit
+    default:
+      return nil
+    }
+  }
+}
+
+let fahrenheitUnit = TemperatureUnit(symbol: "F")
+if fahrenheitUnit != nil {
+  print("This is a defined temperature unit, so initialization succeeded.")
+}
+// Prints "This is a defined temperature unit, so initialization succeeded."
+
+let unknownUnit = TemperatureUnit(symbol: "X")
+if unknownUnit == nil {
+  print("This is not a defined temperature unit, so initialization failed.")
+}
+// Prints "This is not a defined temperature unit, so initialization failed."
+```
+
+<br \>
+##### Failable Initializers for Enumerations with Raw Values
+
+Enumerations會自動接收 failable initializer，init?(rawValue:)：
+```swift
+enum TemperatureUnit: Character {
+    case Kelvin = "K", Celsius = "C", Fahrenheit = "F"
+}
+ 
+let fahrenheitUnit = TemperatureUnit(rawValue: "F")
+if fahrenheitUnit != nil {
+    print("This is a defined temperature unit, so initialization succeeded.")
+}
+// Prints "This is a defined temperature unit, so initialization succeeded."
+ 
+let unknownUnit = TemperatureUnit(rawValue: "X")
+if unknownUnit == nil {
+    print("This is not a defined temperature unit, so initialization failed.")
+}
+// Prints "This is not a defined temperature unit, so initialization failed."
+```
+
+<br \>
+##### Propagation of Initialization Failure
+
+failable initializer可以在同一個class, structure, or enumeration delegate across to another failable initializer，同理 subclass failable initializer可以delegate up to a superclass failable initializer
+
+***Note: A failable initializer can also delegate to a nonfailable initializer***
+
+初始化CartItem會先判斷quantity是否是有效值，無效的話初始化就會立即失敗，之後的程式碼都不會在執行，相反地，成功就會繼續判斷後面name是否為空：
+```swift
+class Product {
+  let name: String
+  
+  init?(name: String) {
+    if name.isEmpty { return nil }
+    self.name = name
+  }
+}
+
+class CartItem: Product {
+  let quantity: Int
+  
+  init?(name: String, quantity: Int) {
+    if quantity < 1 { return nil }
+    self.quantity = quantity
+    super.init(name: name)
+  }
+}
+```
+
+初始化成功：
+```swift
+if let twoSocks = CartItem(name: "sock", quantity: 2) {
+    print("Item: \(twoSocks.name), quantity: \(twoSocks.quantity)")
+}
+// Prints "Item: sock, quantity: 2"
+```
+
+以下初始化失敗在name為空：
+```swift
+if let oneUnnamed = CartItem(name: "", quantity: 1) {
+    print("Item: \(oneUnnamed.name), quantity: \(oneUnnamed.quantity)")
+} else {
+    print("Unable to initialize one unnamed product")
+}
+// Prints "Unable to initialize one unnamed product"
+```
+
+<br \>
+##### Overriding a Failable Initializer
+* subclass可以override superclass的failable initializer，另外，如果不允許失敗，還可以將其改變為nonfailable intializer
+* 如果是要將superclass的failable initializer，在subclass override成nonfailable intializer，那要強制unwrap，因為init?回傳結果是一個Optional
+
+以下class允許name是有效值或是nil，不允許為空：
+```swift
+class Document {
+    var name: String?
+    // this initializer creates a document with a nil name value
+    
+    init() {}
+    // this initializer creates a document with a nonempty name value
+    init?(name: String) {
+        if name.isEmpty { return nil }
+        self.name = name
+    }
+}
+```
+
+AutomaticallyNamedDocument override兩個superclass的initializer，確保name都有值：
+```swift
+class AutomaticallyNamedDocument: Document {
+    override init() {
+        super.init()
+        self.name = "[Untitled]"
+    }
+    
+    override init(name: String) {
+        super.init()
+        if name.isEmpty {
+            self.name = "[Untitled]"
+        } else {
+            self.name = name
+        }
+    }
+```
+
+在subclass的nonfailable initializer使用force unwrapping呼叫superclass的failable initializer：
+```swift
+class UntitledDocument: Document {
+    override init() {
+        super.init(name: "[Untitled]")!
+    }
+}
+```
+
+<br \>
+<br \>
+## Required Initializers
+
+在initializer前加上關鍵字**required**，表示繼承的subclass需要執行這個intializer：
+```swift
+class SomeClass {
+    required init() {
+        // initializer implementation goes here
+    }
+}
+```
+
+subclass執行superclass的required intializer不需要加上override，但是還是要在前面加上required：
+```swift
+class SomeSubclass: SomeClass {
+  required init() {
+    // subclass implementation of the required initializer goes here
+  }
+}
+```
+
+<br \>
+<br \>
+## Setting a Default Property Value with a Closure or Function
+
+範例:
+```swift
+class SomeClass {
+    let someProperty: SomeType = {
+        // create a default value for someProperty inside this closure
+        // someValue must be of the same type as SomeType
+        return someValue
+    }()
+}
+```
+
+***Note: 如果使用closure初始化property，切記在大括號內還沒有被初始化完成，意思就是不能在closure使用其他的property，即使那些property有default value，也沒辦法使用隱含的property self或是呼叫方法***
+
+以棋盤為例子，下方式一個8x8的棋盤，由黑白色交替，boardColors控制每個格子的顏色(共有64個Bool value的array)，true代表黑色，false代表白色，左上角是第一個item，右下角是最後一個item，boardColors由一個closure初始化：
+```swift
+struct Chessboard {
+  let boardColors: [Bool] = {
+    var temporaryBoard = [Bool]()
+    var isBlack = false
+    
+    for i in 1...8 {
+      for j in 1...8 {
+        temporaryBoard.append(isBlack)
+        isBlack = !isBlack
+      }
+      isBlack = !isBlack
+    }
+    
+    return temporaryBoard
+  }()
+  
+  func squareIsBlackAtRow(row: Int, column: Int) -> Bool {
+    return boardColors[(row * 8) + column]
+  }
+}
+```
+
+<br \>
+以上程式碼配置如下圖：
+
+![Xcode indent settings](https://github.com/rocooshiang/LearningSwiftRecord/blob/master/Swift-Programming-Language/docs/Screenshot/Initialization11.png)
+<br \>
+[(圖片轉自The Swift Programming Language , Initialization)](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Initialization.html#//apple_ref/doc/uid/TP40014097-CH18-ID203)
+
+
+查詢每個格子的顏色：
+```swift
+let board = Chessboard()
+print(board.squareIsBlackAtRow(0, column: 1))
+// Prints "true"
+
+print(board.squareIsBlackAtRow(7, column: 7))
+// Prints "false"
+```
