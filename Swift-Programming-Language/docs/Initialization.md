@@ -301,6 +301,7 @@ for item in breakfastList {
 
 ***Note: 不能同時定義擁有同樣名稱及參數的 failable 和 nonfailable initializer***
 
+<br \>
 建立一個有Failable Initializers的structure，如果輸入的參數是空的就回傳nil：
 ```swift
 struct Animal {
@@ -399,6 +400,7 @@ failable initializer可以在同一個class, structure, or enumeration delegate 
 
 ***Note: A failable initializer can also delegate to a nonfailable initializer***
 
+<br \>
 初始化CartItem會先判斷quantity是否是有效值，無效的話初始化就會立即失敗，之後的程式碼都不會在執行，相反地，成功就會繼續判斷後面name是否為空：
 ```swift
 class Product {
@@ -525,6 +527,7 @@ class SomeClass {
 
 ***Note: 如果使用closure初始化property，切記在大括號內還沒有被初始化完成，意思就是不能在closure使用其他的property，即使那些property有default value，也沒辦法使用隱含的property self或是呼叫方法***
 
+<br \>
 以棋盤為例子，下方式一個8x8的棋盤，由黑白色交替，boardColors控制每個格子的顏色(共有64個Bool value的array)，true代表黑色，false代表白色，左上角是第一個item，右下角是最後一個item，boardColors由一個closure初始化：
 ```swift
 struct Chessboard {
