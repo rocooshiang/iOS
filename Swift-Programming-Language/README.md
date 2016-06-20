@@ -18,6 +18,7 @@ Swift Programming Language
 * [Initailization (Swift 2.2)](https://github.com/rocooshiang/LearningSwiftRecord/blob/master/Swift-Programming-Language/docs/Initialization.md)
 * [Deinitialization (Swift 2.2)](https://github.com/rocooshiang/LearningSwiftRecord/blob/master/Swift-Programming-Language/docs/Deinitialization.md)
 * [Optional Chaining (Swift 2.2)](https://github.com/rocooshiang/LearningSwiftRecord/blob/master/Swift-Programming-Language/docs/Optional-Chaining.md)
+* [Error Handling (Swift 2.2)](https://github.com/rocooshiang/LearningSwiftRecord/blob/master/Swift-Programming-Language/docs/Error-Handling.md)
 
 
 
