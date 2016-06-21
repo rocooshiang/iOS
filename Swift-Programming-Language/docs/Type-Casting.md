@@ -96,6 +96,7 @@ for item in library {
 
 ***Note: 只有當你明確的需要它的行為和功能時才使用Any和AnyObject，在你的程式碼裡使用明確的型別是更好的***
 
+<br \>
 ##### AnyObject
 
 以下someObjects是一個array，允許任何class的實例(此sample只有Movie type)：
