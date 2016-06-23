@@ -203,3 +203,235 @@ class SomeSubClass: SomeSuperClass, SomeProtocol {
   }
 }
 ```
+
+<br \>
+<br \>
+## Protocols as Types
+
+Protocols本身不實作任何功能，但是能作為type來使用
+
+使用時機：
+* 作為function，method及initializer中的parameter type或return type
+* 作為constant，variable，property的type
+* 作為Array，Dictionary或其他容器中的元素type
+
+***Note: 與其他type一樣，使用駝峰式命名法***
+
+示範protocols as types，constant generator是一個RandomNumberGenerator的protocol，：
+```swift
+class Dice {
+    let sides: Int
+    let generator: RandomNumberGenerator
+    
+    init(sides: Int, generator: RandomNumberGenerator) {
+        self.sides = sides
+        self.generator = generator
+    }
+    
+    func roll() -> Int {
+        return Int(generator.random() * Double(sides)) + 1
+    }
+}
+
+var d6 = Dice(sides: 6, generator: LinearCongruentialGenerator())
+for _ in 1...5 {
+    print("Random dice roll is \(d6.roll())")
+}
+
+// Random dice roll is 3
+// Random dice roll is 5
+// Random dice roll is 4
+// Random dice roll is 5
+// Random dice roll is 4
+```
+
+<br \>
+<br \>
+## Delegation
+* Delegation是一種design pattern，它允許classes或structures將一些需要它們負責的功能交由(delegate)給其他的type
+* Delegation定義protocols來封裝那些需要被委托的functions和methods，使遵循者擁有這些被委托的functions和methods
+* Delegation可以用來響應特定的動作或接收外部資料源提供的資料，而無需要知道外部資料源的type
+
+
+ 下面示範一個Snakes and Ladders的遊戲(在Control Flow提到過的)，之前是用迴圈跑隨機數值，
+ 這次使用Dice instance的rolls方法來取隨機數，採用DiceGame和DiceGameDelegate protocol：
+ ```swift
+ protocol RandomNumberGenerator {
+  func random() -> Double
+}
+
+class LinearCongruentialGenerator: RandomNumberGenerator {
+  var lastRandom = 42.0
+  let m = 139968.0
+  let a = 3877.0
+  let c = 29573.0
+  func random() -> Double {
+    lastRandom = ((lastRandom * a + c) % m)
+    return lastRandom / m
+  }
+}
+
+
+class Dice {
+  let sides: Int
+  let generator: RandomNumberGenerator
+  init(sides: Int, generator: RandomNumberGenerator) {
+    self.sides = sides
+    self.generator = generator
+  }
+  func roll() -> Int {
+    return Int(generator.random() * Double(sides)) + 1
+  }
+}
+
+
+protocol DiceGame {
+  var dice: Dice { get }
+  func play()
+}
+
+protocol DiceGameDelegate {
+  func gameDidStart(game: DiceGame)
+  func game(game: DiceGame, didStartNewTurnWithDiceRoll diceRoll: Int)
+  func gameDidEnd(game: DiceGame)
+}
+
+
+class SnakesAndLadders: DiceGame {
+  let finalSquare = 25
+  
+  // 使用Dice class製作一個6面骰子，利用RandomNumberGenerator protocol取的隨機數值
+  let dice = Dice(sides: 6, generator: LinearCongruentialGenerator())
+  
+  var square = 0
+  var board: [Int]
+  
+  // 初始化每個格子，特定格子有特殊意義
+  init() {
+    board = [Int](count: finalSquare + 1, repeatedValue: 0)
+    board[03] = +08; board[06] = +11; board[09] = +09; board[10] = +02
+    board[14] = -10; board[19] = -11; board[22] = -02; board[24] = -08
+  }
+  
+  // 宣告delegate的變數，是一個DiceGameDelegate，用來觀察遊戲的進度
+  var delegate: DiceGameDelegate?
+  
+  func play() {
+    square = 0
+    
+    // 告知遊戲開始
+    delegate?.gameDidStart(self)
+    
+    // 開始跑擲骰子的迴圈
+    gameLoop: while square != finalSquare {
+      let diceRoll = dice.roll()
+      
+      // 告知開始新的一輪擲骰子
+      delegate?.game(self, didStartNewTurnWithDiceRoll: diceRoll)
+      
+      // 判斷擲骰子後的隨機數值對應的結果
+      switch square + diceRoll {
+      
+      // 先前的格子＋走的步伐剛好抵達最後的格子，離開這個迴圈
+      case finalSquare: 
+        break gameLoop
+        
+      // 先前的格子＋走的步伐超出最後的格子，重新跑迴圈   
+      case let newSquare where newSquare > finalSquare:
+        continue gameLoop
+        
+      // 還在格子內，遊戲持續進行    
+      default:
+        square += diceRoll
+        square += board[square]
+      }
+    }
+    
+    // 告知遊戲結束
+    delegate?.gameDidEnd(self)
+  }
+}
+ ```
+ 
+ 下方DiceGameTracker class採用DiceGameDelegate protocol，實作protocol定義的三個方法：
+ ```swift
+ class DiceGameTracker: DiceGameDelegate {
+    var numberOfTurns = 0
+    
+    func gameDidStart(game: DiceGame) {
+        numberOfTurns = 0
+        if game is SnakesAndLadders {
+            print("Started a new game of Snakes and Ladders")
+        }
+        print("The game is using a \(game.dice.sides)-sided dice")
+    }
+    
+    func game(game: DiceGame, didStartNewTurnWithDiceRoll diceRoll: Int) {
+        numberOfTurns += 1
+        print("Rolled a \(diceRoll)")
+    }
+    
+    func gameDidEnd(game: DiceGame) {
+        print("The game lasted for \(numberOfTurns) turns")
+    }
+}
+ ```
+
+SnakesAndLadders class instance的delegate使用了DiceGameTracker這個採用DiceGameDelegate protocol的class：
+```swift
+let tracker = DiceGameTracker()
+let game = SnakesAndLadders()
+game.delegate = tracker
+game.play()
+// Started a new game of Snakes and Ladders
+// The game is using a 6-sided dice
+// Rolled a 3
+// Rolled a 5
+// Rolled a 4
+// Rolled a 5
+// The game lasted for 4 turns
+```
+
+<br \>
+<br \>
+## Adding Protocol Conformance with an Extension
+
+為Dice額外擴充一個protocol，之後每個Dice的instance都能使用該protocol的method：
+```swift
+protocol TextRepresentable {
+  var textualDescription: String { get }
+}
+
+extension Dice: TextRepresentable {
+  var textualDescription: String {
+    return "A \(sides)-sided dice"
+  }
+}
+
+let d12 = Dice(sides: 12, generator: LinearCongruentialGenerator())
+print(d12.textualDescription)
+// Prints "A 12-sided dice"
+```
+
+<br \>
+##### Declaring Protocol Adoption with an Extension
+
+如果一個type本身就符合protocol的要求，那可以利用extension來採用此protocol，body就可以是空白的：
+```swift
+struct Hamster {
+  var name: String
+  
+  var textualDescription: String {
+    return "A hamster named \(name)"
+  }
+}
+
+extension Hamster: TextRepresentable {}
+
+
+let simonTheHamster = Hamster(name: "Simon")
+let somethingTextRepresentable: TextRepresentable = simonTheHamster
+print(somethingTextRepresentable.textualDescription)
+// Prints "A hamster named Simon"
+```
+
