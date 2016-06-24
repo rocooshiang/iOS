@@ -435,3 +435,333 @@ print(somethingTextRepresentable.textualDescription)
 // Prints "A hamster named Simon"
 ```
 
+***Note: 即使滿足了協定的所有要求，type也不會自動轉變，因此你必須為它做出明顯的protocol宣告***
+
+<br \>
+<br \>
+## Collections of Protocol Types
+
+Protocol可以像是type一樣儲存在集合裡，如Array和Dictionary：
+```swift
+let things: [TextRepresentable] = [game, d12, simonTheHamster]
+```
+
+使用for loop遍歷所有項目：
+```swift
+for thing in things {
+    print(thing.textualDescription)
+}
+// A game of Snakes and Ladders with 25 squares
+// A 12-sided dice
+// A hamster named Simon
+```
+
+<br \>
+<br \>
+## Protocol Inheritance
+
+Protocol可以繼承一或多個protocols：
+```swift
+protocol InheritingProtocol: SomeProtocol, AnotherProtocol {
+    // protocol definition goes here
+}
+```
+
+一個protocol繼承另一個protocol：
+```swift
+protocol TextRepresentable {
+  var textualDescription: String { get }
+}
+
+protocol PrettyTextRepresentable: TextRepresentable {
+    var prettyTextualDescription: String { get }
+}
+```
+
+將先前的SnakesAndLadders class使用PrettyTextRepresentable protocol，因為該protocol又繼承TextRepresentable protocol，
+因此必須滿足兩個protocol的需求，也就是textualDescription及prettyTextualDescription property：
+```swift
+protocol PrettyTextRepresentable: TextRepresentable {
+  var prettyTextualDescription: String { get }
+}
+
+extension SnakesAndLadders: PrettyTextRepresentable{
+  
+  var textualDescription: String{
+    return "A game of Snakes and Ladders with \(finalSquare) squares"
+  }
+  
+  var prettyTextualDescription: String {
+    var output = textualDescription + ":\n"
+    
+    for index in 1...finalSquare {
+      switch board[index] {
+      case let ladder where ladder > 0:
+        output += "▲ "
+      case let snake where snake < 0:
+        output += "▼ "
+      default:
+        output += "○ "
+      }
+    }
+    return output
+  }
+}
+
+print(game.prettyTextualDescription)
+// A game of Snakes and Ladders with 25 squares:
+// ○ ○ ▲ ○ ○ ▲ ○ ○ ▲ ▲ ○ ○ ○ ▼ ○ ○ ○ ○ ▼ ○ ○ ▼ ○ ▼ ○
+```
+
+<br \>
+<br \>
+## Class-Only Protocols
+
+可以限制protocols只能被classes使用，將 **class** 關鍵字擺在protocol列表中的第一順位：
+```swift
+protocol SomeClassOnlyProtocol: class, SomeInheritedProtocol {
+    // class-only protocol definition goes here
+}
+```
+
+***Note: 因為classes是reference type，而structures和enumerations是value type，在使用上有時候需要區分，詳細情況請看 [Classes and Structures](https://github.com/rocooshiang/LearningSwiftRecord/blob/master/Swift-Programming-Language/docs/Classes-and-Structures.md)***
+
+
+<br \>
+<br \>
+## Protocol Composition
+
+格式是 **protocol<<SomeProtocol, AnotherProtocol>SomeProtocol, AnotherProtocol>**，可以將多個protocol放在角括號裡，範例如下：
+```swift
+protocol Named {
+    var name: String { get }
+}
+
+protocol Aged {
+    var age: Int { get }
+}
+
+struct Person: Named, Aged {
+    var name: String
+    var age: Int
+}
+
+func wishHappyBirthday(celebrator: protocol<Named, Aged>) {
+    print("Happy birthday \(celebrator.name) - you're \(celebrator.age)!")
+}
+
+let birthdayPerson = Person(name: "Malcolm", age: 21)
+wishHappyBirthday(birthdayPerson)
+// Prints "Happy birthday Malcolm - you're 21!"
+```
+
+***Note: Protocol Composition並沒有產生一個新的protocol，只是多個protocols生成一個暫時的protocol***
+
+<br \>
+<br \>
+## Checking for Protocol Conformance
+如 [Types Casting](https://github.com/rocooshiang/LearningSwiftRecord/blob/master/Swift-Programming-Language/docs/Type-Casting.md)介紹的一樣，可以用 **is** 跟 **as** 來判斷protocol conformance
+
+Circle和Country是使用了HasArea protocol的class，而Animal是普通的class，因為三個都是class，所以可以一起放進一個叫objects的Array，當我們用迴圈是遍歷所有項目時，就能用 as? 來判斷是否有使用HasArea protocol了：
+```swift
+protocol HasArea {
+    var area: Double { get }
+}
+
+class Circle: HasArea {
+    let pi = 3.1415927
+    var radius: Double
+    var area: Double { return pi * radius * radius }
+    init(radius: Double) { self.radius = radius }
+}
+
+class Country: HasArea {
+    var area: Double
+    init(area: Double) { self.area = area }
+}
+
+class Animal {
+    var legs: Int
+    init(legs: Int) { self.legs = legs }
+}
+
+let objects: [AnyObject] = [
+    Circle(radius: 2.0),
+    Country(area: 243_610),
+    Animal(legs: 4)
+]
+
+for object in objects {
+    if let objectWithArea = object as? HasArea {
+        print("Area is \(objectWithArea.area)")
+    } else {
+        print("Something that doesn't have an area")
+    }
+}
+// Area is 12.5663708
+// Area is 243610.0
+// Something that doesn't have an area
+```
+
+<br \>
+<br \>
+## Optional Protocol Requirements
+
+**@objc** 關鍵字是為了讓Swift跟Objective-C能互相使用，即使專案沒有任何Objective-C，還是得加上去，而在properties或是methods前加上 **optional** 關鍵字視為非必要實作的項目：
+```swift
+@objc protocol CounterDataSource {
+  optional func incrementForCount(count: Int) -> Int
+  optional var fixedIncrement: Int { get }
+}
+
+class Counter {
+  var count = 0
+  var dataSource: CounterDataSource?
+  
+  func increment() {
+    if let amount = dataSource?.incrementForCount?(count) {
+      count += amount
+    } else if let amount = dataSource?.fixedIncrement {
+      count += amount
+    }
+  }
+}
+
+class ThreeSource: NSObject, CounterDataSource {
+  let fixedIncrement = 3
+}
+
+var counter = Counter()
+counter.dataSource = ThreeSource()
+
+for _ in 1...4 {
+  counter.increment()
+  print(counter.count)
+}
+// 3
+// 6
+// 9
+// 12
+```
+
+更複雜的例子：
+```swift
+@objc class TowardsZeroSource: NSObject, CounterDataSource {
+  func incrementForCount(count: Int) -> Int {
+    if count == 0 {
+      return 0
+    } else if count < 0 {
+      return 1
+    } else {
+      return -1
+    }
+  }
+}
+
+counter.count = -4
+counter.dataSource = TowardsZeroSource()
+
+for _ in 1...5 {
+  counter.increment()
+  print(counter.count)
+}
+// -3
+// -2
+// -1
+// 0
+// 0
+```
+
+<br \>
+<br \>
+## Protocol Extensions
+
+Protocol Extensions可以擴充method和property來給使用此protocol的types，而不需要個別在每個type或是在global function定義：
+```swift
+protocol RandomNumberGenerator {
+  func random() -> Double
+}
+
+extension RandomNumberGenerator {
+  func randomBool() -> Bool {
+    return random() > 0.5
+  }
+}
+
+class LinearCongruentialGenerator: RandomNumberGenerator {
+  var lastRandom = 42.0
+  let m = 139968.0
+  let a = 3877.0
+  let c = 29573.0
+  func random() -> Double {
+    lastRandom = ((lastRandom * a + c) % m)
+    return lastRandom / m
+  }
+}
+
+
+
+let generator = LinearCongruentialGenerator()
+print("Here's a random number: \(generator.random())")
+// Prints "Here's a random number: 0.37464991998171"
+
+print("And here's a random Boolean: \(generator.randomBool())")
+// Prints "And here's a random Boolean: true" (random = 0.729023776863283)
+```
+
+<br \>
+##### Providing Default Implementations
+用protocol extension來提供預設的實作，而當使用此protocol的type有實作property或是method時，則會取代預設的實作
+
+***Note: 預設的實作與optional protocol requirements不同，雖然兩者都不需經過使用此protocol的type實作，但是擁有預設的實作就可以呼叫requirements而不帶optional***
+
+PrettyTextRepresentable使用extension幫prettyTextualDescription property擴充一個預設的實作：
+```swift
+protocol TextRepresentable {
+  var textualDescription: String { get }
+}
+
+protocol PrettyTextRepresentable: TextRepresentable {
+  var prettyTextualDescription: String { get }
+}
+
+extension PrettyTextRepresentable  {
+  var prettyTextualDescription: String {
+    return textualDescription
+  }
+}
+```
+
+<br \>
+##### Adding Constraints to Protocol Extensions
+
+擴充CollectionType protocol允許任何符合TextRepresentable protocol的項目：
+```swift
+extension CollectionType where Generator.Element: TextRepresentable {
+
+  var textualDescription: String {
+    let itemsAsText = self.map { $0.textualDescription }
+    return "[" + itemsAsText.joinWithSeparator(", ") + "]"
+  }
+}
+```
+
+建立三個Hamster instance，因為Hamster都有使用TextRepresentable protocol，所以都符合CollectionType的限制：
+```swift
+struct Hamster {
+  var name: String
+  var textualDescription: String {
+    return "A hamster named \(name)"
+  }
+}
+
+extension Hamster: TextRepresentable {}
+
+let murrayTheHamster = Hamster(name: "Murray")
+let morganTheHamster = Hamster(name: "Morgan")
+let mauriceTheHamster = Hamster(name: "Maurice")
+let hamsters = [murrayTheHamster, morganTheHamster, mauriceTheHamster]
+
+print(hamsters.textualDescription)
+// Prints "[A hamster named Murray, A hamster named Morgan, A hamster named Maurice]"
+```
