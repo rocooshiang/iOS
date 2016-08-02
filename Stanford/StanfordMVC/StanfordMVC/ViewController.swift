@@ -40,6 +40,19 @@ class ViewController: UIViewController {
     }
   }
   
+  var saveProgram: CalcuatorBrain.PropertyList?
+  
+  @IBAction func save() {
+    saveProgram = brain.program
+  }
+  
+  @IBAction func restore() {
+    if saveProgram != nil{
+      brain.program = saveProgram!
+      displayValue = brain.result
+    }
+  }
+  
   let brain = CalcuatorBrain()
   
   @IBAction private func performOperation(sender: UIButton) {

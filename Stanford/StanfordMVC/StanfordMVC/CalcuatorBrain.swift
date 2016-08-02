@@ -11,9 +11,11 @@ import Foundation
 class CalcuatorBrain{
   
   private var accumulator = 0.0
+  private var internalProgram = [AnyObject]()
   
   func setOperand(operand: Double){
     accumulator = operand
+    internalProgram.append(operand)
   }
   
   // String不能重複，不然會產生EXC_BAD_INSTRUCTION
@@ -45,6 +47,8 @@ class CalcuatorBrain{
    2. 取得 Enum 定義的 associate value
    **/
   func performOperation(symbol: String){
+    internalProgram.append(symbol)
+    
     if let operation = operations[symbol]{  // 1.
       switch operation {
       case .Constant(let value):   // 2.
@@ -72,6 +76,32 @@ class CalcuatorBrain{
   struct PendingBinaryOperationInfo {
     var binaryOperation: (Double, Double) -> Double
     var firstOperand: Double
+  }
+  
+  typealias PropertyList = AnyObject
+  
+  var program: PropertyList{
+    get{
+      return internalProgram
+    }
+    set{
+      clear()
+      if let arrayOfOps = newValue as? [AnyObject]{
+        for op in arrayOfOps{
+          if let operand = op as? Double{
+              setOperand(operand)
+          }else if let operation = op as? String{
+             performOperation(operation)
+          }
+        }
+      }
+    }
+  }
+  
+  private func clear(){
+    accumulator = 0.0
+    pending = nil
+    internalProgram.removeAll()
   }
   
   var result: Double{
