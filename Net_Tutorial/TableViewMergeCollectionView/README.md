@@ -3,6 +3,7 @@
 <br \>
 
 # Screenshot
+![Xcode indent settings](https://github.com/rocooshiang/LearningSwiftRecord/blob/ModifyBranch/Net_Tutorial/TableViewMergeCollectionView/Screenshot/Image2.jpg)
 <br \>
 <br \>
 
