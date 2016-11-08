@@ -16,6 +16,7 @@ class TableViewController: UITableViewController {
   var items = [[UIColor]]()
   
   var data: [String:[UIColor]]!
+    
   override func viewDidLoad() {
     super.viewDidLoad()
     items = generateRandomData()
