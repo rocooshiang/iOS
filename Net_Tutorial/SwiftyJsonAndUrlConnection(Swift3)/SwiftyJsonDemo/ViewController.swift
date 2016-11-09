@@ -10,29 +10,32 @@ import UIKit
 import SwiftyJSON
 import Alamofire
 
-let url = "http://192.168.0.100/powertest_php_1"
-let timeOut: TimeInterval = 10
-let errorDomain = "TaoG"
-
-let connectionSuccess = 200
-
-let errorNetwork = -1009
-let errorTimeout = -1001
-
 class ViewController: UIViewController {
+    
+    let url = "https://httpbin.org/post"
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         //        fetchLessonDataByGet()
         //        fetchLessonDataByPost()
-        fetchLessonDataByAlamofire(withParameters: nil) // [String: Any]
+        
+        
+        fetchLessonData(withParameters: nil) { (json, statusCode) in
+            if let json = json{
+                print("json: \(json)")
+            }else{
+                print("statusCode: \(statusCode!)")
+                self.connectionFailAlert()
+            }
+        }
+        
     }
     
     func fetchLessonDataByGet(){
         fetchGetDataWithCallback(url: url) { (json, response, error) in
             if let json = json{
                 print("json: \(json)")
-                
             }else{
                 print("fetchLessonDataByGet fail: \(response?.statusCode)")
             }
@@ -43,38 +46,20 @@ class ViewController: UIViewController {
         fetchPostDataWithCallback(url: url, parameters: nil) { (json, response, error) in
             if let json = json{
                 print("json: \(json)")
-                
             }else{
                 print("fetchPostDataWithCallback fail: \(response?.statusCode)")
             }
         }
     }
     
-    func fetchLessonDataByAlamofire(withParameters parameters: Parameters?){
+    func fetchLessonData(withParameters parameters: Parameters?, callback: @escaping (_ json: JSON?, _ statusCode: Int?) -> Void){
         fetchDataWithAlamofire(url: url, parameters: parameters) { (json, response, error) in
             if let json = json, let response = response, response.statusCode == connectionSuccess{
-                print("json: \(json)")
+                callback(json, nil)
             }else{
-                print("fetchDataWithAlamofire fail: \(error?._code)")
-                let error = self.dealWithHttpError(statusCode: error?._code)
-                print("Error code: \(error._code)")
-            
+                let error = HttpErrorUtilies.dealWithHttpError(statusCode: error?._code)
+                callback(nil, error._code)
             }
-        }
-    }
-    
-    func dealWithHttpError(statusCode code: Int?) -> NSError{
-        guard let code = code else{
-            return NSError(domain: errorDomain, code: errorNetwork, userInfo: nil)
-        }
-        
-        switch code {
-        case errorTimeout:
-            return NSError(domain: errorDomain, code: errorTimeout, userInfo: nil)
-        case errorNetwork:
-            return NSError(domain: errorDomain, code: errorNetwork, userInfo: nil)
-        default:
-            return NSError(domain: errorDomain, code: errorNetwork, userInfo: nil)
         }
     }
     
@@ -143,13 +128,4 @@ extension ViewController{
     }
 }
 
-
-class AlamofireSingleton{
-    static let sharedInstance: SessionManager = {
-        let configuration = URLSessionConfiguration.default
-        configuration.timeoutIntervalForResource = timeOut
-        configuration.timeoutIntervalForRequest = timeOut
-        return Alamofire.SessionManager(configuration: configuration)
-    }()
-}
 
