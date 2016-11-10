@@ -11,7 +11,7 @@ import UIKit
 
 extension UIViewController{
     func connectionFailAlert(){
-        let alert = UIAlertController(title: "Connection Fail.", message: "Please check your internet and try it again.", preferredStyle: .alert)
+        let alert = UIAlertController(title: connectionFailMessage, message: "Please check your internet and try it again.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
         
         self.present(alert, animated: true, completion: nil)
