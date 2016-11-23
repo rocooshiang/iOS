@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F25B1471DE5330F00DB3A07 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F25B1461DE5330F00DB3A07 /* Common.swift */; };
 		F2D49ACD1D138C9700F0B344 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D49ACC1D138C9700F0B344 /* AppDelegate.swift */; };
 		F2D49ACF1D138C9700F0B344 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D49ACE1D138C9700F0B344 /* ViewController.swift */; };
 		F2D49AD21D138C9700F0B344 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2D49AD01D138C9700F0B344 /* Main.storyboard */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F25B1461DE5330F00DB3A07 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		F2D49AC91D138C9600F0B344 /* KeyboardTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeyboardTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2D49ACC1D138C9700F0B344 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F2D49ACE1D138C9700F0B344 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 				F2D49AD01D138C9700F0B344 /* Main.storyboard */,
 				F2D49AD31D138C9700F0B344 /* Assets.xcassets */,
 				F2D49AD81D138C9700F0B344 /* Info.plist */,
+				3F25B1461DE5330F00DB3A07 /* Common.swift */,
 			);
 			path = KeyboardTest;
 			sourceTree = "<group>";
@@ -93,6 +96,8 @@
 				TargetAttributes = {
 					F2D49AC81D138C9600F0B344 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 3D3HHGJWVZ;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -132,6 +137,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2D49ACF1D138C9700F0B344 /* ViewController.swift in Sources */,
+				3F25B1471DE5330F00DB3A07 /* Common.swift in Sources */,
 				F2D49ACD1D138C9700F0B344 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -239,10 +245,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 3D3HHGJWVZ;
 				INFOPLIST_FILE = KeyboardTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rocoo.KeyboardTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -250,10 +258,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 3D3HHGJWVZ;
 				INFOPLIST_FILE = KeyboardTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rocoo.KeyboardTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -276,6 +286,7 @@
 				F2D49ADD1D138C9700F0B344 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
