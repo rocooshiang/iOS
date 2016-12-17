@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F198DC21E05127B00A4CF23 /* RESTCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F198DC11E05127B00A4CF23 /* RESTCommand.swift */; };
+		3F198DC41E05145500A4CF23 /* UserRESTCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F198DC31E05145500A4CF23 /* UserRESTCommand.swift */; };
 		3F7B434F1DD08C2700743D3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7B434E1DD08C2700743D3B /* AppDelegate.swift */; };
 		3F7B43511DD08C2700743D3B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7B43501DD08C2700743D3B /* ViewController.swift */; };
 		3F7B43541DD08C2700743D3B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F7B43521DD08C2700743D3B /* Main.storyboard */; };
 		3F7B43561DD08C2700743D3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F7B43551DD08C2700743D3B /* Assets.xcassets */; };
 		3F7B43591DD08C2700743D3B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F7B43571DD08C2700743D3B /* LaunchScreen.storyboard */; };
+		3F87E6181DDC5F9700E40782 /* ModelsOfLessonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F87E6171DDC5F9700E40782 /* ModelsOfLessonView.swift */; };
 		3F8BC5BA1DD37D3C00DA7693 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8BC5B91DD37D3C00DA7693 /* Extension.swift */; };
 		3F8BC5BC1DD37D5F00DA7693 /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8BC5BB1DD37D5F00DA7693 /* Singleton.swift */; };
 		3F8BC5BE1DD37DF500DA7693 /* HttpErrorUtilies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8BC5BD1DD37DF500DA7693 /* HttpErrorUtilies.swift */; };
@@ -23,6 +26,8 @@
 
 /* Begin PBXFileReference section */
 		2A72F0821385C554368D87E0 /* Pods_SwiftyJsonDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftyJsonDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F198DC11E05127B00A4CF23 /* RESTCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RESTCommand.swift; sourceTree = "<group>"; };
+		3F198DC31E05145500A4CF23 /* UserRESTCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRESTCommand.swift; sourceTree = "<group>"; };
 		3F7B434B1DD08C2700743D3B /* SwiftyJsonDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftyJsonDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F7B434E1DD08C2700743D3B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F7B43501DD08C2700743D3B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -30,6 +35,7 @@
 		3F7B43551DD08C2700743D3B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F7B43581DD08C2700743D3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3F7B435A1DD08C2700743D3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F87E6171DDC5F9700E40782 /* ModelsOfLessonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelsOfLessonView.swift; sourceTree = "<group>"; };
 		3F8BC5B91DD37D3C00DA7693 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		3F8BC5BB1DD37D5F00DA7693 /* Singleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
 		3F8BC5BD1DD37DF500DA7693 /* HttpErrorUtilies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpErrorUtilies.swift; sourceTree = "<group>"; };
@@ -84,6 +90,7 @@
 		3F8BC5B71DD37D1000DA7693 /* SupportFile */ = {
 			isa = PBXGroup;
 			children = (
+				3F87E6171DDC5F9700E40782 /* ModelsOfLessonView.swift */,
 				3F7B434E1DD08C2700743D3B /* AppDelegate.swift */,
 				3F7B43521DD08C2700743D3B /* Main.storyboard */,
 				3F7B43551DD08C2700743D3B /* Assets.xcassets */,
@@ -98,7 +105,6 @@
 			children = (
 				3F8BC5B91DD37D3C00DA7693 /* Extension.swift */,
 				3F8BC5BB1DD37D5F00DA7693 /* Singleton.swift */,
-				3F8BC5BD1DD37DF500DA7693 /* HttpErrorUtilies.swift */,
 				3F8BC5BF1DD37E8B00DA7693 /* Constants.swift */,
 			);
 			name = Common;
@@ -107,8 +113,11 @@
 		3F8BC5C51DD42AE800DA7693 /* ConnectionNetwork */ = {
 			isa = PBXGroup;
 			children = (
+				3F198DC31E05145500A4CF23 /* UserRESTCommand.swift */,
+				3F198DC11E05127B00A4CF23 /* RESTCommand.swift */,
 				3F8BC5C11DD428ED00DA7693 /* ConnectionTask.swift */,
 				3F8BC5C31DD42A4300DA7693 /* FetchDataTask.swift */,
+				3F8BC5BD1DD37DF500DA7693 /* HttpErrorUtilies.swift */,
 			);
 			name = ConnectionNetwork;
 			sourceTree = "<group>";
@@ -255,11 +264,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F8BC5BA1DD37D3C00DA7693 /* Extension.swift in Sources */,
+				3F87E6181DDC5F9700E40782 /* ModelsOfLessonView.swift in Sources */,
 				3F8BC5BC1DD37D5F00DA7693 /* Singleton.swift in Sources */,
 				3F8BC5BE1DD37DF500DA7693 /* HttpErrorUtilies.swift in Sources */,
 				3F8BC5C21DD428ED00DA7693 /* ConnectionTask.swift in Sources */,
 				3F7B43511DD08C2700743D3B /* ViewController.swift in Sources */,
 				3F8BC5C41DD42A4300DA7693 /* FetchDataTask.swift in Sources */,
+				3F198DC41E05145500A4CF23 /* UserRESTCommand.swift in Sources */,
+				3F198DC21E05127B00A4CF23 /* RESTCommand.swift in Sources */,
 				3F7B434F1DD08C2700743D3B /* AppDelegate.swift in Sources */,
 				3F8BC5C01DD37E8B00DA7693 /* Constants.swift in Sources */,
 			);
