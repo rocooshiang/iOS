@@ -114,7 +114,6 @@ extension ViewController{
             //                scrollView.scrollRectToVisible(answer!.frame, animated: true)
             //            }
             
-            
             // 自己算： 只要鍵盤擋住了textView的任一部分，都將textView調整到鍵盤上方間隔20的位置
             if scrollView.frame.height - answer.frame.maxY < kbSize.height{
                 print("TextView is hidden by keyboard.")
