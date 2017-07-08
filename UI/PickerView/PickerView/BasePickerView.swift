@@ -15,12 +15,13 @@ class BasePickerView: UIViewController {
   var timePickerView: UIPickerView!
   var timeslotData: [String] = ["10:00", "12:00", "13:00", "17:00", "21:00"]
   var timeSelectedRow = 0
-  var timeStartRow = 0
-  var isTimePickerDone = false
+  var timeStartRow = 0  
   
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    textField.delegate = self
     
     initPickerView()
   }
@@ -69,12 +70,13 @@ class BasePickerView: UIViewController {
   }
   
   func cencel(sender: UIButton){
-    isTimePickerDone = false
+    timePickerView.selectRow(timeStartRow, inComponent: 0, animated: false)
+    timeSelectedRow = timeStartRow
+    
     dismissKeyboard()
   }
   
   func done(sender: UIButton){
-    isTimePickerDone = true
     timeSelectedRow = timePickerView.selectedRow(inComponent: 0)
     textField.text = timeslotData[timeSelectedRow]
     
@@ -93,20 +95,8 @@ extension BasePickerView: UITextFieldDelegate{
   func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
     
     timeStartRow = timeSelectedRow
-    timePickerView.selectRow(timeSelectedRow, inComponent: 0, animated: false)
     
     return true
-  }
-  
-  func textFieldDidEndEditing(_ textField: UITextField) {
-    
-    if !isTimePickerDone{
-      timePickerView.selectRow(timeStartRow, inComponent: 0, animated: false)
-      timeSelectedRow = timeStartRow
-    }
-    
-    isTimePickerDone = false
-    
   }
   
 }
