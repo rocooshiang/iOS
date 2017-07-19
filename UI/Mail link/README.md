@@ -2,8 +2,8 @@
  Note
 ----------------
 
-* **Link 格式長這樣 -> "mailto:your email"**
-* **Link 也可以做成開啟網址的事件**
+* **Link 格式 -> "mailto:your email"**
+* **Link 也可以做成開啟網址的事件 -> "https://developer.apple.com"**
 
 
  Gif
