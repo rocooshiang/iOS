@@ -27,49 +27,55 @@ class BasePickerView: UIViewController {
   }
   
   
+  
   func initPickerView(){
     
     timePickerView = UIPickerView()
     timePickerView.delegate = self
     timePickerView.dataSource = self
-    timePickerView.backgroundColor = .white
-    
-    
+    timePickerView.backgroundColor = colorFromRGB(216, green: 216, blue: 216)
+
     textField.inputView = timePickerView
     
-    
     let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: Device.screenWidth, height: 44))
+    toolBar.tintColor = .white
     
-    let cancelBtn = UIButton(frame: CGRect(x: 10, y: 5, width: 70, height: 30))
+    let cancelBtn = UIButton(frame: CGRect(x: 0, y: 5, width: 70.rescaleByDeviceWidth(), height: 30))
     cancelBtn.setTitle("Cancel", for: .normal)
-    cancelBtn.addTarget(self, action: #selector(cencel(sender:)), for: .touchUpInside)
+    cancelBtn.addTarget(self, action: #selector(cancel(sender:)), for: .touchUpInside)
     cancelBtn.backgroundColor = colorFromRGB(185, green: 189, blue: 190)
     cancelBtn.setTitleColor(colorFromRGB(67, green: 112, blue: 183), for: .normal)
-    cancelBtn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+    cancelBtn.titleLabel?.font = UIFont.systemFont(ofSize: 16.rescaleFontSize())
     cancelBtn.layer.cornerRadius = 8
     
     let cancelItem = UIBarButtonItem(customView: cancelBtn)
     
-    
-    let doneBtn = UIButton(frame: CGRect(x: 10, y: 5, width: 70, height: 30))
+    let doneBtn = UIButton(frame: CGRect(x: 0, y: 5, width: 70.rescaleByDeviceWidth(), height: 30))
     doneBtn.setTitle("Done", for: .normal)
     doneBtn.addTarget(self, action: #selector(done(sender:)), for: .touchUpInside)
     doneBtn.backgroundColor = colorFromRGB(185, green: 189, blue: 190)
     doneBtn.setTitleColor(colorFromRGB(67, green: 112, blue: 183), for: .normal)
-    doneBtn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+    doneBtn.titleLabel?.font = UIFont.systemFont(ofSize: 16.rescaleFontSize())
     doneBtn.layer.cornerRadius = 8
     
     let rightItem = UIBarButtonItem(customView: doneBtn)
     
-    let spaceItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+    let centerTitle = UILabel(frame: CGRect(x: 0, y: 0, width: 182.rescaleByDeviceWidth(), height: 44))
+    centerTitle.text = "Timeslot"
+    centerTitle.font = UIFont.systemFont(ofSize: 16.rescaleFontSize())
+    centerTitle.textColor = .black
+    centerTitle.textAlignment = .center
+    let centerItem = UIBarButtonItem(customView: centerTitle)
     
-    toolBar.items = [cancelItem, spaceItem, rightItem]
+    toolBar.items = [cancelItem, centerItem, rightItem]
     
     textField.inputAccessoryView = toolBar
+    textField.inputAccessoryView?.clipsToBounds = true
+    
     
   }
   
-  func cencel(sender: UIButton){
+  func cancel(sender: UIButton){
     timePickerView.selectRow(timeStartRow, inComponent: 0, animated: false)
     timeSelectedRow = timeStartRow
     

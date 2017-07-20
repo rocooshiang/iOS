@@ -20,3 +20,31 @@ struct Device{
   static let maxLength = max(Device.screenWidth, Device.screenHeight)
   static let minLenght = min(Device.screenWidth, Device.screenHeight)
 }
+
+
+extension Int{
+  func rescaleFontSize() -> CGFloat{
+    if UIDevice.current.userInterfaceIdiom == .phone{
+      switch Device.maxLength {
+      case 568.0:
+        return CGFloat(self) - 3
+      case 667.0:
+        return CGFloat(self)
+      case 736.0:
+        return CGFloat(self) + 2
+      default:
+        return CGFloat(self)
+      }
+    }
+    return CGFloat(self)
+  }
+  
+  
+  func rescaleByDeviceHeight() -> CGFloat{
+    return CGFloat(self) * Device.screenHeight / 667.0
+  }
+  
+  func rescaleByDeviceWidth() -> CGFloat{
+    return CGFloat(self) * Device.screenWidth / 375.0
+  }
+}
