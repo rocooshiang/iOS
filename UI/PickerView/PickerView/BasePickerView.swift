@@ -52,7 +52,7 @@ class BasePickerView: UIViewController {
     
     let doneBtn = UIButton(frame: CGRect(x: 0, y: 5, width: 70.rescaleByDeviceWidth(), height: 30))
     doneBtn.setTitle("Done", for: .normal)
-    doneBtn.addTarget(self, action: #selector(done(sender:)), for: .touchUpInside)
+    doneBtn.addTarget(self, action: #selector(done(sender:)), for: .touchUpInside)    
     doneBtn.backgroundColor = colorFromRGB(185, green: 189, blue: 190)
     doneBtn.setTitleColor(colorFromRGB(67, green: 112, blue: 183), for: .normal)
     doneBtn.titleLabel?.font = UIFont.systemFont(ofSize: 16.rescaleFontSize())
