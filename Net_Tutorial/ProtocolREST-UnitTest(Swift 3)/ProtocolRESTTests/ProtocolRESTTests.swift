@@ -23,10 +23,13 @@ class ProtocolRESTTests: XCTestCase {
   
   func testPostRequest() {
     let client = LocalFileClient()
-    client.send(PostRequest(foodLogId: 6584, comment: "Test by Rocoo")) {
+    
+    client.send(PostRequest(model: PostModel(firstname: "Rocoo", lastname: "Chuang"))) {
       result in
       XCTAssertNotNil(result,"result is nil")
-      XCTAssertEqual(result!.statusCode, 200)      
+      XCTAssertNotNil(result.0, "PostRequest.Response is nil")
+      XCTAssertEqual(result.0!.firstname, "Rocoo")
+      XCTAssertEqual(result.0!.lastname, "Chuang")      
     }
   }
   
@@ -43,11 +46,12 @@ class ProtocolRESTTests: XCTestCase {
 extension ProtocolRESTTests{
   
   struct LocalFileClient: Client {
-    func send<T : Request>(_ r: T, handler: @escaping (T.Response?) -> Void) {
+    
+    func send<T : Request>(_ r: T, handler: @escaping (T.Response?, HTTPURLResponse?) -> Void) {
       switch r.host {
-      case "https://svcapi.prenetics.com":
+      case Url.baseUrl:
         
-        if r.path != "/v1/FoodLogComment"{
+        if r.path != "/post"{
           fatalError("Unknow path")
         }
         
@@ -59,7 +63,8 @@ extension ProtocolRESTTests{
           fatalError()
         }
         
-        handler(T.Response.parse(data: data))
+        
+        handler(T.Response.parse(data: data), HTTPURLResponse())
         
       default:
         fatalError("Unknown host")
