@@ -16,7 +16,6 @@
 		3F087E1E1ED2C35000300860 /* ProtocolRESTUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F087E1D1ED2C35000300860 /* ProtocolRESTUITests.swift */; };
 		3F087E2C1ED2C53400300860 /* Get.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F087E2B1ED2C53400300860 /* Get.swift */; };
 		3F087E2E1ED2ED0500300860 /* NetworkingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F087E2D1ED2ED0500300860 /* NetworkingProtocol.swift */; };
-		3F6947F01FFDC5A100CC9AB1 /* OnboardingUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6947EF1FFDC5A100CC9AB1 /* OnboardingUserInfo.swift */; };
 		3F85A8371ED56E860004AD61 /* test in Resources */ = {isa = PBXBuildFile; fileRef = 3F85A8361ED56E860004AD61 /* test */; };
 		3F85A83E1EDC1AF60004AD61 /* NetworkingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F85A83D1EDC1AF60004AD61 /* NetworkingRequest.swift */; };
 		3F85A8401EDC26B30004AD61 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F85A83F1EDC26B30004AD61 /* Post.swift */; };
@@ -59,7 +58,6 @@
 		3F087E1F1ED2C35000300860 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F087E2B1ED2C53400300860 /* Get.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Get.swift; sourceTree = "<group>"; };
 		3F087E2D1ED2ED0500300860 /* NetworkingProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingProtocol.swift; sourceTree = "<group>"; };
-		3F6947EF1FFDC5A100CC9AB1 /* OnboardingUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingUserInfo.swift; sourceTree = "<group>"; };
 		3F85A8361ED56E860004AD61 /* test */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test; sourceTree = "<group>"; };
 		3F85A83D1EDC1AF60004AD61 /* NetworkingRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingRequest.swift; sourceTree = "<group>"; };
 		3F85A83F1EDC26B30004AD61 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -168,7 +166,6 @@
 				3F85A83F1EDC26B30004AD61 /* Post.swift */,
 				3F85A8451EDD45350004AD61 /* Put.swift */,
 				3F85A8471EDD49D70004AD61 /* Delete.swift */,
-				3F6947EF1FFDC5A100CC9AB1 /* OnboardingUserInfo.swift */,
 			);
 			name = NetworkResult;
 			sourceTree = "<group>";
@@ -410,7 +407,6 @@
 				3F85A8401EDC26B30004AD61 /* Post.swift in Sources */,
 				3F85A84B1EDD5AAA0004AD61 /* UserDefaultStructure.swift in Sources */,
 				3F087DFE1ED2C35000300860 /* AppDelegate.swift in Sources */,
-				3F6947F01FFDC5A100CC9AB1 /* OnboardingUserInfo.swift in Sources */,
 				3F087E2C1ED2C53400300860 /* Get.swift in Sources */,
 				3F85A8461EDD45350004AD61 /* Put.swift in Sources */,
 			);

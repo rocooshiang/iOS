@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     super.viewDidLoad()
     
 /*** disable json format ***/
-//    executeGet()
+    executeGet()
 //    executePost()
     
 /*** enable json format ***/
