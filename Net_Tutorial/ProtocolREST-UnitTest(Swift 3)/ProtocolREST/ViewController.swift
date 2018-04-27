@@ -13,71 +13,64 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    /*** Server connection with protocol ***/
+/*** disable json format ***/
 //    executeGet()
 //    executePost()
+    
+/*** enable json format ***/
 //    executePut()
 //    executeDelete()
     
+  }
+  
+}
 
-    
-    /*** UserDefault store enum ***/
-    
-    // Store Temperature Notation
-    UserDefaults.set(temperatureNotation: .celsius)
-    
-    // Fetch Temperature Notation
-    let type = UserDefaults.temperatureNotation
+extension ViewController{
+  func executeGet(){
+    let request = GetRequest(model: GetModel(firstname: "Rocoo", lastname: "Chuang"))
+    NetworkTaskClient.shared.send(request) { (result, response) in
+      if let result = result, response?.statusCode == 200{
+        print("firstname: \(result.firstname), lastname: \(result.lastname)")
+      }else{
+        print("request \"Get\" fail")
+      }
+    }
     
   }
   
-  func executeGet(){
-    URLSessionClient().send(GetRequest(name: "Rocoo", message: "Hi~")) { result in
-      print("GET -------------------- GET ------------------------- GET")
-      
-      if let result = result {
-        print("ip: \(result.ip)")
-      }else{
-        print("fail")
-      }
-    }
-  }
-
   func executePost(){
-    URLSessionClient().send(PostRequest(foodLogId: 6584, comment: "你好!!")) { result in
-      print("POST -------------------- POST ------------------------- POST")
-      
-      if let result = result {
-        print("statusCode: \(result.statusCode), statusMessage: \(result.statusCode)")
+    let request = PostRequest(model: PostModel(firstname: "Rocoo", lastname: "Chuang"))
+    NetworkTaskClient.shared.send(request) { (result, response) in
+      if let result = result, response?.statusCode == 200{
+        print("firstname: \(result.firstname), lastname: \(result.lastname)")
       }else{
-        print("fail")
+        print("request \"Post\" fail")
       }
     }
   }
+  
   
   func executePut(){
-    URLSessionClient().send(PutRequest(nickName: "Rocoo Rocoo")) { result in
-      print("PUT -------------------- PUT ------------------------- PUT")
-      
-      if let result = result {
-        print("statusCode: \(result.statusCode), statusMessage: \(result.statusMessage)")
+    let request = PutRequest(model: PutModel(firstname: "Rocoo", lastname: "Chuang"))
+    NetworkTaskClient.shared.send(request) { (result, response) in
+      if let result = result, response?.statusCode == 200{
+        print("firstname: \(result.firstname), lastname: \(result.lastname)")
       }else{
-        print("fail")
+        print("request \"Put\" fail")
       }
     }
   }
+  
   
   func executeDelete(){
-    URLSessionClient().send(DeleteRequest(foodLogId: 7089)) { result in
-      print("DELETE -------------------- DELETE ------------------------- DELETE")
-      
-      if let result = result {
-        print("statusCode: \(result.statusCode), statusMessage: \(result.statusMessage)")
+    let request = DeleteRequest(model: DeleteModel(firstname: "Rocoo", lastname: "Chuang"))
+    NetworkTaskClient.shared.send(request) { (result, response) in
+      if let result = result, response?.statusCode == 200{
+        print("firstname: \(result.firstname), lastname: \(result.lastname)")
       }else{
-        print("fail")
+        print("request \"Delete\" fail")
       }
     }
   }
-  
 }
 

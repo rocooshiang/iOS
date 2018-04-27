@@ -10,54 +10,91 @@ import Foundation
 
 // About REST
 enum HTTPMethod: String {
-  case GET
-  case POST
-  case DELETE
-  case PUT
+  case get
+  case post
+  case delete
+  case put
 }
 
 protocol Request {
   var host: String { get }
   var path: String { get }
-  
   var method: HTTPMethod { get }
   var parameter: [String: Any]? { get }
+  var enableJSONFormat: Bool { get }
   
   associatedtype Response: Decodable
+}
+
+extension Request{
+  
+  var parameter: [String: Any]?{
+    return nil
+  }
+  
+  var enableJSONFormat: Bool{
+    return false
+  }
   
 }
 
 protocol Client {
-  func send<T: Request>(_ r: T, handler: @escaping (T.Response?) -> Void)
+  func send<T: Request>(_ r: T, handler: @escaping (T.Response?, _ response: HTTPURLResponse?) -> Void)
 }
 
 protocol Decodable {
   static func parse(data: Data) -> Self?
 }
 
-struct URLSessionClient: Client {
+struct NetworkTaskClient: Client {
   
-  func send<T: Request>(_ r: T, handler: @escaping (T.Response?) -> Void) {
+  static let shared = NetworkTaskClient()
+  
+  func send<T: Request>(_ r: T, handler: @escaping (T.Response?, _ response: HTTPURLResponse?) -> Void) {
+    
     let url = URL(string: r.host.appending(r.path))!    
     var request = URLRequest(url: url)
     
-    request.setValue("application/x-www-form-urlencoded; charset=utf-8", forHTTPHeaderField: "Content-Type")
-
     request.httpMethod = r.method.rawValue
-    request.timeoutInterval = 10
+    request.timeoutInterval = 30
+    
+    if r.enableJSONFormat{
+      request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    }else{
+      request.setValue("application/x-www-form-urlencoded; charset=utf-8", forHTTPHeaderField: "Content-Type")
+    }
     
     if let parameter = r.parameter{
-      request.httpBody = query(parameter).data(using: .utf8, allowLossyConversion: false)
+      if r.enableJSONFormat{
+        do {
+          request.httpBody = try JSONSerialization.data(withJSONObject: parameter, options: .prettyPrinted)
+        } catch let error {
+          print(error.localizedDescription)
+        }
+      }else{
+        request.httpBody = query(parameter).data(using: .utf8, allowLossyConversion: false)
+      }
+      
+      if let data = request.httpBody{
+        print("parameters:  \(String(data: data, encoding: .utf8) ?? "string is nil")")
+      }
     }
     
     let task = URLSession.shared.dataTask(with: request) {
-      data, _, error in
+      data, response, error in
+      
+      if let d = data{
+        print("network response: \(String(data: d, encoding: .utf8) ?? "string is nil")")
+      }else{
+        print("network response error: \(String(describing: error?.localizedDescription))")
+      }
       
       if let data = data, let res = T.Response.parse(data: data) {        
-        DispatchQueue.main.async { handler(res) }
+        DispatchQueue.main.async { handler(res, response as? HTTPURLResponse) }
       } else {
-        DispatchQueue.main.async { handler(nil) }
+        DispatchQueue.main.async { handler(nil, response as? HTTPURLResponse) }
       }
+      
     }
     
     task.resume()

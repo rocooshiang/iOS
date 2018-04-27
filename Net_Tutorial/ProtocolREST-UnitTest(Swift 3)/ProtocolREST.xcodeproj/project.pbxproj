@@ -16,6 +16,7 @@
 		3F087E1E1ED2C35000300860 /* ProtocolRESTUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F087E1D1ED2C35000300860 /* ProtocolRESTUITests.swift */; };
 		3F087E2C1ED2C53400300860 /* Get.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F087E2B1ED2C53400300860 /* Get.swift */; };
 		3F087E2E1ED2ED0500300860 /* NetworkingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F087E2D1ED2ED0500300860 /* NetworkingProtocol.swift */; };
+		3F6947F01FFDC5A100CC9AB1 /* OnboardingUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6947EF1FFDC5A100CC9AB1 /* OnboardingUserInfo.swift */; };
 		3F85A8371ED56E860004AD61 /* test in Resources */ = {isa = PBXBuildFile; fileRef = 3F85A8361ED56E860004AD61 /* test */; };
 		3F85A83E1EDC1AF60004AD61 /* NetworkingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F85A83D1EDC1AF60004AD61 /* NetworkingRequest.swift */; };
 		3F85A8401EDC26B30004AD61 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F85A83F1EDC26B30004AD61 /* Post.swift */; };
@@ -58,6 +59,7 @@
 		3F087E1F1ED2C35000300860 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F087E2B1ED2C53400300860 /* Get.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Get.swift; sourceTree = "<group>"; };
 		3F087E2D1ED2ED0500300860 /* NetworkingProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingProtocol.swift; sourceTree = "<group>"; };
+		3F6947EF1FFDC5A100CC9AB1 /* OnboardingUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingUserInfo.swift; sourceTree = "<group>"; };
 		3F85A8361ED56E860004AD61 /* test */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test; sourceTree = "<group>"; };
 		3F85A83D1EDC1AF60004AD61 /* NetworkingRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingRequest.swift; sourceTree = "<group>"; };
 		3F85A83F1EDC26B30004AD61 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -124,7 +126,6 @@
 				3F087DFF1ED2C35000300860 /* ViewController.swift */,
 				3F087E011ED2C35000300860 /* Main.storyboard */,
 				3F85A8421EDC91F40004AD61 /* Networking */,
-				3F85A83C1EDC15BB0004AD61 /* Model */,
 				3F087E2F1ED2ED1F00300860 /* Support Files */,
 			);
 			path = ProtocolREST;
@@ -160,15 +161,16 @@
 			name = "Support Files";
 			sourceTree = "<group>";
 		};
-		3F85A83C1EDC15BB0004AD61 /* Model */ = {
+		3F85A83C1EDC15BB0004AD61 /* NetworkResult */ = {
 			isa = PBXGroup;
 			children = (
 				3F087E2B1ED2C53400300860 /* Get.swift */,
 				3F85A83F1EDC26B30004AD61 /* Post.swift */,
 				3F85A8451EDD45350004AD61 /* Put.swift */,
 				3F85A8471EDD49D70004AD61 /* Delete.swift */,
+				3F6947EF1FFDC5A100CC9AB1 /* OnboardingUserInfo.swift */,
 			);
-			name = Model;
+			name = NetworkResult;
 			sourceTree = "<group>";
 		};
 		3F85A8421EDC91F40004AD61 /* Networking */ = {
@@ -176,6 +178,7 @@
 			children = (
 				3F087E2D1ED2ED0500300860 /* NetworkingProtocol.swift */,
 				3F85A83D1EDC1AF60004AD61 /* NetworkingRequest.swift */,
+				3F85A83C1EDC15BB0004AD61 /* NetworkResult */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -276,7 +279,7 @@
 				TargetAttributes = {
 					3F087DF91ED2C35000300860 = {
 						CreatedOnToolsVersion = 8.3.1;
-						DevelopmentTeam = J83DYLY5SM;
+						DevelopmentTeam = ABF57U9QBP;
 						ProvisioningStyle = Automatic;
 					};
 					3F087E0D1ED2C35000300860 = {
@@ -348,13 +351,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ProtocolREST-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		657A51B576776D71A84A35B5 /* [CP] Embed Pods Frameworks */ = {
@@ -363,9 +369,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ProtocolREST/Pods-ProtocolREST-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -401,6 +410,7 @@
 				3F85A8401EDC26B30004AD61 /* Post.swift in Sources */,
 				3F85A84B1EDD5AAA0004AD61 /* UserDefaultStructure.swift in Sources */,
 				3F087DFE1ED2C35000300860 /* AppDelegate.swift in Sources */,
+				3F6947F01FFDC5A100CC9AB1 /* OnboardingUserInfo.swift in Sources */,
 				3F087E2C1ED2C53400300860 /* Get.swift in Sources */,
 				3F85A8461EDD45350004AD61 /* Put.swift in Sources */,
 			);
@@ -557,7 +567,7 @@
 			baseConfigurationReference = 7B0E5FDD13795684E058CDF0 /* Pods-ProtocolREST.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = J83DYLY5SM;
+				DEVELOPMENT_TEAM = ABF57U9QBP;
 				INFOPLIST_FILE = ProtocolREST/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -572,7 +582,7 @@
 			baseConfigurationReference = 766BFFFDA616E34273ADA41C /* Pods-ProtocolREST.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = J83DYLY5SM;
+				DEVELOPMENT_TEAM = ABF57U9QBP;
 				INFOPLIST_FILE = ProtocolREST/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

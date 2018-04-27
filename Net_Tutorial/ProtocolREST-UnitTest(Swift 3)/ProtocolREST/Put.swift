@@ -7,29 +7,24 @@
 //
 
 import Foundation
+import SwiftyJSON
+
+struct PutModel {
+  let firstname: String
+  let lastname: String
+}
 
 struct Put{
-  
-  let statusCode: Int
-  let statusMessage: String
+  let firstname: String
+  let lastname: String
   
   init?(data: Data) {
-    
-    guard let obj = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else {
-      return nil
-    }
-    
-    guard let statusCode = obj?["statusCode"] as? Int else {
-      return nil
-    }
-    
-    guard let statusMessage = obj?["statusMessage"] as? String else {
-      return nil
-    }
-    
-    self.statusCode = statusCode
-    self.statusMessage = statusMessage
-  }
+    let json = JSON(data)
+    let firstname = json["json"]["firstname"].stringValue
+    let lastname = json["json"]["lastname"].stringValue
+    self.firstname = firstname
+    self.lastname = lastname
+  }  
 }
 
 extension Put: Decodable {

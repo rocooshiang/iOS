@@ -8,22 +8,24 @@
 
 
 import Foundation
+import SwiftyJSON
+
+struct GetModel {
+  let firstname: String
+  let lastname: String
+}
 
 struct Get {
   
-  let ip: String
+  let firstname: String
+  let lastname: String
   
   init?(data: Data) {
-    
-    guard let obj = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else {
-      return nil
-    }
-    
-    guard let ip = obj?["origin"] as? String else {
-      return nil
-    }
-    
-    self.ip = ip
+    let json = JSON(data)
+    let firstname = json["args"]["firstname"].stringValue
+    let lastname = json["args"]["lastname"].stringValue
+    self.firstname = firstname
+    self.lastname = lastname
   }
   
 }
