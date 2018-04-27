@@ -26,7 +26,7 @@ class ProtocolRESTTests: XCTestCase {
     client.send(PostRequest(foodLogId: 6584, comment: "Test by Rocoo")) {
       result in
       XCTAssertNotNil(result,"result is nil")
-      XCTAssertEqual(result!.statusCode, 200)
+      XCTAssertEqual(result!.statusCode, 200)      
     }
   }
   

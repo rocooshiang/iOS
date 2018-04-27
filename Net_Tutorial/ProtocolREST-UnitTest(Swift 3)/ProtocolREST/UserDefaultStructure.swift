@@ -15,6 +15,15 @@ enum TemperatureNotation: Int {
 
 extension UserDefaults {
   
+  //    /*** UserDefault store enum ***/
+  //
+  //    // Store Temperature Notation
+  //    UserDefaults.set(temperatureNotation: .celsius)
+  //
+  //    // Fetch Temperature Notation
+  //    let type = UserDefaults.temperatureNotation
+  
+  
   struct Keys {
     
     // MARK: - Constants

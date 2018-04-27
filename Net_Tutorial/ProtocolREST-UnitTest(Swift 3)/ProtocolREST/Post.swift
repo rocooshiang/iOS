@@ -7,29 +7,26 @@
 //
 
 import Foundation
+import SwiftyJSON
+
+struct PostModel {
+  let firstname: String
+  let lastname: String
+}
 
 struct Post {
   
-  let statusCode: Int
-  let statusMessage: String
+  let firstname: String
+  let lastname: String
   
   init?(data: Data) {
-    
-    guard let obj = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else {
-      return nil
-    }
-    
-    guard let statusCode = obj?["statusCode"] as? Int else {
-      return nil
-    }
-    
-    guard let statusMessage = obj?["statusMessage"] as? String else {
-      return nil
-    }
-    
-    self.statusCode = statusCode
-    self.statusMessage = statusMessage
+    let json = JSON(data)
+    let firstname = json["form"]["firstname"].stringValue
+    let lastname = json["form"]["lastname"].stringValue
+    self.firstname = firstname
+    self.lastname = lastname
   }
+  
 }
 
 extension Post: Decodable {

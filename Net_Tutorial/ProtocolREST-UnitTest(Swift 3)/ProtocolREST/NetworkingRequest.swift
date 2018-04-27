@@ -8,103 +8,90 @@
 
 import Foundation
 
+struct Url{
+  static let baseUrl = "https://httpbin.org"
+}
 
-/*** Get ***/
 struct GetRequest: Request {
   
-  var name: String
-  var message: String
+  var model: GetModel
   
-  let host = "https://httpbin.org"
+  let host = Url.baseUrl
   var path: String{
-    return "/get?name=\(name)&message=\(message)"
+    return String(format: "/get?firstname=%@&lastname=%@", model.firstname, model.lastname)
   }
   
-  let method: HTTPMethod = .GET
-  
-  let parameter: [String: Any]? = nil
+  let method: HTTPMethod = .get
   
   typealias Response = Get
 }
 
 
-/*** Post ***/
+
 struct PostRequest: Request {
   
-  var foodLogId: Int
-  var comment: String
+  var model: PostModel
   
-  private let uid = "1496045563.15434"
-  private let serviceAccount = "80aac9415b5247569ba10db81dca3006fa34300398bfd61d7644998c014304c2"
-  private let tokenId = "769005d3f648e3904a7988454aea9029feaaceda08a73410ef77b97ee3323d6d"
-  
-  let host = "https://svcapi.prenetics.com"
+  let host = Url.baseUrl
   var path: String{
-    return "/v1/FoodLogComment"
+    return "/post"
   }
   
-  let method: HTTPMethod = .POST
+  let method: HTTPMethod = .post
   
   var parameter: [String: Any]?{
-    return ["foodLogId": foodLogId,
-            "comment": comment,
-            "uid": uid,
-            "serviceAccount": serviceAccount,
-            "tokenId": tokenId]
+    return ["firstname": model.firstname,
+            "lastname": model.lastname]
   }
   
   typealias Response = Post
 }
 
 
-/*** PUT ***/
+
 struct PutRequest: Request {
   
-  var nickName: String
+  var model: PutModel
   
-  private let uid = "1496045563.15434"
-  private let serviceAccount = "80aac9415b5247569ba10db81dca3006fa34300398bfd61d7644998c014304c2"
-  private let tokenId = "769005d3f648e3904a7988454aea9029feaaceda08a73410ef77b97ee3323d6d"
-  
-  let host = "https://svcapi.prenetics.com"
+  let host = Url.baseUrl
   var path: String{
-    return "/v1/Profile"
+    return "/put"
   }
   
-  let method: HTTPMethod = .PUT
+  let method: HTTPMethod = .put
   
   var parameter: [String: Any]?{
-    return ["nickName": nickName,
-            "uid": uid,
-            "serviceAccount": serviceAccount,
-            "tokenId": tokenId]
+    return ["firstname": model.firstname,
+            "lastname": model.lastname]
+  }
+  
+  var enableJSONFormat: Bool{
+    return true
   }
   
   typealias Response = Put
 }
 
 
-/*** DELETE ***/
+
 struct DeleteRequest: Request {
   
-  var foodLogId: Int
+  var model: DeleteModel
   
-  private let uid = "1496045563.15434"
-  private let serviceAccount = "80aac9415b5247569ba10db81dca3006fa34300398bfd61d7644998c014304c2"
-  private let tokenId = "769005d3f648e3904a7988454aea9029feaaceda08a73410ef77b97ee3323d6d"
-  
-  let host = "https://svcapi.prenetics.com"
+  let host = Url.baseUrl
   var path: String{
-    return "/v1/FoodLog"
+    return "/delete"
   }
   
-  let method: HTTPMethod = .DELETE
+  let method: HTTPMethod = .delete
   
   var parameter: [String: Any]?{
-    return ["foodLogId": foodLogId,
-            "uid": uid,
-            "serviceAccount": serviceAccount,
-            "tokenId": tokenId]
+    return ["firstname": model.firstname,
+            "lastname": model.lastname]
+  }
+  
+  var enableJSONFormat: Bool{
+    return true
   }
   
   typealias Response = Delete
