@@ -2,10 +2,10 @@
 
 * **Tags View**
 
-![Alt Text](ScreenShot/Img1)
 
+![Xcode indent settings](https://github.com/rocooshiang/iOS/blob/master/UI/TagsListView/ScreenShot/Img1.png)
 
-![Alt Text](ScreenShot/Img2)
+![Xcode indent settings](https://github.com/rocooshiang/iOS/blob/master/UI/TagsListView/ScreenShot/Img2.png)
 
 
 
