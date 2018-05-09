@@ -29,7 +29,7 @@ class ProtocolRESTTests: XCTestCase {
       XCTAssertNotNil(result,"result is nil")
       XCTAssertNotNil(result.0, "PostRequest.Response is nil")
       XCTAssertEqual(result.0!.firstname, "Rocoo")
-      XCTAssertEqual(result.0!.lastname, "Chuang")      
+      XCTAssertEqual(result.0!.lastname, "Chuang")
     }
   }
   
