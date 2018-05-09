@@ -57,6 +57,7 @@ struct NetworkTaskClient: Client {
     
     request.httpMethod = r.method.rawValue
     request.timeoutInterval = 30
+    // TODO: header
     
     if r.enableJSONFormat{
       request.setValue("application/json", forHTTPHeaderField: "Content-Type")

@@ -30,6 +30,7 @@ extension ViewController{
     let request = GetRequest(model: GetModel(firstname: "Rocoo", lastname: "Chuang"))
     NetworkTaskClient.shared.send(request) { (result, response) in
       if let result = result, response?.statusCode == 200{
+        
         print("firstname: \(result.firstname), lastname: \(result.lastname)")
       }else{
         print("request \"Get\" fail")
