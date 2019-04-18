@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3F3A4C6822661C1F0083DEB1 /* ArtworkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3A4C6722661C1F0083DEB1 /* ArtworkViewModel.swift */; };
+		3F3A4C6A226804740083DEB1 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3A4C69226804740083DEB1 /* LocationService.swift */; };
 		3FA315AC2214F92700CC29C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA315AB2214F92700CC29C9 /* AppDelegate.swift */; };
 		3FA315AE2214F92700CC29C9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA315AD2214F92700CC29C9 /* ViewController.swift */; };
 		3FA315B12214F92700CC29C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FA315AF2214F92700CC29C9 /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		3F3A4C6722661C1F0083DEB1 /* ArtworkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkViewModel.swift; sourceTree = "<group>"; };
+		3F3A4C69226804740083DEB1 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		3FA315A82214F92700CC29C9 /* AppleMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppleMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FA315AB2214F92700CC29C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3FA315AD2214F92700CC29C9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				3FA315C12216490300CC29C9 /* Support Files */,
 				3FA315BD221503E600CC29C9 /* PublicArt.json */,
 				3FA315AF2214F92700CC29C9 /* Main.storyboard */,
+				3F3A4C69226804740083DEB1 /* LocationService.swift */,
 			);
 			path = AppleMap;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 				3FA315C32216B77800CC29C9 /* ArtworkViews.swift in Sources */,
 				3FA315C02215D05200CC29C9 /* Artwork.swift in Sources */,
 				3F3A4C6822661C1F0083DEB1 /* ArtworkViewModel.swift in Sources */,
+				3F3A4C6A226804740083DEB1 /* LocationService.swift in Sources */,
 				3FA315AC2214F92700CC29C9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
