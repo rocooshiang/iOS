@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreLocation
+import MapKit
 
 class ArtworkViewModel{
     
@@ -16,15 +17,24 @@ class ArtworkViewModel{
     }
     
     lazy var locationService: LocationService = {
-       return LocationService()
+        return LocationService()
     }()    
     
-    var reloadMapView: (()->())?
+    private let regionInMeters: Double = 10000
+    
+    typealias userLocationCallBack = (MKCoordinateRegion) -> ()
+    
+    var updateUserLocationCallback: userLocationCallBack?
+    var updateAnnotations: (()->())?
     var updateIndicator: (()->())?
+    var drawRoutes: (()->())?
+    var resetRoutes: (()->())?
+    
+    var location: CLLocation? = nil
     
     var artworks: [Artwork] = [Artwork](){
         didSet{
-            self.reloadMapView?()
+            self.updateAnnotations?()
         }
     }
     
@@ -34,13 +44,20 @@ class ArtworkViewModel{
         }
     }
     
-    var location: CLLocation? = nil {
+    var annitationCoordinate: CLLocationCoordinate2D? = nil{
         didSet{
-            self.reloadMapView?()
+            self.caculateRoutes()
+        }
+    }
+    
+    var routes: [MKRoute]? = nil{
+        didSet{
+            self.drawRoutes?()
         }
     }
     
     func fetchData(){
+        
         self.isIndicatorShown = true
         
         guard let fileName = Bundle.main.path(forResource: "PublicArt", ofType: "json")
@@ -71,9 +88,52 @@ class ArtworkViewModel{
     
     func locationRequest(){
         locationService.currentlyLocation { (location) in
-            self.location = location
+            self.location = location            
+            guard let coordinate = self.location?.coordinate else{ return }
+            let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: self.regionInMeters, longitudinalMeters: self.regionInMeters)
+            self.updateUserLocationCallback?(region)
         }
     }
+    
+    func caculateRoutes(){
+        guard let location = self.location else{ return }
+        let request = createDirectionsReqeust(from: location.coordinate)
+        let directions = MKDirections(request: request)
+        self.resetRoutes?()
+        
+        directions.calculate { [unowned self] (response, error) in
+            
+            if let error = error {
+                print("we have error getting directions == \(error.localizedDescription)")
+            }
+            guard let response = response else { return }
+            
+            self.routes = response.routes
+            
+            if let _ = self.routes{
+                self.drawRoutes?()
+            }
+        }
+    }
+    
+    func createDirectionsReqeust(from userCoordinate: CLLocationCoordinate2D) -> MKDirections.Request{
+        let sourcePlaceMark = MKPlacemark(coordinate: userCoordinate)
+        
+        let request = MKDirections.Request()
+        request.source = MKMapItem(placemark: sourcePlaceMark)
+        let destinationPlaceMark = MKPlacemark(coordinate: self.annitationCoordinate ?? CLLocationCoordinate2D(latitude: -1, longitude: -1))
+        request.destination = MKMapItem(placemark: destinationPlaceMark)
+        request.transportType = .automobile
+        request.requestsAlternateRoutes = true
+        
+        
+        return request
+    }
+    
+    func updateUserLocation(callback: @escaping userLocationCallBack){
+        self.updateUserLocationCallback = callback
+    }
+    
     
     
 }

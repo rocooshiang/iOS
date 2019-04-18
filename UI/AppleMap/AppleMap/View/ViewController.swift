@@ -23,11 +23,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     
     
-    var destinationPlaceMark: MKPlacemark!
-    let regionInMeters: Double = 10000
-    var isInitCenterView = false
-    var directionsArray = [MKDirections]()
-    
     lazy var viewModel: ArtworkViewModel = {
         return ArtworkViewModel()
     }()
@@ -47,17 +42,42 @@ class ViewController: UIViewController {
         mapView.register(ArtworkView.self,
                          forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         
-        viewModel.reloadMapView = { [weak self] () in
+        viewModel.updateAnnotations = { [weak self] () in
             guard let `self` = self else{
-               return
+                return
             }
             self.mapView.addAnnotations(self.viewModel.artworks)
-            self.centerMapViewOnUserLocation(location: self.viewModel.location)
         }
+        
+        
+        viewModel.updateUserLocation { [weak self] (region) in    
+            self?.mapView.setRegion(region, animated: true)
+        }
+        
         
         viewModel.updateIndicator = { [weak self] () in
             self?.indicator.isHidden = self?.viewModel.isIndicatorShown ?? false ? false : true
         }
+        
+        viewModel.drawRoutes = { [weak self] () in
+            
+            guard let `self` = self, let routes = self.viewModel.routes else{
+                return
+            }
+            
+            let _ = routes.map{
+                self.mapView.addOverlay($0.polyline, level: .aboveRoads)
+                self.mapView.setVisibleMapRect($0.polyline.boundingMapRect, animated: true)
+            }
+        }
+        
+        viewModel.resetRoutes = { [weak self] () in
+            guard let overlays = self?.mapView.overlays else { return }
+            self?.mapView.removeOverlays(overlays)
+            
+        }
+        
+        
         
         viewModel.fetchData()
         viewModel.locationRequest()
@@ -65,53 +85,6 @@ class ViewController: UIViewController {
     }
     
     
-    func centerMapViewOnUserLocation(location: CLLocation?){
-        guard let coordinate = location?.coordinate else{ return }
-        let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
-        mapView.setRegion(region, animated: true)
-    }
-    
-    
-    func drawRoutes(){
-        guard let location = self.viewModel.location else{ return }
-        let request = createDirectionsReqeust(from: location.coordinate)
-        let directions = MKDirections(request: request)
-        resetMapView(directions: directions)
-        
-        directions.calculate { [unowned self] (response, error) in
-        
-            if let error = error {
-                print("we have error getting directions == \(error.localizedDescription)")
-            }
-            guard let response = response else { return }
-            
-            for route in response.routes{
-                self.mapView.addOverlay(route.polyline, level: .aboveRoads)
-                self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
-            }
-            
-        }
-    }
-    
-    func createDirectionsReqeust(from userCoordinate: CLLocationCoordinate2D) -> MKDirections.Request{
-        let sourcePlaceMark = MKPlacemark(coordinate: userCoordinate)
-        
-        let request = MKDirections.Request()
-        request.source = MKMapItem(placemark: sourcePlaceMark)
-        request.destination = MKMapItem(placemark: destinationPlaceMark)
-        request.transportType = .automobile
-        request.requestsAlternateRoutes = true
-        
-        
-        return request
-    }
-    
-    func resetMapView(directions: MKDirections){
-        mapView.removeOverlays(mapView.overlays)
-        directionsArray.append(directions)
-        let _ = directionsArray.map{ $0.cancel()}        
-    }
- 
 }
 
 
@@ -127,9 +100,7 @@ extension ViewController: MKMapViewDelegate {
             return
         }
         
-        destinationPlaceMark = MKPlacemark(coordinate: annotation.coordinate)
-        
-        drawRoutes()
+        self.viewModel.annitationCoordinate = annotation.coordinate
         
     }
     
