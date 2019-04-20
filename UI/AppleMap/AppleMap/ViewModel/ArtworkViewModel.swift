@@ -9,6 +9,8 @@
 import Foundation
 import CoreLocation
 import MapKit
+import RxSwift
+import RxCocoa
 
 class ArtworkViewModel{
     
