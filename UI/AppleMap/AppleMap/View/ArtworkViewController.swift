@@ -1,23 +1,21 @@
 //
-//  ViewController.swift
+//  ArtworkViewController.swift
 //  AppleMap
 //
-//  Created by Rocoo on 2019/2/14.
+//  Created by Rocoo on 2019/4/20.
 //  Copyright © 2019 Rocoo. All rights reserved.
 //
-
-
-#warning ("TODO: MVVM")
-#warning ("TODO: RxSwift")
-#warning ("TODO: Codeable")
-
-
 
 import UIKit
 import MapKit
 
 
-class ViewController: UIViewController {
+#warning ("TODO: RxSwift")
+#warning ("TODO: Codeable")
+#warning ("TODO: UnitTest")
+
+
+class ArtworkViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
@@ -31,16 +29,20 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        initMapData()
-        
+        configureMap()
+        bindViewModel()
+        viewModel.locationRequest()
+        viewModel.fetchData()
     }
     
-    func initMapData(){
-        
+    func configureMap(){
         mapView.delegate = self
         mapView.showsUserLocation = true
         mapView.register(ArtworkView.self,
                          forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+    }
+    
+    func bindViewModel(){
         
         viewModel.updateAnnotations = { [weak self] () in
             guard let `self` = self else{
@@ -50,7 +52,7 @@ class ViewController: UIViewController {
         }
         
         
-        viewModel.updateUserLocation { [weak self] (region) in    
+        viewModel.updateUserLocation { [weak self] (region) in
             self?.mapView.setRegion(region, animated: true)
         }
         
@@ -77,11 +79,6 @@ class ViewController: UIViewController {
             
         }
         
-        
-        
-        viewModel.fetchData()
-        viewModel.locationRequest()
-        
     }
     
     
@@ -90,7 +87,7 @@ class ViewController: UIViewController {
 
 
 
-extension ViewController: MKMapViewDelegate {
+extension ArtworkViewController: MKMapViewDelegate {
     
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView,
@@ -112,3 +109,4 @@ extension ViewController: MKMapViewDelegate {
     }
     
 }
+

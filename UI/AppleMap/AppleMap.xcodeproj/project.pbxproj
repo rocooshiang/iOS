@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D2DEAA7128F835A02445564 /* Pods_AppleMap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C714B7C41C416A8AE8CE5287 /* Pods_AppleMap.framework */; };
 		3F3A4C6822661C1F0083DEB1 /* ArtworkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3A4C6722661C1F0083DEB1 /* ArtworkViewModel.swift */; };
 		3F3A4C6A226804740083DEB1 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3A4C69226804740083DEB1 /* LocationService.swift */; };
+		3F5727A3226AAE8700DAD562 /* ArtworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5727A2226AAE8700DAD562 /* ArtworkViewController.swift */; };
 		3FA315AC2214F92700CC29C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA315AB2214F92700CC29C9 /* AppDelegate.swift */; };
-		3FA315AE2214F92700CC29C9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA315AD2214F92700CC29C9 /* ViewController.swift */; };
 		3FA315B12214F92700CC29C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FA315AF2214F92700CC29C9 /* Main.storyboard */; };
 		3FA315B32214F92900CC29C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FA315B22214F92900CC29C9 /* Assets.xcassets */; };
 		3FA315BE221503E600CC29C9 /* PublicArt.json in Resources */ = {isa = PBXBuildFile; fileRef = 3FA315BD221503E600CC29C9 /* PublicArt.json */; };
@@ -21,15 +22,18 @@
 /* Begin PBXFileReference section */
 		3F3A4C6722661C1F0083DEB1 /* ArtworkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkViewModel.swift; sourceTree = "<group>"; };
 		3F3A4C69226804740083DEB1 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		3F5727A2226AAE8700DAD562 /* ArtworkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkViewController.swift; sourceTree = "<group>"; };
 		3FA315A82214F92700CC29C9 /* AppleMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppleMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FA315AB2214F92700CC29C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3FA315AD2214F92700CC29C9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3FA315B02214F92700CC29C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3FA315B22214F92900CC29C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3FA315B72214F92900CC29C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3FA315BD221503E600CC29C9 /* PublicArt.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PublicArt.json; sourceTree = "<group>"; };
 		3FA315BF2215D05200CC29C9 /* Artwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artwork.swift; sourceTree = "<group>"; };
 		3FA315C22216B77800CC29C9 /* ArtworkViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkViews.swift; sourceTree = "<group>"; };
+		6975423234C47427AD0C3B95 /* Pods-AppleMap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppleMap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AppleMap/Pods-AppleMap.debug.xcconfig"; sourceTree = "<group>"; };
+		C714B7C41C416A8AE8CE5287 /* Pods_AppleMap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppleMap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC12A82CCCD72EA02DB41F21 /* Pods-AppleMap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppleMap.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppleMap/Pods-AppleMap.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,17 +41,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D2DEAA7128F835A02445564 /* Pods_AppleMap.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E8FAE5323AF1E9769F435C3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6975423234C47427AD0C3B95 /* Pods-AppleMap.debug.xcconfig */,
+				DC12A82CCCD72EA02DB41F21 /* Pods-AppleMap.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		3F3A4C6422661B330083DEB1 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				3FA315C22216B77800CC29C9 /* ArtworkViews.swift */,
-				3FA315AD2214F92700CC29C9 /* ViewController.swift */,
+				3F5727A2226AAE8700DAD562 /* ArtworkViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -73,6 +87,8 @@
 			children = (
 				3FA315AA2214F92700CC29C9 /* AppleMap */,
 				3FA315A92214F92700CC29C9 /* Products */,
+				0E8FAE5323AF1E9769F435C3 /* Pods */,
+				5DD9559961F4B476855EEBB5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -91,8 +107,6 @@
 				3F3A4C6522661B3E0083DEB1 /* ViewModel */,
 				3F3A4C6422661B330083DEB1 /* View */,
 				3FA315C12216490300CC29C9 /* Support Files */,
-				3FA315BD221503E600CC29C9 /* PublicArt.json */,
-				3FA315AF2214F92700CC29C9 /* Main.storyboard */,
 				3F3A4C69226804740083DEB1 /* LocationService.swift */,
 			);
 			path = AppleMap;
@@ -101,11 +115,21 @@
 		3FA315C12216490300CC29C9 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
+				3FA315BD221503E600CC29C9 /* PublicArt.json */,
+				3FA315AF2214F92700CC29C9 /* Main.storyboard */,
 				3FA315AB2214F92700CC29C9 /* AppDelegate.swift */,
 				3FA315B22214F92900CC29C9 /* Assets.xcassets */,
 				3FA315B72214F92900CC29C9 /* Info.plist */,
 			);
 			path = "Support Files";
+			sourceTree = "<group>";
+		};
+		5DD9559961F4B476855EEBB5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C714B7C41C416A8AE8CE5287 /* Pods_AppleMap.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -115,9 +139,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3FA315BA2214F92900CC29C9 /* Build configuration list for PBXNativeTarget "AppleMap" */;
 			buildPhases = (
+				413F470F7A70B31102C139A9 /* [CP] Check Pods Manifest.lock */,
 				3FA315A42214F92700CC29C9 /* Sources */,
 				3FA315A52214F92700CC29C9 /* Frameworks */,
 				3FA315A62214F92700CC29C9 /* Resources */,
+				045CFAEC9F07562A98C232B8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -174,17 +200,72 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		045CFAEC9F07562A98C232B8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-AppleMap/Pods-AppleMap-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwiftExt/RxSwiftExt.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwiftExt.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AppleMap/Pods-AppleMap-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		413F470F7A70B31102C139A9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AppleMap-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3FA315A42214F92700CC29C9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3FA315AE2214F92700CC29C9 /* ViewController.swift in Sources */,
 				3FA315C32216B77800CC29C9 /* ArtworkViews.swift in Sources */,
 				3FA315C02215D05200CC29C9 /* Artwork.swift in Sources */,
 				3F3A4C6822661C1F0083DEB1 /* ArtworkViewModel.swift in Sources */,
 				3F3A4C6A226804740083DEB1 /* LocationService.swift in Sources */,
 				3FA315AC2214F92700CC29C9 /* AppDelegate.swift in Sources */,
+				3F5727A3226AAE8700DAD562 /* ArtworkViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,6 +401,7 @@
 		};
 		3FA315BB2214F92900CC29C9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6975423234C47427AD0C3B95 /* Pods-AppleMap.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -338,6 +420,7 @@
 		};
 		3FA315BC2214F92900CC29C9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DC12A82CCCD72EA02DB41F21 /* Pods-AppleMap.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

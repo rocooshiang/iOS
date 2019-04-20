@@ -1,0 +1,10 @@
+platform :ios, '12.1'
+
+target 'AppleMap' do
+ 
+  use_frameworks!
+  pod 'RxSwift'
+  pod 'RxDataSources'
+  pod 'RxSwiftExt'	
+
+end
