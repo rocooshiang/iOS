@@ -28,6 +28,7 @@ class ViewController: UIViewController {
 extension ViewController{
   func executeGet(){
     let request = GetRequest(model: GetModel(firstname: "Rocoo", lastname: "Chuang"))
+    
     NetworkTaskClient.shared.send(request) { (result, response) in
       if let result = result, response?.statusCode == 200{
         
