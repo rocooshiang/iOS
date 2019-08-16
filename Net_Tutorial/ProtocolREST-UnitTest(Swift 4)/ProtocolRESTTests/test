@@ -1,0 +1,22 @@
+{
+"args": {},
+"data": "",
+"files": {},
+"form": {
+"firstname": "Rocoo",
+"lastname": "Chuang"
+},
+"headers": {
+"Accept": "*/*",
+"Accept-Encoding": "br, gzip, deflate",
+"Accept-Language": "zh-tw",
+"Connection": "close",
+"Content-Length": "31",
+"Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
+"Host": "httpbin.org",
+"User-Agent": "ProtocolREST/1 CFNetwork/887 Darwin/17.0.0"
+},
+"json": null,
+"origin": "101.139.143.95",
+"url": "https://httpbin.org/post"
+}
