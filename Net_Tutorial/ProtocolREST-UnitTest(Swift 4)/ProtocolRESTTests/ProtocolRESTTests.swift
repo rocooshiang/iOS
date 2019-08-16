@@ -22,14 +22,13 @@ class ProtocolRESTTests: XCTestCase {
   }
   
   func testPostRequest() {
-    let client = LocalFileClient()
     
-    client.send(PostRequest(model: PostModel(firstname: "Rocoo", lastname: "Chuang"))) {
-      result in
+  LocalFileClient().send(PostRequest(model: PostModel(firstname: "Rocoo", lastname: "Chuang"))) {
+      result, _  in
       XCTAssertNotNil(result,"result is nil")
-      XCTAssertNotNil(result.0, "PostRequest.Response is nil")
-      XCTAssertEqual(result.0!.firstname, "Rocoo")
-      XCTAssertEqual(result.0!.lastname, "Chuang")
+      XCTAssertNotNil(result, "PostRequest.Response is nil")
+      XCTAssertEqual(result?.firstname, "Rocoo")
+      XCTAssertEqual(result?.lastname, "Chuang")
     }
   }
   

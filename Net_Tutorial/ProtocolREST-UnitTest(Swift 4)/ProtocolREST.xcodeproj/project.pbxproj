@@ -13,7 +13,6 @@
 		3F087E051ED2C35000300860 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F087E041ED2C35000300860 /* Assets.xcassets */; };
 		3F087E081ED2C35000300860 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F087E061ED2C35000300860 /* LaunchScreen.storyboard */; };
 		3F087E131ED2C35000300860 /* ProtocolRESTTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F087E121ED2C35000300860 /* ProtocolRESTTests.swift */; };
-		3F087E1E1ED2C35000300860 /* ProtocolRESTUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F087E1D1ED2C35000300860 /* ProtocolRESTUITests.swift */; };
 		3F087E2C1ED2C53400300860 /* Get.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F087E2B1ED2C53400300860 /* Get.swift */; };
 		3F087E2E1ED2ED0500300860 /* NetworkingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F087E2D1ED2ED0500300860 /* NetworkingProtocol.swift */; };
 		3F85A8371ED56E860004AD61 /* test in Resources */ = {isa = PBXBuildFile; fileRef = 3F85A8361ED56E860004AD61 /* test */; };
@@ -54,8 +53,6 @@
 		3F087E121ED2C35000300860 /* ProtocolRESTTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolRESTTests.swift; sourceTree = "<group>"; };
 		3F087E141ED2C35000300860 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F087E191ED2C35000300860 /* ProtocolRESTUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProtocolRESTUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3F087E1D1ED2C35000300860 /* ProtocolRESTUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolRESTUITests.swift; sourceTree = "<group>"; };
-		3F087E1F1ED2C35000300860 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F087E2B1ED2C53400300860 /* Get.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Get.swift; sourceTree = "<group>"; };
 		3F087E2D1ED2ED0500300860 /* NetworkingProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingProtocol.swift; sourceTree = "<group>"; };
 		3F85A8361ED56E860004AD61 /* test */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test; sourceTree = "<group>"; };
@@ -100,7 +97,6 @@
 			children = (
 				3F087DFC1ED2C35000300860 /* ProtocolREST */,
 				3F087E111ED2C35000300860 /* ProtocolRESTTests */,
-				3F087E1C1ED2C35000300860 /* ProtocolRESTUITests */,
 				3F087DFB1ED2C35000300860 /* Products */,
 				4A2B4ABDAEE113FC05400810 /* Pods */,
 				8D2986BC1383236EF67AE55D /* Frameworks */,
@@ -137,15 +133,6 @@
 				3F087E141ED2C35000300860 /* Info.plist */,
 			);
 			path = ProtocolRESTTests;
-			sourceTree = "<group>";
-		};
-		3F087E1C1ED2C35000300860 /* ProtocolRESTUITests */ = {
-			isa = PBXGroup;
-			children = (
-				3F087E1D1ED2C35000300860 /* ProtocolRESTUITests.swift */,
-				3F087E1F1ED2C35000300860 /* Info.plist */,
-			);
-			path = ProtocolRESTUITests;
 			sourceTree = "<group>";
 		};
 		3F087E2F1ED2ED1F00300860 /* Support Files */ = {
@@ -217,7 +204,6 @@
 				3F087DF71ED2C35000300860 /* Frameworks */,
 				3F087DF81ED2C35000300860 /* Resources */,
 				657A51B576776D71A84A35B5 /* [CP] Embed Pods Frameworks */,
-				76DE4BBFB1AE4C5DCEE1B121 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -276,7 +262,7 @@
 				TargetAttributes = {
 					3F087DF91ED2C35000300860 = {
 						CreatedOnToolsVersion = 8.3.1;
-						DevelopmentTeam = ABF57U9QBP;
+						DevelopmentTeam = J83DYLY5SM;
 						ProvisioningStyle = Automatic;
 					};
 					3F087E0D1ED2C35000300860 = {
@@ -298,6 +284,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -378,21 +365,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ProtocolREST/Pods-ProtocolREST-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		76DE4BBFB1AE4C5DCEE1B121 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ProtocolREST/Pods-ProtocolREST-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -424,7 +396,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F087E1E1ED2C35000300860 /* ProtocolRESTUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,7 +475,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -549,7 +520,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -563,13 +534,13 @@
 			baseConfigurationReference = 7B0E5FDD13795684E058CDF0 /* Pods-ProtocolREST.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = ABF57U9QBP;
+				DEVELOPMENT_TEAM = J83DYLY5SM;
 				INFOPLIST_FILE = ProtocolREST/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = rocoo.ProtocolREST;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -578,13 +549,13 @@
 			baseConfigurationReference = 766BFFFDA616E34273ADA41C /* Pods-ProtocolREST.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = ABF57U9QBP;
+				DEVELOPMENT_TEAM = J83DYLY5SM;
 				INFOPLIST_FILE = ProtocolREST/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = rocoo.ProtocolREST;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

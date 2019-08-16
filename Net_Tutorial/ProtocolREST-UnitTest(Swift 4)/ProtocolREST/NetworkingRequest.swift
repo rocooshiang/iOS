@@ -15,13 +15,13 @@ struct Url{
 struct GetRequest: Request {
   
   var model: GetModel
-  
   let host = Url.baseUrl
   var path: String{
     return String(format: "/get?firstname=%@&lastname=%@", model.firstname, model.lastname)
   }
   
-  let method: HTTPMethod = .get
+  let method: HttpMethod = .get
+  
   
   typealias Response = Get
 }
@@ -31,13 +31,15 @@ struct GetRequest: Request {
 struct PostRequest: Request {
   
   var model: PostModel
-  
+  var header: HttpHeader{
+    return HttpHeader(field: .contentType, value: .json)
+  }
   let host = Url.baseUrl
   var path: String{
     return "/post"
   }
   
-  let method: HTTPMethod = .post
+  let method: HttpMethod = .post
   
   var parameter: [String: Any]?{
     return ["firstname": model.firstname,
@@ -58,14 +60,14 @@ struct PutRequest: Request {
     return "/put"
   }
   
-  let method: HTTPMethod = .put
+  let method: HttpMethod = .put
   
   var parameter: [String: Any]?{
     return ["firstname": model.firstname,
             "lastname": model.lastname]
   }
   
-  var enableJSONFormat: Bool{
+  var enableJSONParameters: Bool{
     return true
   }
   
@@ -83,14 +85,14 @@ struct DeleteRequest: Request {
     return "/delete"
   }
   
-  let method: HTTPMethod = .delete
+  let method: HttpMethod = .delete
   
   var parameter: [String: Any]?{
     return ["firstname": model.firstname,
             "lastname": model.lastname]
   }
   
-  var enableJSONFormat: Bool{
+  var enableJSONParameters: Bool{
     return true
   }
   

@@ -8,38 +8,57 @@
 
 import Foundation
 
-// About REST
-enum HTTPMethod: String {
+enum HttpMethod: String {
   case get
   case post
   case delete
   case put
 }
 
+struct HttpHeader{
+  var field: HttpHeaderField
+  var value: HttpHeaderValue
+}
+
+enum HttpHeaderField: String{
+    case contentType = "Content-Type"
+    case accept = "Accept"
+}
+
+enum HttpHeaderValue: String{
+    case json = "application/json"
+    case urlencoded_utf8 = "application/x-www-form-urlencoded; charset=utf-8"
+}
+
 protocol Request {
+  var header: HttpHeader { get }
   var host: String { get }
   var path: String { get }
-  var method: HTTPMethod { get }
+  var method: HttpMethod { get }
   var parameter: [String: Any]? { get }
-  var enableJSONFormat: Bool { get }
+  var enableJSONParameters: Bool { get }
   
   associatedtype Response: Decodable
 }
 
 extension Request{
   
+  var header: HttpHeader{
+    return HttpHeader(field: .contentType, value: .json)
+  }
+  
   var parameter: [String: Any]?{
     return nil
   }
   
-  var enableJSONFormat: Bool{
+  var enableJSONParameters: Bool{
     return false
   }
   
 }
 
 protocol Client {
-  func send<T: Request>(_ r: T, handler: @escaping (T.Response?, _ response: HTTPURLResponse?) -> Void)
+  func send<T: Request>(_ source: T, handler: @escaping (T.Response?, _ response: HTTPURLResponse?) -> Void)
 }
 
 protocol Decodable {
@@ -50,23 +69,20 @@ struct NetworkTaskClient: Client {
   
   static let shared = NetworkTaskClient()
   
-  func send<T: Request>(_ r: T, handler: @escaping (T.Response?, _ response: HTTPURLResponse?) -> Void) {
+  func send<T: Request>(_ source: T, handler: @escaping (T.Response?, _ response: HTTPURLResponse?) -> Void) {
     
-    let url = URL(string: r.host.appending(r.path))!    
+    let url = URL(string: source.host.appending(source.path))!
     var request = URLRequest(url: url)
     
-    request.httpMethod = r.method.rawValue
+    request.httpMethod = source.method.rawValue
     request.timeoutInterval = 30
-    // TODO: header
     
-    if r.enableJSONFormat{
-      request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-    }else{
-      request.setValue("application/x-www-form-urlencoded; charset=utf-8", forHTTPHeaderField: "Content-Type")
-    }
+    print(String(format: "field: %@, value: %@", source.header.field.rawValue, source.header.value.rawValue))
     
-    if let parameter = r.parameter{
-      if r.enableJSONFormat{
+    request.setValue(source.header.value.rawValue, forHTTPHeaderField: source.header.field.rawValue)
+    
+    if let parameter = source.parameter{
+      if source.enableJSONParameters{
         do {
           request.httpBody = try JSONSerialization.data(withJSONObject: parameter, options: .prettyPrinted)
         } catch let error {
@@ -75,22 +91,13 @@ struct NetworkTaskClient: Client {
       }else{
         request.httpBody = query(parameter).data(using: .utf8, allowLossyConversion: false)
       }
-      
-      if let data = request.httpBody{
-        print("parameters:  \(String(data: data, encoding: .utf8) ?? "string is nil")")
-      }
     }
     
     let task = URLSession.shared.dataTask(with: request) {
       data, response, error in
-      
-      if let d = data{
-        print("network response: \(String(data: d, encoding: .utf8) ?? "string is nil")")
-      }else{
-        print("network response error: \(String(describing: error?.localizedDescription))")
-      }
-      
-      if let data = data, let res = T.Response.parse(data: data) {        
+      print("response: \(response.debugDescription)")
+      if let data = data, let res = T.Response.parse(data: data) {
+        
         DispatchQueue.main.async { handler(res, response as? HTTPURLResponse) }
       } else {
         DispatchQueue.main.async { handler(nil, response as? HTTPURLResponse) }
