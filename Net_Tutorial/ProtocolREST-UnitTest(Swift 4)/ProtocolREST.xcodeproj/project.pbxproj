@@ -21,6 +21,7 @@
 		3F85A8461EDD45350004AD61 /* Put.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F85A8451EDD45350004AD61 /* Put.swift */; };
 		3F85A8481EDD49D70004AD61 /* Delete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F85A8471EDD49D70004AD61 /* Delete.swift */; };
 		3F85A84B1EDD5AAA0004AD61 /* UserDefaultStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F85A84A1EDD5AAA0004AD61 /* UserDefaultStructure.swift */; };
+		3FCCA28723086F10005EEF5C /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCCA28623086F10005EEF5C /* Room.swift */; };
 		E3AEB42592EB5B3B235B9F0F /* Pods_ProtocolREST.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4051C0834673844A784C1FC /* Pods_ProtocolREST.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +62,7 @@
 		3F85A8451EDD45350004AD61 /* Put.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Put.swift; sourceTree = "<group>"; };
 		3F85A8471EDD49D70004AD61 /* Delete.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Delete.swift; sourceTree = "<group>"; };
 		3F85A84A1EDD5AAA0004AD61 /* UserDefaultStructure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultStructure.swift; sourceTree = "<group>"; };
+		3FCCA28623086F10005EEF5C /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		766BFFFDA616E34273ADA41C /* Pods-ProtocolREST.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProtocolREST.release.xcconfig"; path = "Pods/Target Support Files/Pods-ProtocolREST/Pods-ProtocolREST.release.xcconfig"; sourceTree = "<group>"; };
 		7B0E5FDD13795684E058CDF0 /* Pods-ProtocolREST.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProtocolREST.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ProtocolREST/Pods-ProtocolREST.debug.xcconfig"; sourceTree = "<group>"; };
 		A4051C0834673844A784C1FC /* Pods_ProtocolREST.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProtocolREST.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -153,6 +155,7 @@
 				3F85A83F1EDC26B30004AD61 /* Post.swift */,
 				3F85A8451EDD45350004AD61 /* Put.swift */,
 				3F85A8471EDD49D70004AD61 /* Delete.swift */,
+				3FCCA28623086F10005EEF5C /* Room.swift */,
 			);
 			name = NetworkResult;
 			sourceTree = "<group>";
@@ -376,6 +379,7 @@
 				3F087E2E1ED2ED0500300860 /* NetworkingProtocol.swift in Sources */,
 				3F85A8481EDD49D70004AD61 /* Delete.swift in Sources */,
 				3F85A83E1EDC1AF60004AD61 /* NetworkingRequest.swift in Sources */,
+				3FCCA28723086F10005EEF5C /* Room.swift in Sources */,
 				3F85A8401EDC26B30004AD61 /* Post.swift in Sources */,
 				3F85A84B1EDD5AAA0004AD61 /* UserDefaultStructure.swift in Sources */,
 				3F087DFE1ED2C35000300860 /* AppDelegate.swift in Sources */,

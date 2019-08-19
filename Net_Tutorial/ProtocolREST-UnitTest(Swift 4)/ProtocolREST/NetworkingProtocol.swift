@@ -15,36 +15,34 @@ enum HttpMethod: String {
   case put
 }
 
-struct HttpHeader{
-  var field: HttpHeaderField
-  var value: HttpHeaderValue
-}
-
 enum HttpHeaderField: String{
     case contentType = "Content-Type"
     case accept = "Accept"
+    case authorization = "Authorization"
 }
 
 enum HttpHeaderValue: String{
     case json = "application/json"
     case urlencoded_utf8 = "application/x-www-form-urlencoded; charset=utf-8"
+    case bearerToken = "Bearer X2YTcQ5d5NDRgVSqApdD3tihOiBt8hil0utgb9SBPHuWBlwfWz1Ay152ys9k"
 }
 
 protocol Request {
-  var header: HttpHeader { get }
+  var header: [HttpHeaderField: HttpHeaderValue] { get }
   var host: String { get }
   var path: String { get }
   var method: HttpMethod { get }
   var parameter: [String: Any]? { get }
   var enableJSONParameters: Bool { get }
+  var logResponseData: Bool { get}
   
   associatedtype Response: Decodable
 }
 
 extension Request{
   
-  var header: HttpHeader{
-    return HttpHeader(field: .contentType, value: .json)
+  var header: [HttpHeaderField: HttpHeaderValue]{
+    return [:]
   }
   
   var parameter: [String: Any]?{
@@ -54,6 +52,11 @@ extension Request{
   var enableJSONParameters: Bool{
     return false
   }
+  
+  var logResponseData: Bool{
+    return false
+  }
+  
   
 }
 
@@ -77,9 +80,9 @@ struct NetworkTaskClient: Client {
     request.httpMethod = source.method.rawValue
     request.timeoutInterval = 30
     
-    print(String(format: "field: %@, value: %@", source.header.field.rawValue, source.header.value.rawValue))
-    
-    request.setValue(source.header.value.rawValue, forHTTPHeaderField: source.header.field.rawValue)
+    for (field, value) in source.header{
+      request.setValue(value.rawValue, forHTTPHeaderField: field.rawValue)
+    }
     
     if let parameter = source.parameter{
       if source.enableJSONParameters{
@@ -93,10 +96,15 @@ struct NetworkTaskClient: Client {
       }
     }
     
+    
     let task = URLSession.shared.dataTask(with: request) {
       data, response, error in
-      print("response: \(response.debugDescription)")
+
       if let data = data, let res = T.Response.parse(data: data) {
+        
+        if source.logResponseData{
+          print(String(data: data, encoding: .utf8) ?? "response data is nil" )
+        }
         
         DispatchQueue.main.async { handler(res, response as? HTTPURLResponse) }
       } else {
@@ -109,6 +117,8 @@ struct NetworkTaskClient: Client {
   }
   
 }
+
+
 
 private func query(_ parameters: [String: Any]) -> String {
   var components: [(String, String)] = []

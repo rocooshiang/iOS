@@ -15,11 +15,13 @@ class ViewController: UIViewController {
     
 /*** disable json format ***/
 //    executeGet()
-    executePost()
+//    executePost()
     
 /*** enable json format ***/
 //    executePut()
 //    executeDelete()
+  
+    fetchRooms()
     
   }
   
@@ -27,11 +29,10 @@ class ViewController: UIViewController {
 
 extension ViewController{
   func executeGet(){
-    let request = GetRequest(model: GetModel(firstname: "Rocoo", lastname: "Chuang"))
+    let request = GetRequest(model: GetRequestModel(firstname: "Rocoo", lastname: "Chuang"))
     
     NetworkTaskClient.shared.send(request) { (result, response) in
       if let result = result, response?.statusCode == 200{
-        
         print("firstname: \(result.firstname), lastname: \(result.lastname)")
       }else{
         print("request \"Get\" fail")
@@ -41,7 +42,7 @@ extension ViewController{
   }
   
   func executePost(){
-    let request = PostRequest(model: PostModel(firstname: "Rocoo", lastname: "Chuang"))
+    let request = PostRequest(model: PostRequestModel(firstname: "Rocoo", lastname: "Chuang"))
     NetworkTaskClient.shared.send(request) { (result, response) in
       if let result = result, response?.statusCode == 200{
         print("firstname: \(result.firstname), lastname: \(result.lastname)")
@@ -53,7 +54,7 @@ extension ViewController{
   
   
   func executePut(){
-    let request = PutRequest(model: PutModel(firstname: "Rocoo", lastname: "Chuang"))
+    let request = PutRequest(model: PutRequestModel(firstname: "Rocoo", lastname: "Chuang"))
     NetworkTaskClient.shared.send(request) { (result, response) in
       if let result = result, response?.statusCode == 200{
         print("firstname: \(result.firstname), lastname: \(result.lastname)")
@@ -65,12 +66,26 @@ extension ViewController{
   
   
   func executeDelete(){
-    let request = DeleteRequest(model: DeleteModel(firstname: "Rocoo", lastname: "Chuang"))
+    let request = DeleteRequest(model: DeleteRequestModel(firstname: "Rocoo", lastname: "Chuang"))
+    
     NetworkTaskClient.shared.send(request) { (result, response) in
       if let result = result, response?.statusCode == 200{
         print("firstname: \(result.firstname), lastname: \(result.lastname)")
       }else{
         print("request \"Delete\" fail")
+      }
+    }
+  }
+  
+  func fetchRooms(){    
+    let request = RoomsRequest()
+    NetworkTaskClient.shared.send(request) { (result, response) in      
+      if let result = result, response?.statusCode == 200{
+        for room in result.rooms{
+          print("room name: \(room.name)")
+        }
+      }else{
+        print("fetch rooms fail")
       }
     }
   }

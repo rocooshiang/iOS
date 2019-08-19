@@ -10,11 +10,12 @@ import Foundation
 
 struct Url{
   static let baseUrl = "https://httpbin.org"
+  static let hotelBaseUrl = "https://challenge.thef2e.com"
 }
 
 struct GetRequest: Request {
   
-  var model: GetModel
+  var model: GetRequestModel
   let host = Url.baseUrl
   var path: String{
     return String(format: "/get?firstname=%@&lastname=%@", model.firstname, model.lastname)
@@ -30,10 +31,11 @@ struct GetRequest: Request {
 
 struct PostRequest: Request {
   
-  var model: PostModel
-  var header: HttpHeader{
-    return HttpHeader(field: .contentType, value: .json)
+  var model: PostRequestModel
+  var header: [HttpHeaderField: HttpHeaderValue]{
+    return [.contentType: .json]
   }
+  
   let host = Url.baseUrl
   var path: String{
     return "/post"
@@ -53,7 +55,7 @@ struct PostRequest: Request {
 
 struct PutRequest: Request {
   
-  var model: PutModel
+  var model: PutRequestModel
   
   let host = Url.baseUrl
   var path: String{
@@ -78,7 +80,7 @@ struct PutRequest: Request {
 
 struct DeleteRequest: Request {
   
-  var model: DeleteModel
+  var model: DeleteRequestModel
   
   let host = Url.baseUrl
   var path: String{
@@ -100,3 +102,27 @@ struct DeleteRequest: Request {
 }
 
 
+// https://challenge.thef2e.com/news/17
+struct RoomsRequest: Request {
+  
+  var host: String{
+    return Url.hotelBaseUrl
+  }
+  
+  var path: String{
+    return "/api/thef2e2019/stage6/rooms"
+  }
+  
+  var header: [HttpHeaderField: HttpHeaderValue]{
+    return [.accept: .json,
+            .authorization: .bearerToken]
+  }
+  
+  let method: HttpMethod = .get
+  
+  var logResponseData: Bool{
+    return true
+  }
+  
+  typealias Response = Rooms
+}

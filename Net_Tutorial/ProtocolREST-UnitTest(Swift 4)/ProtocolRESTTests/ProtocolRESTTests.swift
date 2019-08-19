@@ -23,7 +23,7 @@ class ProtocolRESTTests: XCTestCase {
   
   func testPostRequest() {
     
-  LocalFileClient().send(PostRequest(model: PostModel(firstname: "Rocoo", lastname: "Chuang"))) {
+  LocalFileClient().send(PostRequest(model: PostRequestModel(firstname: "Rocoo", lastname: "Chuang"))) {
       result, _  in
       XCTAssertNotNil(result,"result is nil")
       XCTAssertNotNil(result, "PostRequest.Response is nil")
