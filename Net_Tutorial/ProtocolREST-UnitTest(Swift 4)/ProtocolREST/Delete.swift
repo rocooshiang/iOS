@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-struct DeleteModel {
+struct DeleteRequestModel {
   let firstname: String
   let lastname: String
 }

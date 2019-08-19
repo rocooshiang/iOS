@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-struct PutModel {
+struct PutRequestModel {
   let firstname: String
   let lastname: String
 }
