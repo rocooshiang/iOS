@@ -32,8 +32,8 @@ struct GetRequest: Request {
 struct PostRequest: Request {
   
   var model: PostRequestModel
-  var header: [HttpHeaderField: HttpHeaderValue]{
-    return [.contentType: .json]
+  var header: [HeaderField: HeaderValue]{
+    return [HttpHeaderField.contentType.rawValue: HttpHeaderValue.json.rawValue]
   }
   
   let host = Url.baseUrl
@@ -113,9 +113,9 @@ struct RoomsRequest: Request {
     return "/api/thef2e2019/stage6/rooms"
   }
   
-  var header: [HttpHeaderField: HttpHeaderValue]{
-    return [.accept: .json,
-            .authorization: .bearerToken]
+  var header: [HeaderField: HeaderValue]{
+    return [HttpHeaderField.accept.rawValue: HttpHeaderValue.json.rawValue,
+            HttpHeaderField.authorization.rawValue: HttpHeaderValue.bearerToken.rawValue]    
   }
   
   let method: HttpMethod = .get
