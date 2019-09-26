@@ -95,7 +95,6 @@ struct NetworkTaskClient: Client {
         }
         
         
-        
         let task = URLSession.shared.dataTask(with: request) {
             data, response, error in
             
@@ -118,13 +117,22 @@ struct NetworkTaskClient: Client {
     fileprivate func jsonParametersEncode(request: inout URLRequest, parameter: [String : Any]) {
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: parameter, options: .prettyPrinted)
+            
+            if request.value(forHTTPHeaderField: HttpHeaderField.contentType.rawValue) == nil {
+                request.addValue(HttpHeaderValue.json.rawValue, forHTTPHeaderField: HttpHeaderValue.json.rawValue)
+            }
         } catch let error {
             print(error.localizedDescription)
         }
     }
     
     fileprivate func urlParametersEncode(request: inout URLRequest, parameter: [String : Any]) {
+        
         request.httpBody = query(parameter).data(using: .utf8, allowLossyConversion: false)
+        
+        if request.value(forHTTPHeaderField: HttpHeaderField.contentType.rawValue) == nil {
+            request.addValue(HttpHeaderValue.urlencoded_utf8.rawValue, forHTTPHeaderField: HttpHeaderValue.json.rawValue)
+        }
     }
     
 }
