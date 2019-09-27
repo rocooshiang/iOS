@@ -8,121 +8,113 @@
 
 import Foundation
 
-struct Url{
+struct Url {
   static let baseUrl = "https://httpbin.org"
   static let hotelBaseUrl = "https://challenge.thef2e.com"
 }
 
 struct GetRequest: Request {
-  
+
   var model: GetRequestModel
   let host = Url.baseUrl
-  var path: String{
+  var path: String {
     return String(format: "/get?firstname=%@&lastname=%@", model.firstname, model.lastname)
   }
-  
+
   let method: HttpMethod = .get
-  
-  
+
   typealias Response = Get
 }
 
-
-
 struct PostRequest: Request {
-  
+
   var model: PostRequestModel
-  var header: [HeaderField: HeaderValue]{
+  var header: [HeaderField: HeaderValue] {
     return [HttpHeaderField.contentType.rawValue: HttpHeaderValue.json.rawValue]
   }
-  
+
   let host = Url.baseUrl
-  var path: String{
+  var path: String {
     return "/post"
   }
-  
+
   let method: HttpMethod = .post
-  
-  var parameter: [String: Any]?{
+
+  var parameter: [String: Any]? {
     return ["firstname": model.firstname,
             "lastname": model.lastname]
   }
-  
+
   typealias Response = Post
 }
 
-
-
 struct PutRequest: Request {
-  
+
   var model: PutRequestModel
-  
+
   let host = Url.baseUrl
-  var path: String{
+  var path: String {
     return "/put"
   }
-  
+
   let method: HttpMethod = .put
-  
-  var parameter: [String: Any]?{
+
+  var parameter: [String: Any]? {
     return ["firstname": model.firstname,
             "lastname": model.lastname]
   }
-  
-  var enableJSONParameters: Bool{
+
+  var enableJSONParameters: Bool {
     return true
   }
-  
+
   typealias Response = Put
 }
 
-
-
 struct DeleteRequest: Request {
-  
+
   var model: DeleteRequestModel
-  
+
   let host = Url.baseUrl
-  var path: String{
+  var path: String {
     return "/delete"
   }
-  
+
   let method: HttpMethod = .delete
-  
-  var parameter: [String: Any]?{
+
+  var parameter: [String: Any]? {
     return ["firstname": model.firstname,
             "lastname": model.lastname]
   }
-  
-  var enableJSONParameters: Bool{
+
+  var enableJSONParameters: Bool {
     return true
   }
-  
+
   typealias Response = Delete
 }
 
-
 // https://challenge.thef2e.com/news/17
 struct RoomsRequest: Request {
-  
-  var host: String{
+
+  var host: String {
     return Url.hotelBaseUrl
   }
-  
-  var path: String{
+
+  var path: String {
     return "/api/thef2e2019/stage6/rooms"
   }
-  
-  var header: [HeaderField: HeaderValue]{
+
+  var header: [HeaderField: HeaderValue] {
     return [HttpHeaderField.accept.rawValue: HttpHeaderValue.json.rawValue,
-            HttpHeaderField.authorization.rawValue: HttpHeaderValue.bearerToken.rawValue]    
+            HttpHeaderField.authorization.rawValue: HttpHeaderValue.bearerToken.rawValue]
   }
-  
+
   let method: HttpMethod = .get
-  
-  var logResponseData: Bool{
+
+  var logResponseData: Bool {
     return true
   }
-  
+
   typealias Response = Rooms
 }

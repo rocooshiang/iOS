@@ -15,10 +15,10 @@ struct PostRequestModel {
 }
 
 struct Post {
-  
+
   let firstname: String
   let lastname: String
-  
+
   init?(data: Data) {
     let json = JSON(data)
     let firstname = json["form"]["firstname"].stringValue
@@ -26,7 +26,7 @@ struct Post {
     self.firstname = firstname
     self.lastname = lastname
   }
-  
+
 }
 
 extension Post: Decodable {

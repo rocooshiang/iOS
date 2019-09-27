@@ -6,7 +6,6 @@
 //  Copyright © 2017年 rocoo. All rights reserved.
 //
 
-
 import Foundation
 import SwiftyJSON
 
@@ -16,10 +15,10 @@ struct GetRequestModel {
 }
 
 struct Get {
-  
+
   let firstname: String
   let lastname: String
-  
+
   init?(data: Data) {
     let json = JSON(data)
     let firstname = json["args"]["firstname"].stringValue
@@ -27,7 +26,7 @@ struct Get {
     self.firstname = firstname
     self.lastname = lastname
   }
-  
+
 }
 
 extension Get: Decodable {
@@ -35,6 +34,3 @@ extension Get: Decodable {
     return Get(data: data)
   }
 }
-
-
-

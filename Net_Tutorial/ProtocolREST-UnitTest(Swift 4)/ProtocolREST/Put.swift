@@ -14,17 +14,17 @@ struct PutRequestModel {
   let lastname: String
 }
 
-struct Put{
+struct Put {
   let firstname: String
   let lastname: String
-  
+
   init?(data: Data) {
     let json = JSON(data)
     let firstname = json["json"]["firstname"].stringValue
     let lastname = json["json"]["lastname"].stringValue
     self.firstname = firstname
     self.lastname = lastname
-  }  
+  }
 }
 
 extension Put: Decodable {

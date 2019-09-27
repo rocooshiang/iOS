@@ -15,21 +15,21 @@ enum HttpMethod: String {
     case put
 }
 
-enum HttpHeaderField: String{
+enum HttpHeaderField: String {
     case contentType = "Content-Type"
     case accept = "Accept"
     case authorization = "Authorization"
 }
 
-enum HttpHeaderValue: String{
+enum HttpHeaderValue: String {
     case json = "application/json"
-    case urlencoded_utf8 = "application/x-www-form-urlencoded; charset=utf-8"
+    case urlencodedUtf8 = "application/x-www-form-urlencoded; charset=utf-8"
     case bearerToken = "Bearer X2YTcQ5d5NDRgVSqApdD3tihOiBt8hil0utgb9SBPHuWBlwfWz1Ay152ys9k"
 }
 
 protocol Request {
     typealias HeaderField = String
-    typealias HeaderValue = String    
+    typealias HeaderValue = String
     var header: [HeaderField: HeaderValue] { get }
     var host: String { get }
     var path: String { get }
@@ -37,29 +37,28 @@ protocol Request {
     var parameter: [String: Any]? { get }
     var enableJSONParameters: Bool { get }
     var logResponseData: Bool { get}
-    
+
     associatedtype Response: Decodable
 }
 
-extension Request{
-    
-    var header: [HeaderField: HeaderValue]{
+extension Request {
+
+    var header: [HeaderField: HeaderValue] {
         return [:]
     }
-    
-    var parameter: [String: Any]?{
+
+    var parameter: [String: Any]? {
         return nil
     }
-    
-    var enableJSONParameters: Bool{
+
+    var enableJSONParameters: Bool {
         return false
     }
-    
-    var logResponseData: Bool{
+
+    var logResponseData: Bool {
         return false
     }
-    
-    
+
 }
 
 protocol Client {
@@ -71,53 +70,51 @@ protocol Decodable {
 }
 
 struct NetworkTaskClient: Client {
-    
+
     static let shared = NetworkTaskClient()
-    
+
     func send<T: Request>(_ source: T, handler: @escaping (T.Response?, _ response: HTTPURLResponse?) -> Void) {
-        
+
         let url = URL(string: source.host.appending(source.path))!
         var request = URLRequest(url: url)
-        
+
         request.httpMethod = source.method.rawValue
         request.timeoutInterval = 20
-        
-        for (field, value) in source.header{
+
+        for (field, value) in source.header {
             request.setValue(value, forHTTPHeaderField: field)
         }
-        
-        if let parameter = source.parameter{
-            if source.enableJSONParameters{
+
+        if let parameter = source.parameter {
+            if source.enableJSONParameters {
                 jsonParametersEncode(request: &request, parameter: parameter)
-            }else{
+            } else {
                 urlParametersEncode(request: &request, parameter: parameter)
             }
         }
-        
-        
-        let task = URLSession.shared.dataTask(with: request) {
-            data, response, error in
-            
+
+        let task = URLSession.shared.dataTask(with: request) { data, response, _ in
+
             if let data = data, let res = T.Response.parse(data: data) {
-                
-                if source.logResponseData{
+
+                if source.logResponseData {
                     print(String(data: data, encoding: .utf8) ?? "response data is nil" )
                 }
-                
+
                 DispatchQueue.main.async { handler(res, response as? HTTPURLResponse) }
             } else {
                 DispatchQueue.main.async { handler(nil, response as? HTTPURLResponse) }
             }
-            
+
         }
-        
+
         task.resume()
     }
-    
+
     fileprivate func jsonParametersEncode(request: inout URLRequest, parameter: [String : Any]) {
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: parameter, options: .prettyPrinted)
-            
+
             if request.value(forHTTPHeaderField: HttpHeaderField.contentType.rawValue) == nil {
                 request.addValue(HttpHeaderValue.json.rawValue, forHTTPHeaderField: HttpHeaderValue.json.rawValue)
             }
@@ -125,34 +122,32 @@ struct NetworkTaskClient: Client {
             print(error.localizedDescription)
         }
     }
-    
+
     fileprivate func urlParametersEncode(request: inout URLRequest, parameter: [String : Any]) {
-        
+
         request.httpBody = query(parameter).data(using: .utf8, allowLossyConversion: false)
-        
+
         if request.value(forHTTPHeaderField: HttpHeaderField.contentType.rawValue) == nil {
-            request.addValue(HttpHeaderValue.urlencoded_utf8.rawValue, forHTTPHeaderField: HttpHeaderValue.json.rawValue)
+            request.addValue(HttpHeaderValue.urlencodedUtf8.rawValue, forHTTPHeaderField: HttpHeaderValue.json.rawValue)
         }
     }
-    
+
 }
-
-
 
 private func query(_ parameters: [String: Any]) -> String {
     var components: [(String, String)] = []
-    
+
     for key in parameters.keys.sorted(by: <) {
         let value = parameters[key]!
         components += queryComponents(fromKey: key, value: value)
     }
-    
+
     return components.map { "\($0)=\($1)" }.joined(separator: "&")
 }
 
 public func queryComponents(fromKey key: String, value: Any) -> [(String, String)] {
     var components: [(String, String)] = []
-    
+
     if let dictionary = value as? [String: Any] {
         for (nestedKey, value) in dictionary {
             components += queryComponents(fromKey: "\(key)[\(nestedKey)]", value: value)
@@ -172,43 +167,41 @@ public func queryComponents(fromKey key: String, value: Any) -> [(String, String
     } else {
         components.append((escape(key), escape("\(value)")))
     }
-    
+
     return components
 }
 
 public func escape(_ string: String) -> String {
     let generalDelimitersToEncode = ":#[]@" // does not include "?" or "/" due to RFC 3986 - Section 3.4
     let subDelimitersToEncode = "!$&'()*+,;="
-    
+
     var allowedCharacterSet = CharacterSet.urlQueryAllowed
     allowedCharacterSet.remove(charactersIn: "\(generalDelimitersToEncode)\(subDelimitersToEncode)")
-    
+
     var escaped = ""
-    
+
     if #available(iOS 8.3, *) {
         escaped = string.addingPercentEncoding(withAllowedCharacters: allowedCharacterSet) ?? string
     } else {
         let batchSize = 50
         var index = string.startIndex
-        
+
         while index != string.endIndex {
             let startIndex = index
             let endIndex = string.index(index, offsetBy: batchSize, limitedBy: string.endIndex) ?? string.endIndex
             let range = startIndex..<endIndex
-            
+
             let substring = string.substring(with: range)
-            
+
             escaped += substring.addingPercentEncoding(withAllowedCharacters: allowedCharacterSet) ?? substring
-            
+
             index = endIndex
         }
     }
-    
+
     return escaped
 }
 
 extension NSNumber {
     fileprivate var isBool: Bool { return CFBooleanGetTypeID() == CFGetTypeID(self) }
 }
-
-

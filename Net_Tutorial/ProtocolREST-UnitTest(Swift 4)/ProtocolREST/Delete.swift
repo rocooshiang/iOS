@@ -14,10 +14,10 @@ struct DeleteRequestModel {
   let lastname: String
 }
 
-struct Delete{
+struct Delete {
   let firstname: String
   let lastname: String
-  
+
   init?(data: Data) {
     let json = JSON(data)
     let firstname = json["json"]["firstname"].stringValue
@@ -25,7 +25,7 @@ struct Delete{
     self.firstname = firstname
     self.lastname = lastname
   }
-  
+
 }
 
 extension Delete: Decodable {

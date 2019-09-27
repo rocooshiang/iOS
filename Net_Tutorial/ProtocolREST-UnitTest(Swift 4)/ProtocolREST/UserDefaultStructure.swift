@@ -14,7 +14,7 @@ enum TemperatureNotation: Int {
 }
 
 extension UserDefaults {
-  
+
   //    /*** UserDefault store enum ***/
   //
   //    // Store Temperature Notation
@@ -22,27 +22,26 @@ extension UserDefaults {
   //
   //    // Fetch Temperature Notation
   //    let type = UserDefaults.temperatureNotation
-  
-  
+
   struct Keys {
-    
+
     // MARK: - Constants
-    
+
     static let temperatureNotation = "temperatureNotation"
-    
+
   }
-  
+
   // MARK: - Temperature Notation
-  
+
   class var temperatureNotation: TemperatureNotation {
     let storedValue = UserDefaults.standard.integer(forKey: UserDefaults.Keys.temperatureNotation)
     return TemperatureNotation(rawValue: storedValue) ?? TemperatureNotation.fahrenheit
   }
-  
+
   class func set(temperatureNotation: TemperatureNotation) {
     UserDefaults.standard.set(temperatureNotation.rawValue, forKey: UserDefaults.Keys.temperatureNotation)
   }
-  
+
 }
 
 func set(temperatureNotation: TemperatureNotation) {
@@ -53,4 +52,3 @@ var temperatureNotation: TemperatureNotation {
   let storedValue = UserDefaults.standard.integer(forKey: UserDefaults.Keys.temperatureNotation)
   return TemperatureNotation(rawValue: storedValue) ?? TemperatureNotation.fahrenheit
 }
-
