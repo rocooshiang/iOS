@@ -1,0 +1,8 @@
+platform :ios, '10.0'
+
+target 'TableViewMVVM' do
+  use_frameworks!
+
+  pod 'SDWebImage', '~> 4.0'
+  pod 'iOSCoreLibrary', :git => 'ssh://git@git.dunqian.tw:30001/itrd/ios-core-library.git', :branch => 'master', :submodules => true
+end
