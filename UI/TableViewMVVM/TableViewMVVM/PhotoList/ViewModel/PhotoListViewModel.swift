@@ -22,7 +22,6 @@ class PhotoListViewModel {
 
     private var photos = [Photo]()
 
-
     private var cellModels: [PhotoListCellModel] = [PhotoListCellModel]() {
         didSet {
             self.reloadTableView?()
@@ -50,7 +49,9 @@ class PhotoListViewModel {
         apiService.fetchPopularPhoto { (_, photos, error) in
             self.isLoading = false
             if let error = error {
-                self.alertMessage = error.rawValue
+                DispatchQueue.main.async {
+                    self.alertMessage = error.rawValue
+                }
             } else {
                 self.processFetchPhoto(photos: photos)
             }
@@ -84,8 +85,8 @@ class PhotoListViewModel {
 
         return PhotoListCellModel(titleText: photo.name,
                                   descText: desc,
-                                  imageUrl: photo.image_url,
-                                  dateText: dateFormatter.string(from: photo.created_at))
+                                  imageUrl: photo.imageUrl,
+                                  dateText: dateFormatter.string(from: photo.createdAt))
     }
 
     func getCellModel(at indexPath: IndexPath) -> PhotoListCellModel {
@@ -94,7 +95,7 @@ class PhotoListViewModel {
 
     func userPressed( at indexPath: IndexPath ) {
         let photo = self.photos[indexPath.row]
-        if photo.for_sale {
+        if photo.forSale {
             self.isAllowSegue = true
             self.selectedPhoto = photo
         } else {

@@ -25,18 +25,18 @@ class PhotoListController: UIViewController {
         initViewModel()
     }
 
-    func initTableView(){
+    func initTableView() {
         self.navigationItem.title = "Popular"
         tableView.delegate = self
         tableView.dataSource = self
         tableView.estimatedRowHeight = 150
-        tableView.rowHeight = UITableView.automaticDimension
+        tableView.rowHeight =  UITableView.automaticDimension
     }
 
-    func initViewModel(){
+    func initViewModel() {
         viewModel.showAlert = { [weak self] () in
             DispatchQueue.main.async {
-                if let message = self?.viewModel.alertMessage{
+                if let message = self?.viewModel.alertMessage {
                     self?.present(alertControllerBuilder(title: "Alert", message: message, firstButtonTitle: "OK", secondButtonTitle: nil) { (_, _) in
 
                     }, animated: true, completion: nil)
@@ -52,7 +52,7 @@ class PhotoListController: UIViewController {
                     UIView.animate(withDuration: 0.2, animations: {
                         self?.tableView.alpha = 0.0
                     })
-                }else {
+                } else {
                     self?.activityIndicator.stopAnimating()
                     UIView.animate(withDuration: 0.2, animations: {
                         self?.tableView.alpha = 1.0
@@ -67,15 +67,13 @@ class PhotoListController: UIViewController {
             }
         }
 
-         viewModel.initFetch()
+        viewModel.initFetch()
     }
 
 }
 
-
-
 // MARK: - TableviewDelegate
-extension PhotoListController: UITableViewDelegate{
+extension PhotoListController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
@@ -83,9 +81,9 @@ extension PhotoListController: UITableViewDelegate{
 
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         self.viewModel.userPressed(at: indexPath)
-        if viewModel.isAllowSegue{
+        if viewModel.isAllowSegue {
             return indexPath
-        }else{
+        } else {
             return nil
         }
     }
@@ -97,7 +95,7 @@ extension PhotoListController: UITableViewDelegate{
 }
 
 // MARK: - UITableViewDataSource
-extension PhotoListController: UITableViewDataSource{
+extension PhotoListController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfCells
@@ -114,13 +112,9 @@ extension PhotoListController: UITableViewDataSource{
         return cell
     }
 
-
 }
-
 
 // MARK: - Cell
-extension PhotoListController{
-
+extension PhotoListController {
 
 }
-

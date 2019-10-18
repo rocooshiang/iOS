@@ -10,7 +10,7 @@ import Foundation
 
 class Dynamic<T> {
 
-    var bind :(T) -> () = { _ in }
+    var bind :(T) -> Void = { _ in }
 
     var value :T? {
         didSet {
@@ -18,8 +18,8 @@ class Dynamic<T> {
         }
     }
 
-    init(_ v :T) {
-        value = v
+    init(_ newValue :T) {
+        value = newValue
     }
 
 }

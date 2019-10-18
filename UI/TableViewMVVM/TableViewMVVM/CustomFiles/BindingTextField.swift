@@ -11,9 +11,9 @@ import UIKit
 
 class BindingTextField : UITextField {
 
-    var textChanged :(String) -> () = { _ in }
+    var textChanged :(String) -> Void = { _ in }
 
-    func bind(callback :@escaping (String) -> ()) {
+    func bind(callback :@escaping (String) -> Void) {
 
         self.textChanged = callback
         self.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)

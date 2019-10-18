@@ -2,6 +2,7 @@ disabled_rules: # rule identifiers to exclude from running
   - colon
   - comma
   - control_statement
+  - unused_optional_binding
 opt_in_rules: # some rules are only opt-in
   - empty_count
   # Find all the available rules by running:
@@ -24,14 +25,14 @@ force_try:
   severity: warning # explicitly
 # rules that have both warning and error levels, can set just the warning level
 # implicitly
-line_length: 150
+line_length: 500
 # they can set both implicitly with an array
 type_body_length:
   - 300 # warning
   - 400 # error
 # or they can set both explicitly
 file_length:
-  warning: 500
+  warning: 800
   error: 1200
 # naming rules can set warnings/errors for min_length and max_length
 # additionally they can set excluded names
