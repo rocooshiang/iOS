@@ -59,11 +59,17 @@ class PhotoListViewModel {
     }
 
     private func processFetchPhoto(photos: [Photo]) {
+        print("count: \(photos.count)")
         self.photos = photos
         var vms = [PhotoListCellModel]()
         for photo in photos {
-            vms.append(createCellViewModel(photo: photo))
+            print("desc: \(photo.description ?? "no desc")")
+            let model = createCellViewModel(photo: photo)
+            print("model desc: \(model.descText)")
+            vms.append(model)
         }
+
+        self.cellModels = vms
     }
 
     func createCellViewModel( photo: Photo ) -> PhotoListCellModel {
@@ -78,7 +84,10 @@ class PhotoListViewModel {
             descTextContainer.append( description )
         }
 
-        let desc = descTextContainer.joined(separator: " - ")
+        var desc = " "
+        if let camera = photo.camera, camera.trimming() != "", let description = photo.description, description.trimming() != "" {
+            desc = descTextContainer.joined(separator: " - ")
+        }
 
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"

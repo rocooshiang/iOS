@@ -7,20 +7,28 @@
 //
 
 import UIKit
+import iOSCoreLibrary
 
 class PhotoListTableViewCell: UITableViewCell {
-    @IBOutlet weak var mainImageView: UIImageView!
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var descContainerHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var photo: UIImageView!
+    @IBOutlet weak var date: BasicUILabel!
+    @IBOutlet weak var photoDescription: BasicUILabel!
+    @IBOutlet weak var name: BasicUILabel!
     var photoListCellModel : PhotoListCellModel? {
         didSet {
-            nameLabel.text = photoListCellModel?.titleText
-            descriptionLabel.text = photoListCellModel?.descText
-            mainImageView?.sd_setImage(with: URL( string: photoListCellModel?.imageUrl ?? "" ), completed: nil)
-            dateLabel.text = photoListCellModel?.dateText
+            photo?.sd_setImage(with: URL(string: photoListCellModel?.imageUrl ?? ""), placeholderImage: defaultViewImage)
+            name.text = photoListCellModel?.titleText
+            photoDescription.text = photoListCellModel?.descText
+//            photoDescription.text = "photoListCellModel?.descText photoListCellModel?.descText photoListCellModel?.descText photoListCellModel?.descText photoListCellModel?.descText photoListCellModel?.descText photoListCellModel?.descText photoListCellModel?.descText"
+            date.text = photoListCellModel?.dateText
         }
+    }
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        name.textColor = .systemBlue
+        photoDescription.textColor = .systemBlue
+        date.textColor = .systemBlue
     }
 
 }

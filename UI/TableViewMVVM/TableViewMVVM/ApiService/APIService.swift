@@ -22,16 +22,18 @@ class APIService: APIServiceProtocol {
     func fetchPopularPhoto( complete: @escaping ( _ success: Bool, _ photos: [Photo], _ error: APIError? ) -> Void ) {
         print("fetch Popular photo")
         DispatchQueue.global().async {
-            sleep(3)
+            sleep(1)
             let path = Bundle.main.path(forResource: "content", ofType: "json")!
             do {
                 guard let data = try? Data(contentsOf: URL(fileURLWithPath: path)) else { return }
                 let decoder = JSONDecoder()
                 decoder.dateDecodingStrategy = .iso8601
+                print("31")
                 guard let photos = try? decoder.decode(Photos.self, from: data) else {
                     complete(false, [], .dataDecodeIssue)
                     return
                 }
+                print(photos)
                 complete(true, photos.photos, nil )
             }
         }

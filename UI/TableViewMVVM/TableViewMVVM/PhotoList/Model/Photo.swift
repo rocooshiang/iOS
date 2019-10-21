@@ -19,4 +19,14 @@ struct Photo: Codable {
     let imageUrl: String
     let forSale: Bool
     let camera: String?
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case description
+        case createdAt = "created_at"
+        case imageUrl = "image_url"
+        case forSale = "for_sale"
+        case camera
+    }
 }

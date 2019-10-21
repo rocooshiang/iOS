@@ -14,6 +14,7 @@
 		3F01B89E2355792F00597732 /* PhotoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F01B89D2355792F00597732 /* PhotoListViewController.swift */; };
 		3F01B8A2235593A300597732 /* BindingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F01B8A1235593A300597732 /* BindingTextField.swift */; };
 		3F01B8A4235593C800597732 /* DynamicT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F01B8A3235593C800597732 /* DynamicT.swift */; };
+		3F05B54D235D541D0054BAD7 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F05B54C235D541D0054BAD7 /* Extension.swift */; };
 		3FD6FAF82358427B00F4E324 /* content.json in Resources */ = {isa = PBXBuildFile; fileRef = 3FD6FAF62358427B00F4E324 /* content.json */; };
 		3FD6FAF92358427B00F4E324 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD6FAF72358427B00F4E324 /* APIService.swift */; };
 		3FD6FAFC2358430500F4E324 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD6FAFB2358430500F4E324 /* Photo.swift */; };
@@ -34,6 +35,7 @@
 		3F01B89D2355792F00597732 /* PhotoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListViewController.swift; sourceTree = "<group>"; };
 		3F01B8A1235593A300597732 /* BindingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingTextField.swift; sourceTree = "<group>"; };
 		3F01B8A3235593C800597732 /* DynamicT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicT.swift; sourceTree = "<group>"; };
+		3F05B54C235D541D0054BAD7 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		3FD6FAF62358427B00F4E324 /* content.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = content.json; sourceTree = "<group>"; };
 		3FD6FAF72358427B00F4E324 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		3FD6FAFB2358430500F4E324 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 			children = (
 				3F01B8A1235593A300597732 /* BindingTextField.swift */,
 				3F01B8A3235593C800597732 /* DynamicT.swift */,
+				3F05B54C235D541D0054BAD7 /* Extension.swift */,
 			);
 			path = CustomFiles;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				3FD6FB002358457900F4E324 /* PhotoListTableViewCell.swift in Sources */,
 				3FD6FAFC2358430500F4E324 /* Photo.swift in Sources */,
 				3F01B8A4235593C800597732 /* DynamicT.swift in Sources */,
+				3F05B54D235D541D0054BAD7 /* Extension.swift in Sources */,
 				3FD6FAF92358427B00F4E324 /* APIService.swift in Sources */,
 				3FD6FB02235845F300F4E324 /* PhotoListViewModel.swift in Sources */,
 				3F01B889235577AD00597732 /* AppDelegate.swift in Sources */,

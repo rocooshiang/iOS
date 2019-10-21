@@ -88,9 +88,6 @@ extension PhotoListController: UITableViewDelegate {
         }
     }
 
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150.0
-    }
 
 }
 
@@ -102,19 +99,21 @@ extension PhotoListController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "photoCellIdentifier", for: indexPath) as? PhotoListTableViewCell else {
-            fatalError("Cell not exists in storyboard")
-        }
 
-        let cellVM = viewModel.getCellModel( at: indexPath )
-        cell.photoListCellModel = cellVM
-
-        return cell
+        return photoListTableViewCell(indexPath: indexPath)
     }
 
 }
 
 // MARK: - Cell
 extension PhotoListController {
+    func photoListTableViewCell(indexPath: IndexPath) -> PhotoListTableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoListTableViewCell", for: indexPath) as? PhotoListTableViewCell else {
+            return PhotoListTableViewCell()
+        }
 
+        let cellVM = viewModel.getCellModel( at: indexPath )
+        cell.photoListCellModel = cellVM
+        return cell
+    }
 }
