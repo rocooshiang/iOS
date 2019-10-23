@@ -19,16 +19,16 @@ class PhotoListTableViewCell: UITableViewCell {
             photo?.sd_setImage(with: URL(string: photoListCellModel?.imageUrl ?? ""), placeholderImage: defaultViewImage)
             name.text = photoListCellModel?.titleText
             photoDescription.text = photoListCellModel?.descText
-//            photoDescription.text = "photoListCellModel?.descText photoListCellModel?.descText photoListCellModel?.descText photoListCellModel?.descText photoListCellModel?.descText photoListCellModel?.descText photoListCellModel?.descText photoListCellModel?.descText"
+            photoDescription.text = "photoListCellModel?.descText photoListCellModel?.descText photoListCellModel?.descText"
             date.text = photoListCellModel?.dateText
         }
     }
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        name.textColor = .systemBlue
-        photoDescription.textColor = .systemBlue
-        date.textColor = .systemBlue
+        name.textColor = .black
+        photoDescription.textColor = .black
+        date.textColor = .black
     }
 
 }
