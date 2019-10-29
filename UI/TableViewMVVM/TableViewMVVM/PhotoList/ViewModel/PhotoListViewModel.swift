@@ -9,6 +9,7 @@
 import Foundation
 
 class PhotoListViewModel {
+
     let apiService: APIServiceProtocol
     var isAllowSegue: Bool = false
     var selectedPhoto: Photo?
@@ -64,7 +65,7 @@ class PhotoListViewModel {
         var vms = [PhotoListCellModel]()
         for photo in photos {
             print("desc: \(photo.description ?? "no desc")")
-            let model = createCellViewModel(photo: photo)
+            let model = createCellModel(photo: photo)
             print("model desc: \(model.descText)")
             vms.append(model)
         }
@@ -72,7 +73,7 @@ class PhotoListViewModel {
         self.cellModels = vms
     }
 
-    func createCellViewModel( photo: Photo ) -> PhotoListCellModel {
+    func createCellModel( photo: Photo ) -> PhotoListCellModel {
 
         //Wrap a description
         var descTextContainer: [String] = [String]()
@@ -112,7 +113,6 @@ class PhotoListViewModel {
             self.selectedPhoto = nil
             self.alertMessage = "This item is not for sale"
         }
-
     }
 
 }

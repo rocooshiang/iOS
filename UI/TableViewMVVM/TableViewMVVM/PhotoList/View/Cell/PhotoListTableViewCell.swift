@@ -10,11 +10,13 @@ import UIKit
 import iOSCoreLibrary
 
 class PhotoListTableViewCell: UITableViewCell {
+
     @IBOutlet weak var photo: UIImageView!
     @IBOutlet weak var date: BasicUILabel!
     @IBOutlet weak var photoDescription: BasicUILabel!
     @IBOutlet weak var name: BasicUILabel!
-    var photoListCellModel : PhotoListCellModel? {
+
+    var photoListCellModel: PhotoListCellModel? {
         didSet {
             photo?.sd_setImage(with: URL(string: photoListCellModel?.imageUrl ?? ""), placeholderImage: defaultViewImage)
             name.text = photoListCellModel?.titleText

@@ -88,7 +88,6 @@ extension PhotoListController: UITableViewDelegate {
         }
     }
 
-
 }
 
 // MARK: - UITableViewDataSource
@@ -112,7 +111,7 @@ extension PhotoListController {
             return PhotoListTableViewCell()
         }
 
-        let cellVM = viewModel.getCellModel( at: indexPath )
+        let cellVM = viewModel.getCellModel(at: indexPath)
         cell.photoListCellModel = cellVM
         return cell
     }
