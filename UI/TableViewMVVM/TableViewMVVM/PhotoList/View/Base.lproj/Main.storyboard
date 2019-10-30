@@ -32,14 +32,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="KNS-bv-5Ff">
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="KNS-bv-5Ff">
                                 <rect key="frame" x="197" y="438" width="20" height="20"/>
                             </activityIndicatorView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="150" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FaP-2V-7ac">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PhotoListTableViewCell" rowHeight="150" id="pbN-Y1-bSa" customClass="PhotoListTableViewCell" customModule="TableViewMVVM" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PhotoCell" rowHeight="150" id="pbN-Y1-bSa" customClass="PhotoCell" customModule="TableViewMVVM" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pbN-Y1-bSa" id="BmW-Lx-Wq8">
@@ -53,7 +53,7 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
                                                         </imageView>
                                                     </subviews>
-                                                    <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="e4o-t5-XkY" secondAttribute="trailing" id="75j-qZ-v0U"/>
                                                         <constraint firstItem="e4o-t5-XkY" firstAttribute="top" secondItem="Jzc-E1-d4y" secondAttribute="top" id="9Cw-IE-Kw6"/>
@@ -99,10 +99,10 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="date" destination="Fcn-k3-KqJ" id="P2w-mR-2TT"/>
-                                            <outlet property="name" destination="rGY-En-fgc" id="R6d-pW-AQT"/>
-                                            <outlet property="photo" destination="e4o-t5-XkY" id="iA3-y5-Ugy"/>
-                                            <outlet property="photoDescription" destination="FDj-QE-BRR" id="HbY-F2-GYX"/>
+                                            <outlet property="date" destination="Fcn-k3-KqJ" id="veF-2f-qx9"/>
+                                            <outlet property="desc" destination="FDj-QE-BRR" id="ZaI-cj-lGP"/>
+                                            <outlet property="photo" destination="e4o-t5-XkY" id="J4S-j4-3KQ"/>
+                                            <outlet property="title" destination="rGY-En-fgc" id="nZz-aJ-LGu"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

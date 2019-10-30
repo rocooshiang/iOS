@@ -8,14 +8,20 @@
 
 import Foundation
 
+struct AlertContent {
+    let title: String
+    let message: String
+}
+
 class PhotoListViewModel {
 
     let apiService: APIServiceProtocol
     var isAllowSegue: Bool = false
     var selectedPhoto: Photo?
-    var reloadTableView: (() -> Void)?
-    var showAlert: (() -> Void)?
-    var updateLoadingStatus: (() -> Void)?
+//    var showAlert: (() -> Void)?
+    let cellViewModels = Observable<[PhotoCellViewModel]>(value: [])
+    var isLoading = Observable<Bool>(value: false)
+    var showAlert = Observable<AlertContent>(value: AlertContent(title: "", message: ""))
 
     init(apiService: APIServiceProtocol = APIService()) {
         self.apiService = apiService
@@ -23,57 +29,31 @@ class PhotoListViewModel {
 
     private var photos = [Photo]()
 
-    private var cellModels: [PhotoListCellModel] = [PhotoListCellModel]() {
-        didSet {
-            self.reloadTableView?()
-        }
-    }
-
-    var isLoading: Bool = false {
-        didSet {
-            self.updateLoadingStatus?()
-        }
-    }
-
-    var alertMessage: String? {
-        didSet {
-            self.showAlert?()
-        }
-    }
-
-    var numberOfCells: Int {
-        return cellModels.count
-    }
-
-    func initFetch() {
-        self.isLoading = true
+    func startFetching() {
+        self.isLoading.value = true
         apiService.fetchPopularPhoto { (_, photos, error) in
-            self.isLoading = false
-            if let error = error {
-                DispatchQueue.main.async {
-                    self.alertMessage = error.rawValue
-                }
+            if let error = error, true {
+                self.isLoading.value = false
+                self.showAlert.value = AlertContent(title: "Alert", message: error.rawValue)
             } else {
                 self.processFetchPhoto(photos: photos)
+                self.isLoading.value = false
             }
         }
     }
 
     private func processFetchPhoto(photos: [Photo]) {
-        print("count: \(photos.count)")
         self.photos = photos
-        var vms = [PhotoListCellModel]()
+        var vms = [PhotoCellViewModel]()
         for photo in photos {
-            print("desc: \(photo.description ?? "no desc")")
-            let model = createCellModel(photo: photo)
-            print("model desc: \(model.descText)")
+            let model = createCellViewModel(photo: photo)
             vms.append(model)
         }
 
-        self.cellModels = vms
+        self.cellViewModels.value = vms
     }
 
-    func createCellModel( photo: Photo ) -> PhotoListCellModel {
+    func createCellViewModel(photo: Photo ) -> PhotoCellViewModel {
 
         //Wrap a description
         var descTextContainer: [String] = [String]()
@@ -93,14 +73,7 @@ class PhotoListViewModel {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
 
-        return PhotoListCellModel(titleText: photo.name,
-                                  descText: desc,
-                                  imageUrl: photo.imageUrl,
-                                  dateText: dateFormatter.string(from: photo.createdAt))
-    }
-
-    func getCellModel(at indexPath: IndexPath) -> PhotoListCellModel {
-        return cellModels[indexPath.row]
+        return PhotoCellViewModel(title: photo.name, date: dateFormatter.string(from: photo.createdAt), desc: desc, photoUrl: photo.imageUrl)
     }
 
     func userPressed( at indexPath: IndexPath ) {
@@ -111,7 +84,16 @@ class PhotoListViewModel {
         } else {
             self.isAllowSegue = false
             self.selectedPhoto = nil
-            self.alertMessage = "This item is not for sale"
+//            self.alertMessage = "This item is not for sale"
+        }
+    }
+
+    func cellIdentifier(for viewModel: RowViewModel) -> String {
+        switch viewModel {
+        case is PhotoCellViewModel:
+            return "PhotoCell"
+        default:
+            fatalError("Unexpected view model type: \(viewModel)")
         }
     }
 

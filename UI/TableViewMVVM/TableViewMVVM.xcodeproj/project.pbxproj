@@ -15,12 +15,15 @@
 		3F01B8A2235593A300597732 /* BindingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F01B8A1235593A300597732 /* BindingTextField.swift */; };
 		3F01B8A4235593C800597732 /* DynamicT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F01B8A3235593C800597732 /* DynamicT.swift */; };
 		3F05B54D235D541D0054BAD7 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F05B54C235D541D0054BAD7 /* Extension.swift */; };
+		3F24BF912368434A00AA0A60 /* PhotoCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F24BF902368434A00AA0A60 /* PhotoCellViewModel.swift */; };
+		3F24BF942369348000AA0A60 /* RowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F24BF932369348000AA0A60 /* RowViewModel.swift */; };
+		3F24BF96236934AD00AA0A60 /* CellConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F24BF95236934AD00AA0A60 /* CellConfigurable.swift */; };
+		3F24BF982369374700AA0A60 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F24BF972369374700AA0A60 /* Observable.swift */; };
 		3FD6FAF82358427B00F4E324 /* content.json in Resources */ = {isa = PBXBuildFile; fileRef = 3FD6FAF62358427B00F4E324 /* content.json */; };
 		3FD6FAF92358427B00F4E324 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD6FAF72358427B00F4E324 /* APIService.swift */; };
 		3FD6FAFC2358430500F4E324 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD6FAFB2358430500F4E324 /* Photo.swift */; };
-		3FD6FB002358457900F4E324 /* PhotoListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD6FAFF2358457900F4E324 /* PhotoListTableViewCell.swift */; };
+		3FD6FB002358457900F4E324 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD6FAFF2358457900F4E324 /* PhotoCell.swift */; };
 		3FD6FB02235845F300F4E324 /* PhotoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD6FB01235845F300F4E324 /* PhotoListViewModel.swift */; };
-		3FD6FB0823586A2D00F4E324 /* PhotoListCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD6FB0723586A2D00F4E324 /* PhotoListCellModel.swift */; };
 		94B30042AFDA1FE8C43659C7 /* Pods_TableViewMVVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 581AC3ECA776F625EABEF299 /* Pods_TableViewMVVM.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,12 +39,15 @@
 		3F01B8A1235593A300597732 /* BindingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingTextField.swift; sourceTree = "<group>"; };
 		3F01B8A3235593C800597732 /* DynamicT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicT.swift; sourceTree = "<group>"; };
 		3F05B54C235D541D0054BAD7 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		3F24BF902368434A00AA0A60 /* PhotoCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCellViewModel.swift; sourceTree = "<group>"; };
+		3F24BF932369348000AA0A60 /* RowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowViewModel.swift; sourceTree = "<group>"; };
+		3F24BF95236934AD00AA0A60 /* CellConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellConfigurable.swift; sourceTree = "<group>"; };
+		3F24BF972369374700AA0A60 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		3FD6FAF62358427B00F4E324 /* content.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = content.json; sourceTree = "<group>"; };
 		3FD6FAF72358427B00F4E324 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		3FD6FAFB2358430500F4E324 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
-		3FD6FAFF2358457900F4E324 /* PhotoListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListTableViewCell.swift; sourceTree = "<group>"; };
+		3FD6FAFF2358457900F4E324 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		3FD6FB01235845F300F4E324 /* PhotoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListViewModel.swift; sourceTree = "<group>"; };
-		3FD6FB0723586A2D00F4E324 /* PhotoListCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListCellModel.swift; sourceTree = "<group>"; };
 		581AC3ECA776F625EABEF299 /* Pods_TableViewMVVM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TableViewMVVM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C480DEBBCC57FF9F084A528F /* Pods-TableViewMVVM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TableViewMVVM.release.xcconfig"; path = "Target Support Files/Pods-TableViewMVVM/Pods-TableViewMVVM.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -80,9 +86,8 @@
 			isa = PBXGroup;
 			children = (
 				3FD6FB032358463400F4E324 /* PhotoList */,
-				3FD6FAFA2358428200F4E324 /* ApiService */,
+				3F24BF9C23695C5F00AA0A60 /* Helper */,
 				3F01B89C2355783D00597732 /* DefaultFiles */,
-				3F01B8A5235593E000597732 /* CustomFiles */,
 			);
 			path = TableViewMVVM;
 			sourceTree = "<group>";
@@ -101,6 +106,9 @@
 		3F01B8A5235593E000597732 /* CustomFiles */ = {
 			isa = PBXGroup;
 			children = (
+				3F24BF972369374700AA0A60 /* Observable.swift */,
+				3F24BF932369348000AA0A60 /* RowViewModel.swift */,
+				3F24BF95236934AD00AA0A60 /* CellConfigurable.swift */,
 				3F01B8A1235593A300597732 /* BindingTextField.swift */,
 				3F01B8A3235593C800597732 /* DynamicT.swift */,
 				3F05B54C235D541D0054BAD7 /* Extension.swift */,
@@ -112,9 +120,24 @@
 			isa = PBXGroup;
 			children = (
 				3FD6FAFB2358430500F4E324 /* Photo.swift */,
-				3FD6FB0723586A2D00F4E324 /* PhotoListCellModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		3F24BF992369382000AA0A60 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		3F24BF9C23695C5F00AA0A60 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				3FD6FAFA2358428200F4E324 /* ApiService */,
+				3F01B8A5235593E000597732 /* CustomFiles */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		3FD6FAFA2358428200F4E324 /* ApiService */ = {
@@ -139,6 +162,7 @@
 		3FD6FAFE235843F100F4E324 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				3F24BF902368434A00AA0A60 /* PhotoCellViewModel.swift */,
 				3FD6FB01235845F300F4E324 /* PhotoListViewModel.swift */,
 			);
 			path = ViewModel;
@@ -147,6 +171,7 @@
 		3FD6FB032358463400F4E324 /* PhotoList */ = {
 			isa = PBXGroup;
 			children = (
+				3F24BF992369382000AA0A60 /* Controller */,
 				3FD6FAFE235843F100F4E324 /* ViewModel */,
 				3FD6FAFD235843B000F4E324 /* View */,
 				3F01B8A823559FD700597732 /* Model */,
@@ -157,7 +182,7 @@
 		3FEE77C72355B04800FF0428 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				3FD6FAFF2358457900F4E324 /* PhotoListTableViewCell.swift */,
+				3FD6FAFF2358457900F4E324 /* PhotoCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -312,11 +337,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3FD6FB0823586A2D00F4E324 /* PhotoListCellModel.swift in Sources */,
-				3FD6FB002358457900F4E324 /* PhotoListTableViewCell.swift in Sources */,
+				3F24BF982369374700AA0A60 /* Observable.swift in Sources */,
+				3FD6FB002358457900F4E324 /* PhotoCell.swift in Sources */,
+				3F24BF96236934AD00AA0A60 /* CellConfigurable.swift in Sources */,
 				3FD6FAFC2358430500F4E324 /* Photo.swift in Sources */,
 				3F01B8A4235593C800597732 /* DynamicT.swift in Sources */,
 				3F05B54D235D541D0054BAD7 /* Extension.swift in Sources */,
+				3F24BF912368434A00AA0A60 /* PhotoCellViewModel.swift in Sources */,
+				3F24BF942369348000AA0A60 /* RowViewModel.swift in Sources */,
 				3FD6FAF92358427B00F4E324 /* APIService.swift in Sources */,
 				3FD6FB02235845F300F4E324 /* PhotoListViewModel.swift in Sources */,
 				3F01B889235577AD00597732 /* AppDelegate.swift in Sources */,

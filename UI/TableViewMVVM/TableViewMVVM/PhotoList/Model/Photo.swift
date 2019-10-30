@@ -1,9 +1,9 @@
 //
-//  Event.swift
-//  MVVMPlayground
+//  Photo.swift
+//  TableViewMVVM
 //
-//  Created by Neo on 01/10/2017.
-//  Copyright © 2017 ST.Huang. All rights reserved.
+//  Created by Rocoo on 2019/10/15.
+//  Copyright © 2019 Rocoo. All rights reserved.
 //
 
 import Foundation
