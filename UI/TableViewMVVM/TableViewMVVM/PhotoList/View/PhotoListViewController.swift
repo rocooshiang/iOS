@@ -34,18 +34,8 @@ class PhotoListController: UIViewController {
     }
 
     func initViewModel() {
-//        viewModel.showAlert.addObserver { [weak self] (error) in
-//            DispatchQueue.main.async {
-//                print("title: \(error.title), message: \(error.message)")
-//                    self?.present(alertControllerBuilder(title: error.title, message: error.message, firstButtonTitle: "OK", secondButtonTitle: nil) { (_, _) in
-//
-//                    }, animated: true, completion: nil)
-//                }
-//        }
-
         viewModel.showAlert.addObserver(fireNow: true) { [weak self] (alertContent) in
             DispatchQueue.main.async {
-                print("message: \(alertContent.message)")
                 if alertContent.message.isEmpty { return }
                 self?.present(alertControllerBuilder(title: alertContent.title, message: alertContent.message, firstButtonTitle: "OK", secondButtonTitle: nil) { (_, _) in
 
