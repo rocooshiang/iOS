@@ -18,8 +18,7 @@ class PhotoListViewModel {
     let apiService: APIServiceProtocol
     var isAllowSegue: Bool = false
     var selectedPhoto: Photo?
-//    var showAlert: (() -> Void)?
-    let cellViewModels = Observable<[PhotoCellViewModel]>(value: [])
+    let cellViewModels = Observable<[RowViewModel]>(value: [])
     var isLoading = Observable<Bool>(value: false)
     var showAlert = Observable<AlertContent>(value: AlertContent(title: "", message: ""))
 
@@ -53,7 +52,7 @@ class PhotoListViewModel {
         self.cellViewModels.value = vms
     }
 
-    func createCellViewModel(photo: Photo ) -> PhotoCellViewModel {
+    func createCellViewModel(photo: Photo) -> PhotoCellViewModel {
 
         //Wrap a description
         var descTextContainer: [String] = [String]()
@@ -73,7 +72,9 @@ class PhotoListViewModel {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
 
-        return PhotoCellViewModel(title: photo.name, date: dateFormatter.string(from: photo.createdAt), desc: desc, photoUrl: photo.imageUrl)
+        let photoCellViewModel = PhotoCellViewModel(title: photo.name, date: dateFormatter.string(from: photo.createdAt), desc: desc, photoUrl: photo.imageUrl)
+
+        return photoCellViewModel
     }
 
     func userPressed( at indexPath: IndexPath ) {

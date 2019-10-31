@@ -22,7 +22,7 @@ class PhotoListController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initTableView()
-        initViewModel()
+        initBinding()
     }
 
     func initTableView() {
@@ -33,8 +33,8 @@ class PhotoListController: UIViewController {
         tableView.rowHeight =  UITableView.automaticDimension
     }
 
-    func initViewModel() {
-        viewModel.showAlert.addObserver(fireNow: true) { [weak self] (alertContent) in
+    func initBinding() {
+        viewModel.showAlert.addObserver { [weak self] (alertContent) in
             DispatchQueue.main.async {
                 if alertContent.message.isEmpty { return }
                 self?.present(alertControllerBuilder(title: alertContent.title, message: alertContent.message, firstButtonTitle: "OK", secondButtonTitle: nil) { (_, _) in
@@ -74,15 +74,8 @@ class PhotoListController: UIViewController {
 extension PhotoListController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-    }
-
-    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        self.viewModel.userPressed(at: indexPath)
-        if viewModel.isAllowSegue {
-            return indexPath
-        } else {
-            return nil
+        if let rowViewModel = viewModel.cellViewModels.value[indexPath.row] as? ViewModelPressible {
+            rowViewModel.cellPressed?()
         }
     }
 }
@@ -91,7 +84,6 @@ extension PhotoListController: UITableViewDelegate {
 extension PhotoListController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("viewModel.cellViewModels.value.count: \(viewModel.cellViewModels.value.count)")
         return viewModel.cellViewModels.value.count
     }
 
