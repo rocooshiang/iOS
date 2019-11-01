@@ -16,8 +16,6 @@ struct AlertContent {
 class PhotoListViewModel {
 
     let apiService: APIServiceProtocol
-    var isAllowSegue: Bool = false
-    var selectedPhoto: Photo?
     let cellViewModels = Observable<[RowViewModel]>(value: [])
     var isLoading = Observable<Bool>(value: false)
     var showAlert = Observable<AlertContent>(value: AlertContent(title: "", message: ""))
@@ -71,22 +69,9 @@ class PhotoListViewModel {
 
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-
-        let photoCellViewModel = PhotoCellViewModel(title: photo.name, date: dateFormatter.string(from: photo.createdAt), desc: desc, photoUrl: photo.imageUrl)
-
+        let date = dateFormatter.string(from: photo.createdAt)
+        let photoCellViewModel = PhotoCellViewModel(title: photo.name, date: date, desc: desc, photoUrl: photo.imageUrl)
         return photoCellViewModel
-    }
-
-    func userPressed( at indexPath: IndexPath ) {
-        let photo = self.photos[indexPath.row]
-        if photo.forSale {
-            self.isAllowSegue = true
-            self.selectedPhoto = photo
-        } else {
-            self.isAllowSegue = false
-            self.selectedPhoto = nil
-//            self.alertMessage = "This item is not for sale"
-        }
     }
 
     func cellIdentifier(for viewModel: RowViewModel) -> String {

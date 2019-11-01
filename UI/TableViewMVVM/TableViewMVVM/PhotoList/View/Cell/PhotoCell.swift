@@ -34,6 +34,7 @@ class PhotoCell: UITableViewCell {
 
 extension PhotoCell: CellConfigurable {
     func setup(viewModel: RowViewModel) {
+        photo.translatesAutoresizingMaskIntoConstraints = false
         guard let viewModel = viewModel as? PhotoCellViewModel else { return }
         self.viewModel = viewModel
         self.title.text = viewModel.title
@@ -43,4 +44,5 @@ extension PhotoCell: CellConfigurable {
             print("title: \(viewModel.title)")
         }
     }
+
 }
