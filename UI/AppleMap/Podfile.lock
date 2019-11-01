@@ -22,7 +22,7 @@ DEPENDENCIES:
   - RxSwiftExt
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - Differentiator
     - RxCocoa
     - RxDataSources
@@ -38,4 +38,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 0073d1493217cbbe60c829201ee2a8dee02279fc
 
-COCOAPODS: 1.7.5
+COCOAPODS: 1.8.4

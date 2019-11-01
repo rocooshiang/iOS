@@ -20,7 +20,7 @@ class ArtworkMarkerView: MKMarkerAnnotationView {
             // 2
             markerTintColor = artwork.markerTintColor
             //            glyphText = String(artwork.discipline.first!)
-            
+
             if let imageName = artwork.imageName {
                 glyphImage = UIImage(named: imageName)
             } else {
@@ -40,13 +40,13 @@ class ArtworkView: MKAnnotationView {
                                                     size: CGSize(width: 30, height: 30)))
             mapsButton.setBackgroundImage(UIImage(named: "Maps-icon"), for: UIControl.State())
             rightCalloutAccessoryView = mapsButton
-            
+
             if let imageName = artwork.imageName {
                 image = UIImage(named: imageName)
             } else {
                 image = nil
             }
-            
+
             let detailLabel = UILabel()
             detailLabel.numberOfLines = 0
             detailLabel.font = detailLabel.font.withSize(16)
