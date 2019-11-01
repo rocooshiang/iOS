@@ -9,78 +9,68 @@
 import Foundation
 import MapKit
 
-class LocationService: NSObject, CLLocationManagerDelegate{
-    
+class LocationService: NSObject, CLLocationManagerDelegate {
+
     var locationManager = CLLocationManager()
-    
-    override init(){
+
+    override init() {
         super.init()
     }
-    
-    public typealias locationCallBack = (CLLocation) -> ()
-    var callback: locationCallBack?
-    
-    
-    func currentlyLocation(callback: @escaping locationCallBack){
+
+    public typealias LocationCallBack = (CLLocation) -> Void
+    var callback: LocationCallBack?
+
+    func currentlyLocation(callback: @escaping LocationCallBack) {
         self.callback = callback
         checkLocationServices()
     }
-    
-    
-    
+
 }
 
+// MARK: - about location
+extension LocationService {
 
-// mark: - about location
-extension LocationService{
-    
-    func checkLocationServices(){
-        if CLLocationManager.locationServicesEnabled(){
+    func checkLocationServices() {
+        if CLLocationManager.locationServicesEnabled() {
             setupLocationManager()
             checkLocationAuthorization()
         } else {
             print("PLease turn on location services or GPS")
         }
     }
-    
-    func setupLocationManager(){
+
+    func setupLocationManager() {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
-    
-    func checkLocationAuthorization(){
-        
+
+    func checkLocationAuthorization() {
+
         switch CLLocationManager.authorizationStatus() {
         case .authorizedWhenInUse:
             // Do map stuff
             locationManager.startUpdatingLocation()
-            break
         case .denied:
             // Show alert to instructing them how to turn on permissions
             break
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()
-            break
         case .restricted:
             // Show an alert letting them know what's up
             break
         case .authorizedAlways:
             break
         }
-        
     }
-    
-    
+
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        guard let location = locations.last else{ return }
+
+        guard let location = locations.last else { return }
         self.callback?(location)
     }
-    
+
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         checkLocationAuthorization()
     }
-    
+
 }
-
-

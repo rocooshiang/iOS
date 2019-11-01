@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -144,6 +144,7 @@
 				3FA315A52214F92700CC29C9 /* Frameworks */,
 				3FA315A62214F92700CC29C9 /* Resources */,
 				045CFAEC9F07562A98C232B8 /* [CP] Embed Pods Frameworks */,
+				3FA9D5B5236BE4D800FDCAA2 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -217,6 +218,23 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AppleMap/Pods-AppleMap-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		3FA9D5B5236BE4D800FDCAA2 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo\"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		413F470F7A70B31102C139A9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
