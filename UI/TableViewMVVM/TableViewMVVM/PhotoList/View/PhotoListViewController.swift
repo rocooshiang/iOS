@@ -22,7 +22,7 @@ class PhotoListController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initTableView()
-        initViewModel()
+        initBinding()
     }
 
     func initTableView() {
@@ -33,20 +33,18 @@ class PhotoListController: UIViewController {
         tableView.rowHeight =  UITableView.automaticDimension
     }
 
-    func initViewModel() {
-        viewModel.showAlert = { [weak self] () in
+    func initBinding() {
+        viewModel.showAlert.addObserver { [weak self] (alertContent) in
             DispatchQueue.main.async {
-                if let message = self?.viewModel.alertMessage {
-                    self?.present(alertControllerBuilder(title: "Alert", message: message, firstButtonTitle: "OK", secondButtonTitle: nil) { (_, _) in
+                if alertContent.message.isEmpty { return }
+                self?.present(alertControllerBuilder(title: alertContent.title, message: alertContent.message, firstButtonTitle: "OK", secondButtonTitle: nil) { (_, _) in
 
-                    }, animated: true, completion: nil)
-                }
+                }, animated: true, completion: nil)
             }
         }
 
-        viewModel.updateLoadingStatus = { [weak self] () in
+        viewModel.isLoading.addObserver { [weak self] (isLoading) in
             DispatchQueue.main.async {
-                let isLoading = self?.viewModel.isLoading ?? false
                 if isLoading {
                     self?.activityIndicator.startAnimating()
                     UIView.animate(withDuration: 0.2, animations: {
@@ -61,13 +59,13 @@ class PhotoListController: UIViewController {
             }
         }
 
-        viewModel.reloadTableView = { [weak self] () in
+        viewModel.cellViewModels.addObserver(fireNow: false) { [weak self] _ in
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
             }
         }
 
-        viewModel.initFetch()
+        viewModel.startFetching()
     }
 
 }
@@ -76,43 +74,27 @@ class PhotoListController: UIViewController {
 extension PhotoListController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-    }
-
-    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        self.viewModel.userPressed(at: indexPath)
-        if viewModel.isAllowSegue {
-            return indexPath
-        } else {
-            return nil
+        if let rowViewModel = viewModel.cellViewModels.value[indexPath.row] as? ViewModelPressible {
+            rowViewModel.cellPressed?()
         }
     }
-
 }
 
 // MARK: - UITableViewDataSource
 extension PhotoListController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfCells
+        return viewModel.cellViewModels.value.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let rowViewModel = viewModel.cellViewModels.value[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.cellIdentifier(for: rowViewModel), for: indexPath)
 
-        return photoListTableViewCell(indexPath: indexPath)
-    }
-
-}
-
-// MARK: - Cell
-extension PhotoListController {
-    func photoListTableViewCell(indexPath: IndexPath) -> PhotoListTableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoListTableViewCell", for: indexPath) as? PhotoListTableViewCell else {
-            return PhotoListTableViewCell()
+        if let cell = cell as? CellConfigurable {
+            cell.setup(viewModel: rowViewModel)
         }
-
-        let cellVM = viewModel.getCellModel(at: indexPath)
-        cell.photoListCellModel = cellVM
         return cell
     }
+
 }

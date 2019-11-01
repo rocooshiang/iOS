@@ -10,10 +10,3 @@ import Foundation
 import UIKit
 
 let defaultViewImage = "default".image()
-
-extension UITableViewCell {
-    // Generated cell identifier derived from class name
-    func cellIdentifier() -> String {
-        return String(describing: self)
-    }
-}
