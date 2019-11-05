@@ -1,0 +1,17 @@
+PODS:
+  - iOSCoreLibrary (0.1.0)
+
+DEPENDENCIES:
+  - iOSCoreLibrary (from `/Users/rocoo/Desktop/develop/ios-core-library`)
+
+EXTERNAL SOURCES:
+  iOSCoreLibrary:
+    :path: "/Users/rocoo/Desktop/develop/ios-core-library"
+    :submodules: true
+
+SPEC CHECKSUMS:
+  iOSCoreLibrary: ce234edf83d351315482f985cc6305af21a93066
+
+PODFILE CHECKSUM: 9d2c1b8b2667949d69f7da65e33155eb050a8901
+
+COCOAPODS: 1.8.4
