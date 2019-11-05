@@ -1,0 +1,11 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '11.0'
+
+target 'QRCodeReader' do
+  
+  use_frameworks!
+#pod 'iOSCoreLibrary', :git => 'ssh://git@git.dunqian.tw:30001/itrd/ios-core-library.git', :branch => 'master', :submodules => true
+pod 'iOSCoreLibrary', :path => '/Users/rocoo/Desktop/develop/ios-core-library' , :submodules => true
+  
+
+end
