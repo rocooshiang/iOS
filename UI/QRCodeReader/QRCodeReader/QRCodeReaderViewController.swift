@@ -56,7 +56,9 @@ class QRCodeReaderViewController: UIViewController {
         case .notDetermined:
             AVCaptureDevice.requestAccess(for: cameraMediaType) { granted in
                 if granted {
-                    self.initScanner()
+                    DispatchQueue.main.async {
+                        self.initScanner()
+                    }
                 } else {
                     print("Camera permission denied")
                 }
