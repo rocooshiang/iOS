@@ -27,7 +27,6 @@ class PhotoCell: UITableViewCell {
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        viewModel?.cellPressed = nil
     }
 
 }
@@ -40,9 +39,6 @@ extension PhotoCell: CellConfigurable {
         self.title.text = viewModel.title
         self.desc.text = viewModel.desc
         photo?.sd_setImage(with: URL(string: viewModel.photoUrl), placeholderImage: defaultViewImage)
-        viewModel.cellPressed = {
-            print("title: \(viewModel.title)")
-        }
     }
 
 }

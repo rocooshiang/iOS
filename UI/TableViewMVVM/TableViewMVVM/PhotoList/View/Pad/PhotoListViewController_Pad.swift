@@ -1,8 +1,8 @@
 //
-//  FeedListViewController.swift
+//  PhotoListViewController_Pad.swift
 //  TableViewMVVM
 //
-//  Created by Rocoo on 2019/10/15.
+//  Created by Rocoo on 2019/11/7.
 //  Copyright © 2019 Rocoo. All rights reserved.
 //
 
@@ -10,7 +10,7 @@ import UIKit
 import SDWebImage
 import iOSCoreLibrary
 
-class PhotoListController: UIViewController {
+class PhotoListViewController_Pad: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -21,11 +21,12 @@ class PhotoListController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        initTableView()
+        print("run pad")
+        initLayout()
         initBinding()
     }
 
-    func initTableView() {
+    func initLayout() {
         self.navigationItem.title = "Popular"
         tableView.delegate = self
         tableView.dataSource = self
@@ -71,7 +72,7 @@ class PhotoListController: UIViewController {
 }
 
 // MARK: - TableviewDelegate
-extension PhotoListController: UITableViewDelegate {
+extension PhotoListViewController_Pad: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let rowViewModel = viewModel.cellViewModels.value[indexPath.row] as? ViewModelPressible {
@@ -81,7 +82,7 @@ extension PhotoListController: UITableViewDelegate {
 }
 
 // MARK: - UITableViewDataSource
-extension PhotoListController: UITableViewDataSource {
+extension PhotoListViewController_Pad: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.cellViewModels.value.count
@@ -98,3 +99,5 @@ extension PhotoListController: UITableViewDataSource {
     }
 
 }
+
+

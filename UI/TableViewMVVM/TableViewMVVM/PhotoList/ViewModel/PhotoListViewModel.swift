@@ -71,6 +71,9 @@ class PhotoListViewModel {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let date = dateFormatter.string(from: photo.createdAt)
         let photoCellViewModel = PhotoCellViewModel(title: photo.name, date: date, desc: desc, photoUrl: photo.imageUrl)
+        photoCellViewModel.cellPressed = {
+            print("title: \(photo.name)")
+        }
         return photoCellViewModel
     }
 
