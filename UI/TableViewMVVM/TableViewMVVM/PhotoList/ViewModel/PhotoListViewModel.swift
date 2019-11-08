@@ -13,12 +13,18 @@ struct AlertContent {
     let message: String
 }
 
+struct CellPressedContent {
+    let photoName: String
+    let photoDesc: String?
+}
+
 class PhotoListViewModel {
 
     let apiService: APIServiceProtocol
     let cellViewModels = Observable<[RowViewModel]>(value: [])
     var isLoading = Observable<Bool>(value: false)
     var showAlert = Observable<AlertContent>(value: AlertContent(title: "", message: ""))
+    var cellPressed = Observable<CellPressedContent>(value: CellPressedContent(photoName: "", photoDesc: ""))
 
     init(apiService: APIServiceProtocol = APIService()) {
         self.apiService = apiService
@@ -73,6 +79,7 @@ class PhotoListViewModel {
         let photoCellViewModel = PhotoCellViewModel(title: photo.name, date: date, desc: desc, photoUrl: photo.imageUrl)
         photoCellViewModel.cellPressed = {
             print("title: \(photo.name)")
+            self.cellPressed.value = CellPressedContent(photoName: photo.name, photoDesc: photo.description)
         }
         return photoCellViewModel
     }

@@ -30,33 +30,47 @@
                                             <rect key="frame" x="0.0" y="0.0" width="834" height="250"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="7iG-z4-hEz">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="250" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="7iG-z4-hEz">
                                                     <rect key="frame" x="0.0" y="0.0" width="417" height="250"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="7iG-z4-hEz" secondAttribute="height" multiplier="417:250" id="8OM-hC-s1x"/>
+                                                    </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wjd-Np-GMv" customClass="BasicUILabel" customModule="iOSCoreLibrary">
-                                                    <rect key="frame" x="651" y="139" width="33.5" height="20.5"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wjd-Np-GMv" customClass="BasicUILabel" customModule="iOSCoreLibrary">
+                                                    <rect key="frame" x="437" y="10" width="382" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" fixedFrame="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bKf-TD-z9M" customClass="BasicUILabel" customModule="iOSCoreLibrary">
-                                                    <rect key="frame" x="751" y="194.5" width="26.5" height="13.5"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bKf-TD-z9M" customClass="BasicUILabel" customModule="iOSCoreLibrary">
+                                                    <rect key="frame" x="437" y="32.5" width="26.5" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" fixedFrame="YES" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hvK-gd-EeI" customClass="BasicUILabel" customModule="iOSCoreLibrary">
-                                                    <rect key="frame" x="453" y="179" width="258" height="15"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hvK-gd-EeI" customClass="BasicUILabel" customModule="iOSCoreLibrary">
+                                                    <rect key="frame" x="437" y="61" width="382" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.76939731840000003" green="0.43044825660000002" blue="0.41903869859999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="wjd-Np-GMv" firstAttribute="top" secondItem="T48-rE-cfy" secondAttribute="top" constant="10" id="8O2-cU-5DH"/>
+                                                <constraint firstItem="wjd-Np-GMv" firstAttribute="trailing" secondItem="hvK-gd-EeI" secondAttribute="trailing" id="HUw-UH-mXb"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="hvK-gd-EeI" secondAttribute="bottom" constant="10" id="O0x-jm-iWe"/>
+                                                <constraint firstItem="bKf-TD-z9M" firstAttribute="top" secondItem="wjd-Np-GMv" secondAttribute="bottom" constant="2" id="Ucv-Un-uj5"/>
+                                                <constraint firstItem="hvK-gd-EeI" firstAttribute="top" secondItem="bKf-TD-z9M" secondAttribute="bottom" multiplier="61:47" id="Zea-TK-Z6s"/>
+                                                <constraint firstItem="7iG-z4-hEz" firstAttribute="leading" secondItem="T48-rE-cfy" secondAttribute="leading" id="afr-gz-p9m"/>
+                                                <constraint firstItem="7iG-z4-hEz" firstAttribute="width" secondItem="T48-rE-cfy" secondAttribute="width" multiplier="1:2" id="cOM-D6-es3"/>
+                                                <constraint firstItem="7iG-z4-hEz" firstAttribute="top" secondItem="T48-rE-cfy" secondAttribute="top" id="flJ-Yk-Uav"/>
+                                                <constraint firstItem="bKf-TD-z9M" firstAttribute="leading" secondItem="wjd-Np-GMv" secondAttribute="leading" id="iAD-JT-oQ4"/>
+                                                <constraint firstItem="wjd-Np-GMv" firstAttribute="leading" secondItem="7iG-z4-hEz" secondAttribute="trailing" multiplier="437:417" id="jlI-2D-kd4"/>
+                                                <constraint firstAttribute="bottom" secondItem="7iG-z4-hEz" secondAttribute="bottom" priority="250" id="nUJ-gy-djS"/>
+                                                <constraint firstItem="hvK-gd-EeI" firstAttribute="leading" secondItem="bKf-TD-z9M" secondAttribute="leading" id="tW0-jL-5pg"/>
+                                                <constraint firstAttribute="trailing" secondItem="hvK-gd-EeI" secondAttribute="trailing" multiplier="834:819" id="xSZ-BF-Vlu"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="date" destination="bKf-TD-z9M" id="YPa-U2-AgH"/>

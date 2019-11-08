@@ -127,13 +127,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		3F24BF992369382000AA0A60 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
 		3F24BF9C23695C5F00AA0A60 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,7 +186,6 @@
 		3FD6FB032358463400F4E324 /* PhotoList */ = {
 			isa = PBXGroup;
 			children = (
-				3F24BF992369382000AA0A60 /* Controller */,
 				3FD6FAFE235843F100F4E324 /* ViewModel */,
 				3FD6FAFD235843B000F4E324 /* View */,
 				3F01B8A823559FD700597732 /* Model */,
@@ -300,7 +292,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		3FD6FB062358576C00F4E324 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputFileListPaths = (

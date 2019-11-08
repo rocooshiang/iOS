@@ -66,6 +66,13 @@ class PhotoListViewController_Phone: UIViewController {
             }
         }
 
+        viewModel.cellPressed.addObserver { [weak self] (content) in
+            if content.photoName.isEmpty { return }
+            DispatchQueue.main.async {
+                self?.present(alertControllerBuilder(title: content.photoName, message: content.photoDesc, firstButtonTitle: "Okay", secondButtonTitle: nil), animated: true, completion: nil)
+            }
+        }
+
         viewModel.startFetching()
     }
 

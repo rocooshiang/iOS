@@ -38,6 +38,7 @@ extension PhotoCell: CellConfigurable {
         self.viewModel = viewModel
         self.title.text = viewModel.title
         self.desc.text = viewModel.desc
+        self.date.text = viewModel.date
         photo?.sd_setImage(with: URL(string: viewModel.photoUrl), placeholderImage: defaultViewImage)
     }
 

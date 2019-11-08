@@ -30,7 +30,7 @@ class PhotoListViewController_Pad: UIViewController {
         self.navigationItem.title = "Popular"
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.estimatedRowHeight = 150
+        tableView.estimatedRowHeight = 250
         tableView.rowHeight =  UITableView.automaticDimension
     }
 
@@ -66,6 +66,13 @@ class PhotoListViewController_Pad: UIViewController {
             }
         }
 
+        viewModel.cellPressed.addObserver { [weak self] (content) in
+            if content.photoName.isEmpty { return }
+            DispatchQueue.main.async {
+                self?.present(alertControllerBuilder(title: content.photoName, message: content.photoDesc, firstButtonTitle: "Okay", secondButtonTitle: nil), animated: true, completion: nil)
+            }
+        }
+
         viewModel.startFetching()
     }
 
@@ -97,7 +104,4 @@ extension PhotoListViewController_Pad: UITableViewDataSource {
         }
         return cell
     }
-
 }
-
-
