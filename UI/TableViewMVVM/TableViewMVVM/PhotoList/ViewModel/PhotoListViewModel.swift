@@ -21,7 +21,7 @@ struct CellPressedContent {
 class PhotoListViewModel {
 
     let apiService: APIServiceProtocol
-    let cellViewModels = Observable<[RowViewModel]>(value: [])
+    let sectionViewModels = Observable<[SectionViewModel]>(value: [])
     var isLoading = Observable<Bool>(value: false)
     var showAlert = Observable<AlertContent>(value: AlertContent(title: "", message: ""))
     var cellPressed = Observable<CellPressedContent>(value: CellPressedContent(photoName: "", photoDesc: ""))
@@ -39,24 +39,47 @@ class PhotoListViewModel {
                 self.isLoading.value = false
                 self.showAlert.value = AlertContent(title: "Alert", message: error.rawValue)
             } else {
-                self.processFetchPhoto(photos: photos)
+                self.buildViewModel(photos: photos)
                 self.isLoading.value = false
             }
         }
     }
 
-    private func processFetchPhoto(photos: [Photo]) {
+    private func buildViewModel(photos: [Photo]) {
         self.photos = photos
-        var vms = [PhotoCellViewModel]()
+        var sectionTable = [String: [RowViewModel]]()
+
         for photo in photos {
-            let model = createCellViewModel(photo: photo)
-            vms.append(model)
+            let photoCellVM = buildPhotoCellViewModel(photo: photo)
+            let userCellVM = buildUserCellViewModel(photo: photo)
+            let rating = String(photo.rating)
+            if var rows = sectionTable[rating] {
+                var index = -1
+                for (idx, row) in rows.enumerated() {
+                    if let vm = row as? UserCellViewModel, vm.username == userCellVM.username {
+                        index = idx
+                    }
+                }
+
+                if index == -1 {
+                    rows.append(userCellVM)
+                    rows.append(photoCellVM)
+                } else {
+                    rows.insert(photoCellVM, at: index + 1)
+                }
+                sectionTable[rating] = rows
+            } else {
+                sectionTable[rating] = [userCellVM, photoCellVM]
+            }
+        }
+        for (key, _) in sectionTable {
+            print("key: \(key)")
         }
 
-        self.cellViewModels.value = vms
+        self.sectionViewModels.value = coverToSectionViewModel(sectionTable)
     }
 
-    func createCellViewModel(photo: Photo) -> PhotoCellViewModel {
+    func buildPhotoCellViewModel(photo: Photo) -> PhotoCellViewModel {
 
         //Wrap a description
         var descTextContainer: [String] = [String]()
@@ -77,17 +100,44 @@ class PhotoListViewModel {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let date = dateFormatter.string(from: photo.createdAt)
         let photoCellViewModel = PhotoCellViewModel(title: photo.name, date: date, desc: desc, photoUrl: photo.imageUrl)
+
         photoCellViewModel.cellPressed = {
-            print("title: \(photo.name)")
             self.cellPressed.value = CellPressedContent(photoName: photo.name, photoDesc: photo.description)
+            print("rating: \(photo.rating), user name: \(photo.user.username)")
         }
         return photoCellViewModel
+    }
+
+    func buildUserCellViewModel(photo: Photo) -> UserCellViewModel {
+        return UserCellViewModel(username: photo.user.username, avatarUrlString: photo.user.userpicHTTPSURL)
+    }
+
+    func coverToSectionViewModel(_ sectionTable: [String: [RowViewModel]]) -> [SectionViewModel] {
+
+        let sortedKey = sectionTable.keys.sorted(by: ratingDescComparator())
+
+        return sortedKey.map {
+            let rowViewModes = sectionTable[$0]!
+            return SectionViewModel(rowViewModels: rowViewModes, headerTitle: $0)
+        }
+    }
+
+    private func ratingDescComparator() -> ((String, String) -> Bool) {
+        return { (rating1Str, rating2Str) -> Bool in
+            if let rating1 = Double(rating1Str), let rating2 = Double(rating2Str) {
+                return rating1 > rating2
+            } else {
+                return false
+            }
+        }
     }
 
     func cellIdentifier(for viewModel: RowViewModel) -> String {
         switch viewModel {
         case is PhotoCellViewModel:
             return "PhotoCell"
+        case is UserCellViewModel:
+            return "UserCell"
         default:
             fatalError("Unexpected view model type: \(viewModel)")
         }

@@ -60,11 +60,12 @@ class PhotoListViewController_Pad: UIViewController {
             }
         }
 
-        viewModel.cellViewModels.addObserver(fireNow: false) { [weak self] _ in
+        viewModel.sectionViewModels.addObserver(fireNow: false) { [weak self] _ in
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
             }
         }
+
 
         viewModel.cellPressed.addObserver { [weak self] (content) in
             if content.photoName.isEmpty { return }
@@ -82,7 +83,8 @@ class PhotoListViewController_Pad: UIViewController {
 extension PhotoListViewController_Pad: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let rowViewModel = viewModel.cellViewModels.value[indexPath.row] as? ViewModelPressible {
+        let sectionViewModel = viewModel.sectionViewModels.value[indexPath.section]
+        if let rowViewModel = sectionViewModel.rowViewModels[indexPath.row] as? ViewModelPressible {
             rowViewModel.cellPressed?()
         }
     }
@@ -91,17 +93,29 @@ extension PhotoListViewController_Pad: UITableViewDelegate {
 // MARK: - UITableViewDataSource
 extension PhotoListViewController_Pad: UITableViewDataSource {
 
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return viewModel.sectionViewModels.value.count
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.cellViewModels.value.count
+        let sectionViewModel = viewModel.sectionViewModels.value[section]
+        return sectionViewModel.rowViewModels.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let rowViewModel = viewModel.cellViewModels.value[indexPath.row]
+        let sectionViewModel = viewModel.sectionViewModels.value[indexPath.section]
+        let rowViewModel = sectionViewModel.rowViewModels[indexPath.row]
+
         let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.cellIdentifier(for: rowViewModel), for: indexPath)
 
         if let cell = cell as? CellConfigurable {
             cell.setup(viewModel: rowViewModel)
         }
+
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return viewModel.sectionViewModels.value[section].headerTitle
     }
 }

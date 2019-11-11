@@ -17,6 +17,9 @@
 		3F24BF96236934AD00AA0A60 /* CellConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F24BF95236934AD00AA0A60 /* CellConfigurable.swift */; };
 		3F24BF982369374700AA0A60 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F24BF972369374700AA0A60 /* Observable.swift */; };
 		3F2DF4B32373E12600123883 /* PhotoListNC_Phone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2DF4B22373E12600123883 /* PhotoListNC_Phone.swift */; };
+		3F5B7C4923792A28002E0882 /* SectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5B7C4823792A28002E0882 /* SectionViewModel.swift */; };
+		3F5B7C4B23792EB5002E0882 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5B7C4A23792EB4002E0882 /* UserCell.swift */; };
+		3F5B7C4D2379313A002E0882 /* UserCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5B7C4C2379313A002E0882 /* UserCellViewModel.swift */; };
 		3FD6FAF82358427B00F4E324 /* content.json in Resources */ = {isa = PBXBuildFile; fileRef = 3FD6FAF62358427B00F4E324 /* content.json */; };
 		3FD6FAF92358427B00F4E324 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD6FAF72358427B00F4E324 /* APIService.swift */; };
 		3FD6FAFC2358430500F4E324 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD6FAFB2358430500F4E324 /* Photo.swift */; };
@@ -43,6 +46,9 @@
 		3F24BF95236934AD00AA0A60 /* CellConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellConfigurable.swift; sourceTree = "<group>"; };
 		3F24BF972369374700AA0A60 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		3F2DF4B22373E12600123883 /* PhotoListNC_Phone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListNC_Phone.swift; sourceTree = "<group>"; };
+		3F5B7C4823792A28002E0882 /* SectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionViewModel.swift; sourceTree = "<group>"; };
+		3F5B7C4A23792EB4002E0882 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		3F5B7C4C2379313A002E0882 /* UserCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCellViewModel.swift; sourceTree = "<group>"; };
 		3FD6FAF62358427B00F4E324 /* content.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = content.json; sourceTree = "<group>"; };
 		3FD6FAF72358427B00F4E324 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		3FD6FAFB2358430500F4E324 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
@@ -110,7 +116,6 @@
 			isa = PBXGroup;
 			children = (
 				3F24BF972369374700AA0A60 /* Observable.swift */,
-				3F24BF932369348000AA0A60 /* RowViewModel.swift */,
 				3F24BF95236934AD00AA0A60 /* CellConfigurable.swift */,
 				3F01B8A1235593A300597732 /* BindingTextField.swift */,
 				3F01B8A3235593C800597732 /* DynamicT.swift */,
@@ -177,8 +182,11 @@
 		3FD6FAFE235843F100F4E324 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				3F24BF902368434A00AA0A60 /* PhotoCellViewModel.swift */,
 				3FD6FB01235845F300F4E324 /* PhotoListViewModel.swift */,
+				3F24BF932369348000AA0A60 /* RowViewModel.swift */,
+				3F5B7C4823792A28002E0882 /* SectionViewModel.swift */,
+				3F24BF902368434A00AA0A60 /* PhotoCellViewModel.swift */,
+				3F5B7C4C2379313A002E0882 /* UserCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -197,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				3FD6FAFF2358457900F4E324 /* PhotoCell.swift */,
+				3F5B7C4A23792EB4002E0882 /* UserCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -372,7 +381,10 @@
 			files = (
 				3F24BF982369374700AA0A60 /* Observable.swift in Sources */,
 				3FD6FB002358457900F4E324 /* PhotoCell.swift in Sources */,
+				3F5B7C4923792A28002E0882 /* SectionViewModel.swift in Sources */,
 				3F2DF4B32373E12600123883 /* PhotoListNC_Phone.swift in Sources */,
+				3F5B7C4B23792EB5002E0882 /* UserCell.swift in Sources */,
+				3F5B7C4D2379313A002E0882 /* UserCellViewModel.swift in Sources */,
 				3FE1E1A12373FF860008535B /* PhotoListViewController_Pad.swift in Sources */,
 				3F24BF96236934AD00AA0A60 /* CellConfigurable.swift in Sources */,
 				3FD6FAFC2358430500F4E324 /* Photo.swift in Sources */,
