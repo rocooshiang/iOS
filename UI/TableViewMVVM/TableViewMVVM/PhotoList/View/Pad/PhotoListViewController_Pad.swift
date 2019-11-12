@@ -1,8 +1,8 @@
 //
-//  FeedListViewController.swift
+//  PhotoListViewController_Pad.swift
 //  TableViewMVVM
 //
-//  Created by Rocoo on 2019/10/15.
+//  Created by Rocoo on 2019/11/7.
 //  Copyright © 2019 Rocoo. All rights reserved.
 //
 
@@ -10,7 +10,7 @@ import UIKit
 import SDWebImage
 import iOSCoreLibrary
 
-class PhotoListController: UIViewController {
+class PhotoListViewController_Pad: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -21,15 +21,16 @@ class PhotoListController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        initTableView()
+        print("run pad")
+        initLayout()
         initBinding()
     }
 
-    func initTableView() {
+    func initLayout() {
         self.navigationItem.title = "Popular"
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.estimatedRowHeight = 150
+        tableView.estimatedRowHeight = 250
         tableView.rowHeight =  UITableView.automaticDimension
     }
 
@@ -59,9 +60,16 @@ class PhotoListController: UIViewController {
             }
         }
 
-        viewModel.cellViewModels.addObserver(fireNow: false) { [weak self] _ in
+        viewModel.sectionViewModels.addObserver(fireNow: false) { [weak self] _ in
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
+            }
+        }
+
+        viewModel.cellPressed.addObserver { [weak self] (content) in
+            if content.photoName.isEmpty { return }
+            DispatchQueue.main.async {
+                self?.present(alertControllerBuilder(title: content.photoName, message: content.photoDesc, firstButtonTitle: "Okay", secondButtonTitle: nil), animated: true, completion: nil)
             }
         }
 
@@ -71,30 +79,43 @@ class PhotoListController: UIViewController {
 }
 
 // MARK: - TableviewDelegate
-extension PhotoListController: UITableViewDelegate {
+extension PhotoListViewController_Pad: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let rowViewModel = viewModel.cellViewModels.value[indexPath.row] as? ViewModelPressible {
+        let sectionViewModel = viewModel.sectionViewModels.value[indexPath.section]
+        if let rowViewModel = sectionViewModel.rowViewModels[indexPath.row] as? ViewModelPressible {
             rowViewModel.cellPressed?()
         }
     }
 }
 
 // MARK: - UITableViewDataSource
-extension PhotoListController: UITableViewDataSource {
+extension PhotoListViewController_Pad: UITableViewDataSource {
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return viewModel.sectionViewModels.value.count
+    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.cellViewModels.value.count
+        let sectionViewModel = viewModel.sectionViewModels.value[section]
+        return sectionViewModel.rowViewModels.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let rowViewModel = viewModel.cellViewModels.value[indexPath.row]
+        let sectionViewModel = viewModel.sectionViewModels.value[indexPath.section]
+        let rowViewModel = sectionViewModel.rowViewModels[indexPath.row]
+
         let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.cellIdentifier(for: rowViewModel), for: indexPath)
 
         if let cell = cell as? CellConfigurable {
             cell.setup(viewModel: rowViewModel)
         }
+
         return cell
     }
 
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let rating = viewModel.sectionViewModels.value[section].headerTitle
+        return "Rating: \(rating)"
+    }
 }

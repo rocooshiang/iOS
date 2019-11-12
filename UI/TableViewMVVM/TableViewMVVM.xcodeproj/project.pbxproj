@@ -8,10 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3F01B889235577AD00597732 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F01B888235577AD00597732 /* AppDelegate.swift */; };
-		3F01B88B235577AD00597732 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F01B88A235577AD00597732 /* SceneDelegate.swift */; };
-		3F01B890235577AD00597732 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F01B88E235577AD00597732 /* Main.storyboard */; };
 		3F01B892235577AF00597732 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F01B891235577AF00597732 /* Assets.xcassets */; };
-		3F01B89E2355792F00597732 /* PhotoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F01B89D2355792F00597732 /* PhotoListViewController.swift */; };
 		3F01B8A2235593A300597732 /* BindingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F01B8A1235593A300597732 /* BindingTextField.swift */; };
 		3F01B8A4235593C800597732 /* DynamicT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F01B8A3235593C800597732 /* DynamicT.swift */; };
 		3F05B54D235D541D0054BAD7 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F05B54C235D541D0054BAD7 /* Extension.swift */; };
@@ -19,11 +16,19 @@
 		3F24BF942369348000AA0A60 /* RowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F24BF932369348000AA0A60 /* RowViewModel.swift */; };
 		3F24BF96236934AD00AA0A60 /* CellConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F24BF95236934AD00AA0A60 /* CellConfigurable.swift */; };
 		3F24BF982369374700AA0A60 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F24BF972369374700AA0A60 /* Observable.swift */; };
+		3F2DF4B32373E12600123883 /* PhotoListNC_Phone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2DF4B22373E12600123883 /* PhotoListNC_Phone.swift */; };
+		3F5B7C4923792A28002E0882 /* SectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5B7C4823792A28002E0882 /* SectionViewModel.swift */; };
+		3F5B7C4B23792EB5002E0882 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5B7C4A23792EB4002E0882 /* UserCell.swift */; };
+		3F5B7C4D2379313A002E0882 /* UserCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5B7C4C2379313A002E0882 /* UserCellViewModel.swift */; };
 		3FD6FAF82358427B00F4E324 /* content.json in Resources */ = {isa = PBXBuildFile; fileRef = 3FD6FAF62358427B00F4E324 /* content.json */; };
 		3FD6FAF92358427B00F4E324 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD6FAF72358427B00F4E324 /* APIService.swift */; };
 		3FD6FAFC2358430500F4E324 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD6FAFB2358430500F4E324 /* Photo.swift */; };
 		3FD6FB002358457900F4E324 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD6FAFF2358457900F4E324 /* PhotoCell.swift */; };
 		3FD6FB02235845F300F4E324 /* PhotoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD6FB01235845F300F4E324 /* PhotoListViewModel.swift */; };
+		3FE1E19F2373FD000008535B /* PhotoListViewController_Phone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE1E19E2373FD000008535B /* PhotoListViewController_Phone.swift */; };
+		3FE1E1A12373FF860008535B /* PhotoListViewController_Pad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE1E1A02373FF860008535B /* PhotoListViewController_Pad.swift */; };
+		3FE1E1A32373FFC40008535B /* PhotoList_Pad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FE1E1A22373FFC40008535B /* PhotoList_Pad.storyboard */; };
+		3FE900F12373EDB2001D7246 /* PhotoList_Phone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FE900F02373EDB2001D7246 /* PhotoList_Phone.storyboard */; };
 		94B30042AFDA1FE8C43659C7 /* Pods_TableViewMVVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 581AC3ECA776F625EABEF299 /* Pods_TableViewMVVM.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,11 +36,8 @@
 		1BF183F2E0F7852408B6F9EC /* Pods-TableViewMVVM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TableViewMVVM.debug.xcconfig"; path = "Target Support Files/Pods-TableViewMVVM/Pods-TableViewMVVM.debug.xcconfig"; sourceTree = "<group>"; };
 		3F01B885235577AD00597732 /* TableViewMVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TableViewMVVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F01B888235577AD00597732 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3F01B88A235577AD00597732 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		3F01B88F235577AD00597732 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3F01B891235577AF00597732 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F01B896235577AF00597732 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3F01B89D2355792F00597732 /* PhotoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListViewController.swift; sourceTree = "<group>"; };
 		3F01B8A1235593A300597732 /* BindingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingTextField.swift; sourceTree = "<group>"; };
 		3F01B8A3235593C800597732 /* DynamicT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicT.swift; sourceTree = "<group>"; };
 		3F05B54C235D541D0054BAD7 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
@@ -43,11 +45,19 @@
 		3F24BF932369348000AA0A60 /* RowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowViewModel.swift; sourceTree = "<group>"; };
 		3F24BF95236934AD00AA0A60 /* CellConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellConfigurable.swift; sourceTree = "<group>"; };
 		3F24BF972369374700AA0A60 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		3F2DF4B22373E12600123883 /* PhotoListNC_Phone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListNC_Phone.swift; sourceTree = "<group>"; };
+		3F5B7C4823792A28002E0882 /* SectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionViewModel.swift; sourceTree = "<group>"; };
+		3F5B7C4A23792EB4002E0882 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		3F5B7C4C2379313A002E0882 /* UserCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCellViewModel.swift; sourceTree = "<group>"; };
 		3FD6FAF62358427B00F4E324 /* content.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = content.json; sourceTree = "<group>"; };
 		3FD6FAF72358427B00F4E324 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		3FD6FAFB2358430500F4E324 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		3FD6FAFF2358457900F4E324 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		3FD6FB01235845F300F4E324 /* PhotoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListViewModel.swift; sourceTree = "<group>"; };
+		3FE1E19E2373FD000008535B /* PhotoListViewController_Phone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListViewController_Phone.swift; sourceTree = "<group>"; };
+		3FE1E1A02373FF860008535B /* PhotoListViewController_Pad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListViewController_Pad.swift; sourceTree = "<group>"; };
+		3FE1E1A22373FFC40008535B /* PhotoList_Pad.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PhotoList_Pad.storyboard; sourceTree = "<group>"; };
+		3FE900F02373EDB2001D7246 /* PhotoList_Phone.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PhotoList_Phone.storyboard; sourceTree = "<group>"; };
 		581AC3ECA776F625EABEF299 /* Pods_TableViewMVVM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TableViewMVVM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C480DEBBCC57FF9F084A528F /* Pods-TableViewMVVM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TableViewMVVM.release.xcconfig"; path = "Target Support Files/Pods-TableViewMVVM/Pods-TableViewMVVM.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,7 +106,6 @@
 			isa = PBXGroup;
 			children = (
 				3F01B888235577AD00597732 /* AppDelegate.swift */,
-				3F01B88A235577AD00597732 /* SceneDelegate.swift */,
 				3F01B891235577AF00597732 /* Assets.xcassets */,
 				3F01B896235577AF00597732 /* Info.plist */,
 			);
@@ -107,7 +116,6 @@
 			isa = PBXGroup;
 			children = (
 				3F24BF972369374700AA0A60 /* Observable.swift */,
-				3F24BF932369348000AA0A60 /* RowViewModel.swift */,
 				3F24BF95236934AD00AA0A60 /* CellConfigurable.swift */,
 				3F01B8A1235593A300597732 /* BindingTextField.swift */,
 				3F01B8A3235593C800597732 /* DynamicT.swift */,
@@ -124,13 +132,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		3F24BF992369382000AA0A60 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
 		3F24BF9C23695C5F00AA0A60 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +139,24 @@
 				3F01B8A5235593E000597732 /* CustomFiles */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		3F2DF4B02373CCB300123883 /* Phone */ = {
+			isa = PBXGroup;
+			children = (
+				3FE1E19E2373FD000008535B /* PhotoListViewController_Phone.swift */,
+				3FE900F02373EDB2001D7246 /* PhotoList_Phone.storyboard */,
+			);
+			path = Phone;
+			sourceTree = "<group>";
+		};
+		3F2DF4B12373CCBE00123883 /* Pad */ = {
+			isa = PBXGroup;
+			children = (
+				3FE1E1A02373FF860008535B /* PhotoListViewController_Pad.swift */,
+				3FE1E1A22373FFC40008535B /* PhotoList_Pad.storyboard */,
+			);
+			path = Pad;
 			sourceTree = "<group>";
 		};
 		3FD6FAFA2358428200F4E324 /* ApiService */ = {
@@ -152,9 +171,10 @@
 		3FD6FAFD235843B000F4E324 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				3F01B88E235577AD00597732 /* Main.storyboard */,
-				3F01B89D2355792F00597732 /* PhotoListViewController.swift */,
+				3F2DF4B12373CCBE00123883 /* Pad */,
+				3F2DF4B02373CCB300123883 /* Phone */,
 				3FEE77C72355B04800FF0428 /* Cell */,
+				3F2DF4B22373E12600123883 /* PhotoListNC_Phone.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -162,8 +182,11 @@
 		3FD6FAFE235843F100F4E324 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				3F24BF902368434A00AA0A60 /* PhotoCellViewModel.swift */,
 				3FD6FB01235845F300F4E324 /* PhotoListViewModel.swift */,
+				3F24BF932369348000AA0A60 /* RowViewModel.swift */,
+				3F5B7C4823792A28002E0882 /* SectionViewModel.swift */,
+				3F24BF902368434A00AA0A60 /* PhotoCellViewModel.swift */,
+				3F5B7C4C2379313A002E0882 /* UserCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -171,7 +194,6 @@
 		3FD6FB032358463400F4E324 /* PhotoList */ = {
 			isa = PBXGroup;
 			children = (
-				3F24BF992369382000AA0A60 /* Controller */,
 				3FD6FAFE235843F100F4E324 /* ViewModel */,
 				3FD6FAFD235843B000F4E324 /* View */,
 				3F01B8A823559FD700597732 /* Model */,
@@ -183,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				3FD6FAFF2358457900F4E324 /* PhotoCell.swift */,
+				3F5B7C4A23792EB4002E0882 /* UserCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -217,6 +240,7 @@
 				3F01B883235577AD00597732 /* Resources */,
 				908328953994E3C2F14A9DA5 /* [CP] Embed Pods Frameworks */,
 				3FD6FB062358576C00F4E324 /* ShellScript */,
+				8039F8DAA11D2C7232CAEFD4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -265,8 +289,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FE900F12373EDB2001D7246 /* PhotoList_Phone.storyboard in Resources */,
+				3FE1E1A32373FFC40008535B /* PhotoList_Pad.storyboard in Resources */,
 				3F01B892235577AF00597732 /* Assets.xcassets in Resources */,
-				3F01B890235577AD00597732 /* Main.storyboard in Resources */,
 				3FD6FAF82358427B00F4E324 /* content.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,7 +301,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		3FD6FB062358576C00F4E324 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputFileListPaths = (
@@ -290,6 +315,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		8039F8DAA11D2C7232CAEFD4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TableViewMVVM/Pods-TableViewMVVM-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TableViewMVVM/Pods-TableViewMVVM-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TableViewMVVM/Pods-TableViewMVVM-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		908328953994E3C2F14A9DA5 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -339,9 +381,15 @@
 			files = (
 				3F24BF982369374700AA0A60 /* Observable.swift in Sources */,
 				3FD6FB002358457900F4E324 /* PhotoCell.swift in Sources */,
+				3F5B7C4923792A28002E0882 /* SectionViewModel.swift in Sources */,
+				3F2DF4B32373E12600123883 /* PhotoListNC_Phone.swift in Sources */,
+				3F5B7C4B23792EB5002E0882 /* UserCell.swift in Sources */,
+				3F5B7C4D2379313A002E0882 /* UserCellViewModel.swift in Sources */,
+				3FE1E1A12373FF860008535B /* PhotoListViewController_Pad.swift in Sources */,
 				3F24BF96236934AD00AA0A60 /* CellConfigurable.swift in Sources */,
 				3FD6FAFC2358430500F4E324 /* Photo.swift in Sources */,
 				3F01B8A4235593C800597732 /* DynamicT.swift in Sources */,
+				3FE1E19F2373FD000008535B /* PhotoListViewController_Phone.swift in Sources */,
 				3F05B54D235D541D0054BAD7 /* Extension.swift in Sources */,
 				3F24BF912368434A00AA0A60 /* PhotoCellViewModel.swift in Sources */,
 				3F24BF942369348000AA0A60 /* RowViewModel.swift in Sources */,
@@ -349,23 +397,10 @@
 				3FD6FB02235845F300F4E324 /* PhotoListViewModel.swift in Sources */,
 				3F01B889235577AD00597732 /* AppDelegate.swift in Sources */,
 				3F01B8A2235593A300597732 /* BindingTextField.swift in Sources */,
-				3F01B88B235577AD00597732 /* SceneDelegate.swift in Sources */,
-				3F01B89E2355792F00597732 /* PhotoListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		3F01B88E235577AD00597732 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3F01B88F235577AD00597732 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		3F01B897235577AF00597732 /* Debug */ = {
