@@ -115,7 +115,8 @@ extension PhotoListViewController_Phone: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return viewModel.sectionViewModels.value[section].headerTitle
+        let rating = viewModel.sectionViewModels.value[section].headerTitle
+        return "Rating: \(rating)"
     }
 
 }

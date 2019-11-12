@@ -13,12 +13,13 @@ import iOSCoreLibrary
 class UserCell: UITableViewCell {
 
     var viewModel: UserCellViewModel?
-    @IBOutlet weak var avatar: UIImageView!
+    @IBOutlet weak var avatar: RoundCornerUIImageView!
     @IBOutlet weak var name: BasicUILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+//        avatar.layer.cornerRadius = avatar.frame.size.height / 2
     }
 
 }

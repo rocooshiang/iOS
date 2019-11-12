@@ -66,7 +66,6 @@ class PhotoListViewController_Pad: UIViewController {
             }
         }
 
-
         viewModel.cellPressed.addObserver { [weak self] (content) in
             if content.photoName.isEmpty { return }
             DispatchQueue.main.async {
@@ -116,6 +115,7 @@ extension PhotoListViewController_Pad: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return viewModel.sectionViewModels.value[section].headerTitle
+        let rating = viewModel.sectionViewModels.value[section].headerTitle
+        return "Rating: \(rating)"
     }
 }
