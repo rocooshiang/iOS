@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="GothamRnd-Book.otf">
+            <string>GothamRounded-Book</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Chat Room View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ChatRoomViewController" customModule="ChatRoomView" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uCA-ts-Ri5">
+                                <rect key="frame" x="0.0" y="44" width="375" height="679"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatRoomCommentCoachCell" rowHeight="90" id="vHl-dv-R17" customClass="ChatRoomCommentCoachCell" customModule="ChatRoomView" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="90"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vHl-dv-R17" id="Txu-Z8-Lpb">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L7w-n6-ySy">
+                                                    <rect key="frame" x="14.000000000000004" y="10" width="50.333333333333343" height="42"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uOX-GD-Wjc" customClass="BasicUILabel" customModule="iOSCoreLibrary">
+                                                            <rect key="frame" x="8" y="8" width="34.333333333333336" height="26"/>
+                                                            <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="14"/>
+                                                            <color key="textColor" red="0.39607843139999999" green="0.39607843139999999" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="uOX-GD-Wjc" secondAttribute="trailing" constant="8" id="K3m-gx-4wa"/>
+                                                        <constraint firstAttribute="bottom" secondItem="uOX-GD-Wjc" secondAttribute="bottom" constant="8" id="lzr-Zs-Hez"/>
+                                                        <constraint firstItem="uOX-GD-Wjc" firstAttribute="leading" secondItem="L7w-n6-ySy" secondAttribute="leading" constant="8" id="rrP-v1-lTJ"/>
+                                                        <constraint firstItem="uOX-GD-Wjc" firstAttribute="top" secondItem="L7w-n6-ySy" secondAttribute="top" constant="8" id="u2f-fp-OkH"/>
+                                                    </constraints>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OzE-Vb-Kmt" customClass="BasicUILabel" customModule="iOSCoreLibrary">
+                                                    <rect key="frame" x="50" y="57" width="32" height="26"/>
+                                                    <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="13"/>
+                                                    <color key="textColor" red="0.49803921569999998" green="0.53725490200000003" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chatroom-default-avatar" translatesAutoresizingMaskIntoConstraints="NO" id="YqU-tz-Twk" customClass="RoundCornerUIImageView" customModule="iOSCoreLibrary">
+                                                    <rect key="frame" x="14" y="57" width="26" height="26"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="YqU-tz-Twk" secondAttribute="height" multiplier="1:1" id="ZRJ-F1-U9l"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="OzE-Vb-Kmt" firstAttribute="leading" secondItem="YqU-tz-Twk" secondAttribute="trailing" constant="10" id="9aV-bY-bHN"/>
+                                                <constraint firstItem="L7w-n6-ySy" firstAttribute="width" relation="lessThanOrEqual" secondItem="Txu-Z8-Lpb" secondAttribute="width" multiplier="240:375" id="BDT-fm-yck"/>
+                                                <constraint firstItem="YqU-tz-Twk" firstAttribute="width" secondItem="Txu-Z8-Lpb" secondAttribute="width" multiplier="26:375" id="QhT-ha-kQE"/>
+                                                <constraint firstItem="YqU-tz-Twk" firstAttribute="leading" secondItem="L7w-n6-ySy" secondAttribute="leading" id="b3Y-in-TOa"/>
+                                                <constraint firstAttribute="bottom" secondItem="OzE-Vb-Kmt" secondAttribute="bottom" constant="7" id="cWC-8q-h2C"/>
+                                                <constraint firstItem="OzE-Vb-Kmt" firstAttribute="height" secondItem="YqU-tz-Twk" secondAttribute="height" id="dAc-8Z-dgW"/>
+                                                <constraint firstItem="L7w-n6-ySy" firstAttribute="top" secondItem="Txu-Z8-Lpb" secondAttribute="top" constant="10" id="fnK-mT-baI"/>
+                                                <constraint firstItem="YqU-tz-Twk" firstAttribute="top" secondItem="L7w-n6-ySy" secondAttribute="bottom" constant="5" id="jEt-px-Egc"/>
+                                                <constraint firstItem="L7w-n6-ySy" firstAttribute="leading" secondItem="Txu-Z8-Lpb" secondAttribute="leading" constant="14" id="nva-L3-Zqc"/>
+                                                <constraint firstItem="OzE-Vb-Kmt" firstAttribute="top" secondItem="L7w-n6-ySy" secondAttribute="bottom" constant="5" id="s9F-1e-yBe"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="avatar" destination="YqU-tz-Twk" id="G3g-al-G3D"/>
+                                            <outlet property="bubble" destination="L7w-n6-ySy" id="2DT-LL-bHm"/>
+                                            <outlet property="message" destination="uOX-GD-Wjc" id="c4W-J2-fFX"/>
+                                            <outlet property="time" destination="OzE-Vb-Kmt" id="WiH-EY-NMn"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatRoomCommentUserCell" rowHeight="90" id="KY5-Bv-TCW" customClass="ChatRoomCommentUserCell" customModule="ChatRoomView" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="118" width="375" height="90"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KY5-Bv-TCW" id="epN-1F-abs">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E1v-Rp-61c">
+                                                    <rect key="frame" x="310.66666666666669" y="10" width="50.333333333333314" height="43"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Qy-Zl-Ake" customClass="BasicUILabel" customModule="iOSCoreLibrary">
+                                                            <rect key="frame" x="8" y="8" width="34.333333333333336" height="27"/>
+                                                            <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="14"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.13725490200000001" green="0.68235294120000001" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstItem="5Qy-Zl-Ake" firstAttribute="leading" secondItem="E1v-Rp-61c" secondAttribute="leading" constant="8" id="9h5-Rk-Yto"/>
+                                                        <constraint firstAttribute="bottom" secondItem="5Qy-Zl-Ake" secondAttribute="bottom" constant="8" id="Jeo-XJ-hef"/>
+                                                        <constraint firstItem="5Qy-Zl-Ake" firstAttribute="top" secondItem="E1v-Rp-61c" secondAttribute="top" constant="8" id="epf-aj-T7Z"/>
+                                                        <constraint firstAttribute="trailing" secondItem="5Qy-Zl-Ake" secondAttribute="trailing" constant="8" id="tVF-5y-c3i"/>
+                                                    </constraints>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CGO-xC-dwr" customClass="BasicUILabel" customModule="iOSCoreLibrary">
+                                                    <rect key="frame" x="181" y="58" width="180" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="CGO-xC-dwr" secondAttribute="height" multiplier="36:5" id="q5U-r2-K6X"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="13"/>
+                                                    <color key="textColor" red="0.49803921569999998" green="0.53725490200000003" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="CGO-xC-dwr" firstAttribute="width" secondItem="epN-1F-abs" secondAttribute="width" multiplier="180:375" id="AWO-RM-ydI"/>
+                                                <constraint firstItem="E1v-Rp-61c" firstAttribute="top" secondItem="epN-1F-abs" secondAttribute="top" constant="10" id="NbZ-M6-I8W"/>
+                                                <constraint firstItem="CGO-xC-dwr" firstAttribute="trailing" secondItem="E1v-Rp-61c" secondAttribute="trailing" id="QQh-Sw-8DT"/>
+                                                <constraint firstItem="E1v-Rp-61c" firstAttribute="width" relation="lessThanOrEqual" secondItem="epN-1F-abs" secondAttribute="width" multiplier="240:375" id="YlY-Ln-lJb"/>
+                                                <constraint firstItem="CGO-xC-dwr" firstAttribute="top" secondItem="E1v-Rp-61c" secondAttribute="bottom" constant="5" id="jeM-I1-oLL"/>
+                                                <constraint firstAttribute="bottom" secondItem="CGO-xC-dwr" secondAttribute="bottom" constant="7" id="tYH-1I-SFV"/>
+                                                <constraint firstAttribute="trailing" secondItem="E1v-Rp-61c" secondAttribute="trailing" constant="14" id="yRZ-ZZ-TQL"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="bubble" destination="E1v-Rp-61c" id="8PH-yQ-0gU"/>
+                                            <outlet property="message" destination="5Qy-Zl-Ake" id="KaI-Q4-AtP"/>
+                                            <outlet property="time" destination="CGO-xC-dwr" id="5MM-4V-69D"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i2h-dT-Ksl" userLabel="InputboxParentView">
+                                <rect key="frame" x="0.0" y="723" width="375" height="55"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="U4l-2q-jOm" customClass="BasicUITextView" customModule="iOSCoreLibrary">
+                                        <rect key="frame" x="10" y="10" width="300" height="35"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fE4-oe-XgV" customClass="BasicUIButton" customModule="iOSCoreLibrary">
+                                        <rect key="frame" x="325" y="12.666666666666629" width="36" height="30"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Send">
+                                            <color key="titleColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="U4l-2q-jOm" firstAttribute="width" secondItem="i2h-dT-Ksl" secondAttribute="width" multiplier="300:375" id="0Tt-nj-1bK"/>
+                                    <constraint firstAttribute="bottom" secondItem="U4l-2q-jOm" secondAttribute="bottom" multiplier="55:45" id="4Cn-bk-11l"/>
+                                    <constraint firstItem="fE4-oe-XgV" firstAttribute="centerY" secondItem="U4l-2q-jOm" secondAttribute="centerY" id="A2d-P4-WSf"/>
+                                    <constraint firstItem="U4l-2q-jOm" firstAttribute="top" secondItem="i2h-dT-Ksl" secondAttribute="bottom" multiplier="10:55" id="BPr-nI-jDm"/>
+                                    <constraint firstItem="U4l-2q-jOm" firstAttribute="leading" secondItem="i2h-dT-Ksl" secondAttribute="trailing" multiplier="10:375" id="Ixp-2E-GNk"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fE4-oe-XgV" secondAttribute="trailing" constant="14" id="J1K-fi-K6V"/>
+                                    <constraint firstAttribute="height" constant="55" id="QNW-gr-7eR"/>
+                                    <constraint firstItem="fE4-oe-XgV" firstAttribute="leading" secondItem="U4l-2q-jOm" secondAttribute="trailing" multiplier="325:310" id="rLk-Lw-twd"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="uCA-ts-Ri5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="085-NG-7RE"/>
+                            <constraint firstItem="uCA-ts-Ri5" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="BGB-01-wVt"/>
+                            <constraint firstItem="i2h-dT-Ksl" firstAttribute="top" secondItem="uCA-ts-Ri5" secondAttribute="bottom" id="F1g-iN-DHb"/>
+                            <constraint firstItem="uCA-ts-Ri5" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="K5w-L9-Ba7"/>
+                            <constraint firstItem="i2h-dT-Ksl" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="LFW-2W-Rmu"/>
+                            <constraint firstItem="i2h-dT-Ksl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="YCl-0H-ZvN"/>
+                            <constraint firstItem="i2h-dT-Ksl" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="jg2-WJ-3m8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="inputbox" destination="U4l-2q-jOm" id="rtj-V1-TNh"/>
+                        <outlet property="send" destination="fE4-oe-XgV" id="u6C-g6-zRy"/>
+                        <outlet property="tableView" destination="uCA-ts-Ri5" id="h8k-Qa-o8L"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="137.4384236453202"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="chatroom-default-avatar" width="256" height="256"/>
+    </resources>
+</document>

@@ -1,0 +1,52 @@
+
+
+[{
+          "foodLogId" : 11818,
+          "nickName" : "rocoo.shiang+1@gmail.com",
+          "tags" : [
+            "2",
+            "3",
+            "20004",
+            "20002"
+          ],
+          "commentUpdatedOn" : null,
+          "property" : null,
+          "bld" : "Beef Pho",
+          "calories" : 474,
+          "dietitianJSON" : null,
+          "isFood" : false,
+          "pictureUrl" : "https:\/\/static01.nyt.com\/images\/2014\/04\/11\/dining\/beefstew\/beefstew-superJumbo.jpg",
+          "raterJSON" : null,
+          "isClosed" : false,
+          "hasUpdated" : false,
+          "product" : "fitlife",
+          "targetCalories" : null,
+          "comments" : [
+            {
+              "1502766174.0691" : {
+                "nickName" : "Daniel\/TW",
+                "comment" : "That looks really scrumptious Celia! You really have the most impeccable tastes in food. Keep it up and stay healthy! Here’s a 3 star rating :)",
+                "serviceAccount" : "681f4ec3f9efe9e511d18301b0ea60566c2416ff4d36a11a5b54993ae5ed953a",
+                "profileImage" : "https:\/\/media.prenetics.com\/SIT\/1.png",
+                "isCoachComment": true
+                        
+              }
+            },
+            {
+              "1502766262.5943" : {
+                "nickName" : "rocoo.shiang+1@gmail.com",
+                "comment" : "Thank you so much!",
+                "serviceAccount" : "419bfa360c029b5af70d689c1abd6c0b59de899022cc0d69daab6ae702468c80",
+                "profileImage" : "https:\/\/media.onedna.co\/20170808\/10692d783838028fd2a16dc8fc95faf15511c9113c451fd8a621cd544c12290f\/53a9b024fcf45b8240224326ffee62ee.jpeg",
+                "isCoachComment": false
+              }
+            }            
+          ],
+          "isPublic" : false,
+          "createDate" : "2018-01-22 16:32:11",
+          "rate" : "1.0",
+          "serviceAccount" : "10692d783838028fd2a16dc8fc95faf15511c9113c451fd8a621cd544c12290f",
+          "rater" : null,
+          "dietitian" : "Grace\/Dietitian"
+      }]
+    
