@@ -141,15 +141,14 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i2h-dT-Ksl" userLabel="InputboxParentView">
                                 <rect key="frame" x="0.0" y="723" width="375" height="55"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="U4l-2q-jOm" customClass="BasicUITextView" customModule="iOSCoreLibrary">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="U4l-2q-jOm" customClass="RoundCornerTextView" customModule="iOSCoreLibrary">
                                         <rect key="frame" x="10" y="10" width="300" height="35"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fE4-oe-XgV" customClass="BasicUIButton" customModule="iOSCoreLibrary">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fE4-oe-XgV" customClass="RoundCornerUIButton" customModule="iOSCoreLibrary">
                                         <rect key="frame" x="325" y="12.666666666666629" width="36" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Send">
@@ -184,6 +183,8 @@
                     </view>
                     <connections>
                         <outlet property="inputbox" destination="U4l-2q-jOm" id="rtj-V1-TNh"/>
+                        <outlet property="inputboxParentView" destination="i2h-dT-Ksl" id="MVv-MF-oRX"/>
+                        <outlet property="inputboxParentViewBottomCT" destination="jg2-WJ-3m8" id="pn5-Ue-bqN"/>
                         <outlet property="send" destination="fE4-oe-XgV" id="u6C-g6-zRy"/>
                         <outlet property="tableView" destination="uCA-ts-Ri5" id="h8k-Qa-o8L"/>
                     </connections>

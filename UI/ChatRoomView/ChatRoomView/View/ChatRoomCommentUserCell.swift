@@ -27,6 +27,8 @@ extension ChatRoomCommentUserCell: CellConfigurable {
         guard let viewModel = viewModel as? ChatRoomCommentUserViewModel else { return }
         message.text = viewModel.message
         time.text = viewModel.time
-        bubble.rounded(corners: [.topLeft, .topRight, .bottomLeft])
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
+            self.bubble.rounded(corners: [.topLeft, .topRight, .bottomLeft])
+        })
     }
 }

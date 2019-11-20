@@ -10,9 +10,13 @@ import UIKit
 import iOSCoreLibrary
 class ChatRoomViewController: UIViewController {
 
+    @IBOutlet weak var inputboxParentView: UIView!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var inputbox: BasicUITextView!
-    @IBOutlet weak var send: BasicUIButton!
+    @IBOutlet weak var inputbox: RoundCornerTextView!
+    @IBOutlet weak var send: RoundCornerUIButton!
+    @IBOutlet weak var inputboxParentViewBottomCT: NSLayoutConstraint!
+
+    var isScrollToBottom = false
 
     lazy var viewModel: ChatRoomViewModel = {
         return ChatRoomViewModel()
@@ -20,25 +24,53 @@ class ChatRoomViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        initTableView()
+        initView()
         initBinding()
+        keyboardRegistration()
     }
 
-    func initTableView() {
+    func initView() {
         self.view.backgroundColor = UIColor(hex: 0xEDEDED)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.estimatedRowHeight = 90
         tableView.rowHeight = UITableView.automaticDimension
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
     }
 
     func initBinding() {
         viewModel.rowViewModels.addObserver(fireNow: false) { [weak self] _ in
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
+                self?.scrollToBottom()
             }
         }
         viewModel.fetchData()
+    }
+
+    @objc func dismissKeyboard() {
+      view.endEditing(true)
+    }
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        checkingIsTableViewScrollToBottom(scrollView: scrollView)
+    }
+
+    func checkingIsTableViewScrollToBottom(scrollView: UIScrollView) {
+        let height = scrollView.frame.size.height
+        let contentYoffset = scrollView.contentOffset.y
+        let distanceFromBottom = scrollView.contentSize.height - contentYoffset
+        if distanceFromBottom <= height {
+            isScrollToBottom = true
+        } else {
+            isScrollToBottom = false
+        }
+    }
+
+    func scrollToBottom() {
+        let row = self.viewModel.rowViewModels.value.count - 1
+        self.tableView.scrollToRow(at: IndexPath(row: row, section: 0), at: .bottom, animated: false)
     }
 
 }
@@ -69,5 +101,42 @@ extension ChatRoomViewController: UITableViewDataSource {
             cell.setup(viewModel: rowViewModel)
         }
         return cell
+    }
+}
+
+// MARK: - Keyboard registration and behavior
+extension ChatRoomViewController {
+    func keyboardRegistration() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    @objc func keyboardWillShow(notification: NSNotification) {
+
+        if let info = notification.userInfo, let keyboardFrame = (info[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+
+            let duration = info[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double ?? 0.25
+
+            UIView.animate(withDuration: duration) {
+                // change position of inputbox, 37 is height of home indicator
+                let homeIndicatorHeight: CGFloat = UIDevice.hasHomeIndicator ? 37 : 0
+                self.inputboxParentViewBottomCT.constant = (0 - (keyboardFrame.height - homeIndicatorHeight))
+                self.view.layoutIfNeeded()
+
+                // tableview's row scroll to bottom
+                if self.isScrollToBottom { self.scrollToBottom() }
+            }
+      }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if let info = notification.userInfo {
+            let duration = info[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double ?? 0.25
+
+            UIView.animate(withDuration: duration) {
+                self.inputboxParentViewBottomCT.constant = 0
+                self.view.layoutIfNeeded()
+            }
+        }
     }
 }

@@ -29,7 +29,8 @@ extension ChatRoomCommentCoachCell: CellConfigurable {
         message.text = viewModel.message
         time.text = viewModel.time
         avatar.sd_setImage(with: viewModel.avatarURL, placeholderImage: "chatroom-default-avatar".image())
-        bubble.rounded(corners: [.topLeft, .topRight, .bottomRight])
-//        setNeedsLayout()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01, execute: {
+            self.bubble.rounded(corners: [.topLeft, .topRight, .bottomRight])
+        })
     }
 }
