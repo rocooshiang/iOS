@@ -17,6 +17,8 @@ class ChatRoomViewController: UIViewController {
     @IBOutlet weak var inputboxParentViewBottomCT: NSLayoutConstraint!
 
     var isScrollToBottom = false
+    var inputboxPlaceholder = "Enter your comment..."
+    var inputboxPlaceholderColor = UIColor.lightGray
 
     lazy var viewModel: ChatRoomViewModel = {
         return ChatRoomViewModel()
@@ -37,6 +39,10 @@ class ChatRoomViewController: UIViewController {
         tableView.rowHeight = UITableView.automaticDimension
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
+
+        inputbox.text = inputboxPlaceholder
+        inputbox.textColor = inputboxPlaceholderColor
+        inputbox.delegate = self
     }
 
     func initBinding() {
@@ -101,6 +107,22 @@ extension ChatRoomViewController: UITableViewDataSource {
             cell.setup(viewModel: rowViewModel)
         }
         return cell
+    }
+}
+
+extension ChatRoomViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == inputboxPlaceholderColor {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+    }
+
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = inputboxPlaceholder
+            textView.textColor = UIColor.lightGray
+        }
     }
 }
 
