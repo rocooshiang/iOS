@@ -20,3 +20,13 @@ class ChatRoomCommentUserCell: UITableViewCell {
     }
 
 }
+
+extension ChatRoomCommentUserCell: CellConfigurable {
+
+    func setup(viewModel: RowViewModel) {
+        guard let viewModel = viewModel as? ChatRoomCommentUserViewModel else { return }
+        message.text = viewModel.message
+        time.text = viewModel.time
+        bubble.rounded(corners: [.topLeft, .topRight, .bottomLeft])
+    }
+}

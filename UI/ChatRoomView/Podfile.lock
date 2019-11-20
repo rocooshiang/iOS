@@ -1,8 +1,16 @@
 PODS:
   - iOSCoreLibrary (0.1.0)
+  - SDWebImage (4.4.7):
+    - SDWebImage/Core (= 4.4.7)
+  - SDWebImage/Core (4.4.7)
 
 DEPENDENCIES:
   - iOSCoreLibrary (from `/Users/rocoo/Desktop/develop/ios-core-library`)
+  - SDWebImage (~> 4.0)
+
+SPEC REPOS:
+  trunk:
+    - SDWebImage
 
 EXTERNAL SOURCES:
   iOSCoreLibrary:
@@ -11,7 +19,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   iOSCoreLibrary: e11fcc1a0e0b5bbe5508a13db3656bcc2c358d4f
+  SDWebImage: c10d14a8883ebd89664f02a422006f66a85c0c5d
 
-PODFILE CHECKSUM: 3ddbd8fc3a72687835dd27a12764a4f0238045cb
+PODFILE CHECKSUM: 77c23465245de33ca8975acfa0a662b66b9b5712
 
 COCOAPODS: 1.8.4

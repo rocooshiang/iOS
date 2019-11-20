@@ -25,6 +25,7 @@ class ChatRoomViewController: UIViewController {
     }
 
     func initTableView() {
+        self.view.backgroundColor = UIColor(hex: 0xEDEDED)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.estimatedRowHeight = 90
@@ -42,9 +43,8 @@ class ChatRoomViewController: UIViewController {
 
 }
 
-
 // MARK: - TableviewDelegate
-extension ChatRoomViewController: UITableViewDelegate{
+extension ChatRoomViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
@@ -53,7 +53,7 @@ extension ChatRoomViewController: UITableViewDelegate{
 }
 
 // MARK: - UITableViewDataSource
-extension ChatRoomViewController: UITableViewDataSource{
+extension ChatRoomViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.rowViewModels.value.count
@@ -65,18 +65,9 @@ extension ChatRoomViewController: UITableViewDataSource{
 
         let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.cellIdentifier(for: rowViewModel), for: indexPath)
 
-        // TODO: 
         if let cell = cell as? CellConfigurable {
             cell.setup(viewModel: rowViewModel)
         }
-
         return cell
     }
 }
-
-
-// MARK: - Cell
-extension ChatRoomViewController{
-
-}
-

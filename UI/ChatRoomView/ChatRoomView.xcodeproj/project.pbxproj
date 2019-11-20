@@ -21,6 +21,7 @@
 		3F50622E2383DF37004AC489 /* ChatRoomCommentUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F50622D2383DF37004AC489 /* ChatRoomCommentUserViewModel.swift */; };
 		3F5062302383DF97004AC489 /* RowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F50622F2383DF97004AC489 /* RowViewModel.swift */; };
 		3F5062342383EDE6004AC489 /* GlobalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5062332383EDE6004AC489 /* GlobalExtension.swift */; };
+		3F5062362384C9B2004AC489 /* CellConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5062352384C9B2004AC489 /* CellConfigurable.swift */; };
 		D3BD63D9A28D409713B098AD /* Pods_ChatRoomView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56B3E7398755915128494170 /* Pods_ChatRoomView.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 		3F50622D2383DF37004AC489 /* ChatRoomCommentUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomCommentUserViewModel.swift; sourceTree = "<group>"; };
 		3F50622F2383DF97004AC489 /* RowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowViewModel.swift; sourceTree = "<group>"; };
 		3F5062332383EDE6004AC489 /* GlobalExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalExtension.swift; sourceTree = "<group>"; };
+		3F5062352384C9B2004AC489 /* CellConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellConfigurable.swift; sourceTree = "<group>"; };
 		56B3E7398755915128494170 /* Pods_ChatRoomView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChatRoomView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5ACA9D47FC7A8C82E1764327 /* Pods-ChatRoomView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatRoomView.release.xcconfig"; path = "Target Support Files/Pods-ChatRoomView/Pods-ChatRoomView.release.xcconfig"; sourceTree = "<group>"; };
 		E884A0917A4A9FF91E2DE18A /* Pods-ChatRoomView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatRoomView.debug.xcconfig"; path = "Target Support Files/Pods-ChatRoomView/Pods-ChatRoomView.debug.xcconfig"; sourceTree = "<group>"; };
@@ -80,10 +82,8 @@
 			isa = PBXGroup;
 			children = (
 				3F5062282383DA41004AC489 /* Model */,
+				3F5062372384DF26004AC489 /* View */,
 				3F5062232383D694004AC489 /* ViewModel */,
-				3F50621C2383D2BD004AC489 /* Cell */,
-				3F50620A23837B9D004AC489 /* Main.storyboard */,
-				3F50621923838C60004AC489 /* ChatRoomViewController.swift */,
 				3F50621823837F14004AC489 /* SupportFiles */,
 			);
 			path = ChatRoomView;
@@ -98,17 +98,9 @@
 				3F50620D23837B9F004AC489 /* Assets.xcassets */,
 				3F50621223837B9F004AC489 /* Info.plist */,
 				3F5062332383EDE6004AC489 /* GlobalExtension.swift */,
+				3F5062352384C9B2004AC489 /* CellConfigurable.swift */,
 			);
 			path = SupportFiles;
-			sourceTree = "<group>";
-		};
-		3F50621C2383D2BD004AC489 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				3F50621D2383D2E2004AC489 /* ChatRoomCommentCoachCell.swift */,
-				3F50621F2383D321004AC489 /* ChatRoomCommentUserCell.swift */,
-			);
-			path = Cell;
 			sourceTree = "<group>";
 		};
 		3F5062232383D694004AC489 /* ViewModel */ = {
@@ -128,6 +120,17 @@
 				3F5062292383DA60004AC489 /* Food.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		3F5062372384DF26004AC489 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3F50620A23837B9D004AC489 /* Main.storyboard */,
+				3F50621923838C60004AC489 /* ChatRoomViewController.swift */,
+				3F50621D2383D2E2004AC489 /* ChatRoomCommentCoachCell.swift */,
+				3F50621F2383D321004AC489 /* ChatRoomCommentUserCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		43A102E4176F736024C67687 /* Frameworks */ = {
@@ -159,6 +162,8 @@
 				3F5061FE23837B9C004AC489 /* Frameworks */,
 				3F5061FF23837B9C004AC489 /* Resources */,
 				ADBA2E3936D7EA1687463125 /* [CP] Copy Pods Resources */,
+				7C64CFCCAB57911C2F1DFFC3 /* [CP] Embed Pods Frameworks */,
+				3F5062382384E733004AC489 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -216,6 +221,40 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		3F5062382384E733004AC489 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		7C64CFCCAB57911C2F1DFFC3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ChatRoomView/Pods-ChatRoomView-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ChatRoomView/Pods-ChatRoomView-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ChatRoomView/Pods-ChatRoomView-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		9D8608F11B0E9E7DC3CB4B1F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -272,6 +311,7 @@
 				3F5062252383D6B5004AC489 /* ChatRoomViewModel.swift in Sources */,
 				3F5062342383EDE6004AC489 /* GlobalExtension.swift in Sources */,
 				3F5062272383D81D004AC489 /* Observable.swift in Sources */,
+				3F5062362384C9B2004AC489 /* CellConfigurable.swift in Sources */,
 				3F5062202383D321004AC489 /* ChatRoomCommentUserCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

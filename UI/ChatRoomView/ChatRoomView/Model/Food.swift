@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Food: Codable {
+struct FoodElement: Codable {
     let foodLogID: Int
     let nickName: String
     let tags: [String]
@@ -33,3 +33,4 @@ struct Comment: Codable {
     let isCoachComment: Bool
 }
 
+typealias Food = [FoodElement]
