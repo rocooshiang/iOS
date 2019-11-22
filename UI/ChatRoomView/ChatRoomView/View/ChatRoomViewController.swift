@@ -12,13 +12,17 @@ class ChatRoomViewController: UIViewController {
 
     @IBOutlet weak var inputboxParentView: UIView!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var inputbox: RoundCornerTextView!
+    @IBOutlet weak var inputbox: UITextView!
     @IBOutlet weak var send: RoundCornerUIButton!
     @IBOutlet weak var inputboxParentViewBottomCT: NSLayoutConstraint!
+    @IBOutlet weak var inputboxHeightCT: NSLayoutConstraint!
 
     var isScrollToBottom = false
     var inputboxPlaceholder = "Enter your comment..."
     var inputboxPlaceholderColor = UIColor.lightGray
+    var nowInputboxContentHeight: CGFloat = 0
+    var originalInputboxContentHeight: CGFloat = 0
+    var isInitOriginalInputboxContentHeight = false
 
     lazy var viewModel: ChatRoomViewModel = {
         return ChatRoomViewModel()
@@ -31,18 +35,25 @@ class ChatRoomViewController: UIViewController {
         keyboardRegistration()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        // adjust the height of inputbox and inputbox parent immedically before view
+        textViewDidChange(inputbox)
+    }
+
     func initView() {
         self.view.backgroundColor = UIColor(hex: 0xEDEDED)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.estimatedRowHeight = 90
         tableView.rowHeight = UITableView.automaticDimension
-        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        view.addGestureRecognizer(tap)
 
         inputbox.text = inputboxPlaceholder
         inputbox.textColor = inputboxPlaceholderColor
         inputbox.delegate = self
+        inputbox.layer.cornerRadius = 10.resizeByDeviceWidth()
+
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
     }
 
     func initBinding() {
@@ -56,7 +67,7 @@ class ChatRoomViewController: UIViewController {
     }
 
     @objc func dismissKeyboard() {
-      view.endEditing(true)
+        view.endEditing(true)
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -67,11 +78,14 @@ class ChatRoomViewController: UIViewController {
         let height = scrollView.frame.size.height
         let contentYoffset = scrollView.contentOffset.y
         let distanceFromBottom = scrollView.contentSize.height - contentYoffset
-        if distanceFromBottom <= height {
+
+        if abs(distanceFromBottom - height) < 1 {
             isScrollToBottom = true
         } else {
             isScrollToBottom = false
         }
+
+        print("isScrollToBottom: \(isScrollToBottom), height: \(height), distanceFromBottom: \(distanceFromBottom)")
     }
 
     func scrollToBottom() {
@@ -110,7 +124,33 @@ extension ChatRoomViewController: UITableViewDataSource {
     }
 }
 
+// MARK: - UITextViewDelegate
 extension ChatRoomViewController: UITextViewDelegate {
+
+    func textViewDidChange(_ textView: UITextView) {
+
+        /*
+         according to content to grow up the inputbox
+         */
+
+        let contentSize = inputbox.sizeThatFits(inputbox.bounds.size)
+        if contentSize.height >= 90 {
+            inputbox.isScrollEnabled = true
+            return
+        }
+        if !isInitOriginalInputboxContentHeight {
+            isInitOriginalInputboxContentHeight = true
+            originalInputboxContentHeight = contentSize.height
+        }
+        nowInputboxContentHeight = contentSize.height
+        inputbox.isScrollEnabled = false
+        UIView.performWithoutAnimation {
+            inputboxHeightCT.constant = contentSize.height
+            self.view.layoutIfNeeded()
+//            self.scrollToBottomIfNeeded()
+        }
+    }
+
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.textColor == inputboxPlaceholderColor {
             textView.text = nil
@@ -134,24 +174,25 @@ extension ChatRoomViewController {
     }
 
     @objc func keyboardWillShow(notification: NSNotification) {
-
         if let info = notification.userInfo, let keyboardFrame = (info[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
 
             let duration = info[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double ?? 0.25
 
             UIView.animate(withDuration: duration) {
+
                 // change position of inputbox, 37 is height of home indicator
                 let homeIndicatorHeight: CGFloat = UIDevice.hasHomeIndicator ? 37 : 0
                 self.inputboxParentViewBottomCT.constant = (0 - (keyboardFrame.height - homeIndicatorHeight))
                 self.view.layoutIfNeeded()
 
                 // tableview's row scroll to bottom
-                if self.isScrollToBottom { self.scrollToBottom() }
+                self.scrollToBottomIfNeeded()
             }
-      }
+        }
     }
 
     @objc func keyboardWillHide(notification: NSNotification) {
+
         if let info = notification.userInfo {
             let duration = info[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double ?? 0.25
 
@@ -161,4 +202,20 @@ extension ChatRoomViewController {
             }
         }
     }
+
+    func scrollToBottomIfNeeded() {
+        if self.isScrollToBottom { self.scrollToBottom() }
+
+    }
+
+    /*
+        TODO:
+            1. 輸入框兩行的時候，即使tableView移動到底部後，鍵盤跑出來時，tableView不會自動把內容移到最底部
+            2. 未輸入內容 -> 鍵盤show -> 輸入框超過一行 -> tableView沒有跟著往上移動
+    */
+
 }
+
+
+
+
