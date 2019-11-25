@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import iOSCoreLibrary
 
 struct AlertContent {
     let title: String

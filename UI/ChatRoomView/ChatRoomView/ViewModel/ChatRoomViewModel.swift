@@ -64,7 +64,7 @@ class ChatRoomViewModel {
     func getCurrentFormatTime(time: Date) -> String {
       let fmt = DateFormatter()
       fmt.locale = Locale(identifier: "en_US_POSIX")
-      if time.isDayBiggerThan1() {
+      if !time.isToday() {
         fmt.dateFormat = "MM/dd/yyyy hh:mm a"
       } else {
         fmt.dateFormat = "hh:mm a"

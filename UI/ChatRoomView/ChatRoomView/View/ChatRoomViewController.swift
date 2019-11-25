@@ -207,15 +207,4 @@ extension ChatRoomViewController {
         if self.isScrollToBottom { self.scrollToBottom() }
 
     }
-
-    /*
-        TODO:
-            1. 輸入框兩行的時候，即使tableView移動到底部後，鍵盤跑出來時，tableView不會自動把內容移到最底部
-            2. 未輸入內容 -> 鍵盤show -> 輸入框超過一行 -> tableView沒有跟著往上移動
-    */
-
 }
-
-
-
-
