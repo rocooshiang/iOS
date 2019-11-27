@@ -5,7 +5,7 @@ PODS:
   - SDWebImage/Core (4.4.7)
 
 DEPENDENCIES:
-  - iOSCoreLibrary (from `/Users/rocoo/Desktop/develop/ios-core-library`)
+  - "iOSCoreLibrary (from `git@bitbucket.org:Rocoo/ioscorelibrary.git`, branch `master`)"
   - SDWebImage (~> 4.0)
 
 SPEC REPOS:
@@ -14,13 +14,20 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   iOSCoreLibrary:
-    :path: "/Users/rocoo/Desktop/develop/ios-core-library"
+    :branch: master
+    :git: "git@bitbucket.org:Rocoo/ioscorelibrary.git"
+    :submodules: true
+
+CHECKOUT OPTIONS:
+  iOSCoreLibrary:
+    :commit: 59b502f22e149954a466ff3187926c5c2a3922db
+    :git: "git@bitbucket.org:Rocoo/ioscorelibrary.git"
     :submodules: true
 
 SPEC CHECKSUMS:
   iOSCoreLibrary: e11fcc1a0e0b5bbe5508a13db3656bcc2c358d4f
   SDWebImage: c10d14a8883ebd89664f02a422006f66a85c0c5d
 
-PODFILE CHECKSUM: 41b1bda3646702e17df43f8d804c9ccb8d73b715
+PODFILE CHECKSUM: 1dd61e03e73e7cef8b0c4d3d0099d0398f888b54
 
 COCOAPODS: 1.8.4

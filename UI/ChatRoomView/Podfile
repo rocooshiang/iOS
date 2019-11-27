@@ -5,9 +5,9 @@ target 'ChatRoomView' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-#  pod 'iOSCoreLibrary', :git => 'ssh://git@git.dunqian.tw:30001/itrd/ios-core-library.git', :branch => 'master', :submodules => true
+  pod 'iOSCoreLibrary', :git => 'git@bitbucket.org:Rocoo/ioscorelibrary.git', :branch => 'master', :submodules => true
 
-  pod 'iOSCoreLibrary', :path => '/Users/rocoo/Desktop/develop/ios-core-library' , :submodules => true
+#  pod 'iOSCoreLibrary', :path => '/Users/rocoo/Desktop/develop/ios-core-library' , :submodules => true
 
   pod 'SDWebImage', '~> 4.0'
 end
