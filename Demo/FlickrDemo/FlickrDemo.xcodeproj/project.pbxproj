@@ -19,6 +19,7 @@
 		3FC57EAD240E9D09005C8B9F /* PhotosRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC57EAC240E9D09005C8B9F /* PhotosRequest.swift */; };
 		3FC57EB3240EA28F005C8B9F /* ResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC57EB2240EA28F005C8B9F /* ResultViewModel.swift */; };
 		3FC57EB5240EA2EE005C8B9F /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC57EB4240EA2EE005C8B9F /* ResultViewController.swift */; };
+		3FC57EB7240EB770005C8B9F /* PhotosCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC57EB6240EB770005C8B9F /* PhotosCVCell.swift */; };
 		E4983EB79B8E3E29A131F59B /* Pods_FlickrDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28E17D40F507F05AC3D36292 /* Pods_FlickrDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +39,7 @@
 		3FC57EAC240E9D09005C8B9F /* PhotosRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosRequest.swift; sourceTree = "<group>"; };
 		3FC57EB2240EA28F005C8B9F /* ResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewModel.swift; sourceTree = "<group>"; };
 		3FC57EB4240EA2EE005C8B9F /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		3FC57EB6240EB770005C8B9F /* PhotosCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCVCell.swift; sourceTree = "<group>"; };
 		46882FAB9B6C579062EC7607 /* Pods-FlickrDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlickrDemo.release.xcconfig"; path = "Target Support Files/Pods-FlickrDemo/Pods-FlickrDemo.release.xcconfig"; sourceTree = "<group>"; };
 		AA4FB1C18D4A037FDF4E8C51 /* Pods-FlickrDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlickrDemo.debug.xcconfig"; path = "Target Support Files/Pods-FlickrDemo/Pods-FlickrDemo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -162,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				3FC57EB4240EA2EE005C8B9F /* ResultViewController.swift */,
+				3FC57EB6240EB770005C8B9F /* PhotosCVCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				3FC57EB3240EA28F005C8B9F /* ResultViewModel.swift in Sources */,
 				3FC57E9D240E8435005C8B9F /* General.swift in Sources */,
 				3FC57EAB240E9C74005C8B9F /* Extension.swift in Sources */,
+				3FC57EB7240EB770005C8B9F /* PhotosCVCell.swift in Sources */,
 				3FC57EA6240E9976005C8B9F /* Photo.swift in Sources */,
 				3FC57EB5240EA2EE005C8B9F /* ResultViewController.swift in Sources */,
 				3FC57EAD240E9D09005C8B9F /* PhotosRequest.swift in Sources */,

@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: - Photos
 struct PhotoData: Codable {
-    let photos: [Photo]
+    let photo: [Photo]
 }
 
 // MARK: - Photo

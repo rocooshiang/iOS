@@ -16,16 +16,16 @@ struct PhotosRequestModel {
 
 // MARK: - PhotoResult
 struct PhotosResult: Codable {
-    let photoData: PhotoData
+    let photos: PhotoData
     
     init?(data: Data) {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
         do {
             let photosResult = try decoder.decode(PhotosResult.self, from: data)
-            self.photoData = photosResult.photoData
+            self.photos = photosResult.photos
         } catch {
-            self.photoData = PhotoData(photos: [Photo]())
+            self.photos = PhotoData(photo: [Photo]())
             print("Decode PhotoResult error: \(error)")
         }
     }

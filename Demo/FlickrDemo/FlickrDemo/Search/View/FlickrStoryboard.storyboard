@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -72,14 +73,74 @@
                     <view key="view" contentMode="scaleToFill" id="N9p-Ar-ITM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vN8-yA-rSI">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="IvY-yc-RDA">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotosCVCell" id="SkV-HS-pfk" customClass="PhotosCVCell" customModule="FlickrDemo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="229"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="4Na-iX-dED">
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="229"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fVN-mP-yID">
+                                                    <rect key="frame" x="8" y="8" width="184" height="184"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="fVN-mP-yID" secondAttribute="height" multiplier="1:1" id="Xa9-UX-dhL"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eBT-LU-UHN" customClass="BasicUILabel" customModule="iOSCoreLibrary">
+                                                    <rect key="frame" x="8" y="200" width="184" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="fVN-mP-yID" firstAttribute="width" secondItem="4Na-iX-dED" secondAttribute="width" multiplier="184:200" id="DVi-Hi-Lxb"/>
+                                                <constraint firstAttribute="bottom" secondItem="eBT-LU-UHN" secondAttribute="bottom" constant="8" id="DXa-U9-5Pi"/>
+                                                <constraint firstItem="fVN-mP-yID" firstAttribute="leading" secondItem="4Na-iX-dED" secondAttribute="leading" constant="8" id="NIY-Xi-9NM"/>
+                                                <constraint firstAttribute="trailing" secondItem="eBT-LU-UHN" secondAttribute="trailing" constant="8" id="PUa-d0-De0"/>
+                                                <constraint firstItem="eBT-LU-UHN" firstAttribute="leading" secondItem="4Na-iX-dED" secondAttribute="leading" constant="8" id="Yix-hx-XXq"/>
+                                                <constraint firstAttribute="trailing" secondItem="fVN-mP-yID" secondAttribute="trailing" constant="8" id="f6T-yq-htn"/>
+                                                <constraint firstItem="fVN-mP-yID" firstAttribute="top" secondItem="4Na-iX-dED" secondAttribute="top" constant="8" id="pvG-DH-sid"/>
+                                                <constraint firstItem="eBT-LU-UHN" firstAttribute="top" secondItem="fVN-mP-yID" secondAttribute="bottom" constant="8" id="ufp-cb-2Af"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="200" height="229"/>
+                                        <connections>
+                                            <outlet property="photo" destination="fVN-mP-yID" id="8nn-uN-x5C"/>
+                                            <outlet property="title" destination="eBT-LU-UHN" id="Q9e-C7-vUi"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="vN8-yA-rSI" firstAttribute="top" secondItem="Glg-iV-pW3" secondAttribute="top" id="5Mc-AH-6gU"/>
+                            <constraint firstItem="vN8-yA-rSI" firstAttribute="leading" secondItem="Glg-iV-pW3" secondAttribute="leading" id="FFm-Q0-qHz"/>
+                            <constraint firstItem="Glg-iV-pW3" firstAttribute="trailing" secondItem="vN8-yA-rSI" secondAttribute="trailing" id="MlK-tg-zuC"/>
+                            <constraint firstItem="Glg-iV-pW3" firstAttribute="bottom" secondItem="vN8-yA-rSI" secondAttribute="bottom" id="Um5-Oi-BL4"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Glg-iV-pW3"/>
                     </view>
                     <navigationItem key="navigationItem" id="BxG-iR-3kI"/>
+                    <connections>
+                        <outlet property="collectionView" destination="vN8-yA-rSI" id="Phf-rv-Xug"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uvf-9t-99m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1914" y="76"/>
+            <point key="canvasLocation" x="1913.0434782608697" y="75.669642857142847"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gqZ-77-c4w">
