@@ -36,7 +36,7 @@ class ResultViewController: UIViewController {
     }
     
     func initView() {
-        self.tabBarController?.navigationItem.title = "收尋結果 美食"
+        self.tabBarController?.navigationItem.title = "搜尋結果 美食"
         collectionView.delegate = self
         collectionView.dataSource = self
     }
