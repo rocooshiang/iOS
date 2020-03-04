@@ -24,7 +24,7 @@ class ResultTabBarController: UITabBarController {
     func initResultVC() {
         resultVC = (self.storyboard?.instantiateViewController(withIdentifier: "ResultViewController") as! ResultViewController)
         resultVC.photosRequestModel = photosRequestModel
-        resultVC.tabBarItem = UITabBarItem(title: "Photos", image: "star".image(), selectedImage: nil)
+        resultVC.tabBarItem = UITabBarItem(title: "Photos", image: "star".image(), selectedImage: nil)      
     }
      
     func initFavoritesVC() {

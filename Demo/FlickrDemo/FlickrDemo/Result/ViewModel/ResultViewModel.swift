@@ -14,8 +14,7 @@ class ResultViewModel {
     static let share = ResultViewModel()
     
     let photos = Observable<[Photo]>(value: [Photo]())
-    let favorites = Observable<[Photo]>(value: [Photo]())
-    var isInitPhotos = false
+    let favorites = Observable<[Photo]>(value: [Photo]())    
     
     func fetchPhotos(requestModel: PhotosRequestModel) {
         let request = API.PhotosRequest(model: requestModel)

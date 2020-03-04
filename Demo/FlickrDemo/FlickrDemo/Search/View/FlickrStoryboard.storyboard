@@ -116,11 +116,10 @@
                                                 <constraint firstItem="uRc-W1-lqT" firstAttribute="width" secondItem="4Na-iX-dED" secondAttribute="width" multiplier="29:200" id="8MO-jv-Ib4"/>
                                                 <constraint firstItem="uRc-W1-lqT" firstAttribute="trailing" secondItem="fVN-mP-yID" secondAttribute="trailing" id="9IF-be-pqd"/>
                                                 <constraint firstItem="fVN-mP-yID" firstAttribute="width" secondItem="4Na-iX-dED" secondAttribute="width" multiplier="184:200" id="DVi-Hi-Lxb"/>
-                                                <constraint firstItem="fVN-mP-yID" firstAttribute="leading" secondItem="4Na-iX-dED" secondAttribute="leading" constant="8" id="NIY-Xi-9NM"/>
                                                 <constraint firstItem="uRc-W1-lqT" firstAttribute="top" secondItem="fVN-mP-yID" secondAttribute="top" id="OuR-kU-Shg"/>
                                                 <constraint firstAttribute="trailing" secondItem="eBT-LU-UHN" secondAttribute="trailing" constant="8" id="PUa-d0-De0"/>
                                                 <constraint firstItem="eBT-LU-UHN" firstAttribute="leading" secondItem="4Na-iX-dED" secondAttribute="leading" constant="8" id="Yix-hx-XXq"/>
-                                                <constraint firstAttribute="trailing" secondItem="fVN-mP-yID" secondAttribute="trailing" constant="8" id="f6T-yq-htn"/>
+                                                <constraint firstItem="fVN-mP-yID" firstAttribute="centerX" secondItem="4Na-iX-dED" secondAttribute="centerX" id="hw6-lS-Vbd"/>
                                                 <constraint firstItem="fVN-mP-yID" firstAttribute="top" secondItem="4Na-iX-dED" secondAttribute="top" constant="8" id="pvG-DH-sid"/>
                                                 <constraint firstItem="eBT-LU-UHN" firstAttribute="top" secondItem="fVN-mP-yID" secondAttribute="bottom" constant="8" id="ufp-cb-2Af"/>
                                             </constraints>
@@ -197,8 +196,7 @@
                                                 <constraint firstItem="5Kw-vT-Jq9" firstAttribute="top" secondItem="lkH-rY-jaN" secondAttribute="top" constant="8" id="5IG-bd-Cns"/>
                                                 <constraint firstItem="w9b-6D-5iY" firstAttribute="top" secondItem="5Kw-vT-Jq9" secondAttribute="bottom" constant="8" id="Ia0-Cq-drQ"/>
                                                 <constraint firstItem="5Kw-vT-Jq9" firstAttribute="width" secondItem="lkH-rY-jaN" secondAttribute="width" multiplier="184:200" id="fH3-Y6-Ulf"/>
-                                                <constraint firstItem="5Kw-vT-Jq9" firstAttribute="leading" secondItem="lkH-rY-jaN" secondAttribute="leading" constant="8" id="s1W-w9-v6I"/>
-                                                <constraint firstAttribute="trailing" secondItem="5Kw-vT-Jq9" secondAttribute="trailing" constant="8" id="uzb-2N-6hI"/>
+                                                <constraint firstItem="5Kw-vT-Jq9" firstAttribute="centerX" secondItem="lkH-rY-jaN" secondAttribute="centerX" id="n9a-hp-Md3"/>
                                                 <constraint firstItem="w9b-6D-5iY" firstAttribute="leading" secondItem="lkH-rY-jaN" secondAttribute="leading" constant="8" id="wgl-5z-saz"/>
                                             </constraints>
                                         </collectionViewCellContentView>
