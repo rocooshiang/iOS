@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+// 065058019
 class ResultViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
@@ -46,7 +46,6 @@ class ResultViewController: UIViewController {
 // MARK: - UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 extension ResultViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("viewModel.photos.value.count: \(viewModel.photos.value.count)")
         return viewModel.photos.value.count
     }
 
@@ -61,7 +60,7 @@ extension ResultViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = (view.bounds.width - 10) / 2
         print("width: \(width)")
-        return CGSize(width: width, height: width + 80)
+        return CGSize(width: width, height: width + 30)
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
