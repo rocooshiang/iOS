@@ -11,7 +11,10 @@ import iOSCoreLibrary
 
 class ResultViewModel {
 
+    static let share = ResultViewModel()
+    
     let photos = Observable<[Photo]>(value: [Photo]())
+    let favorites = Observable<[Photo]>(value: [Photo]())
     
     func fetchPhotos(requestModel: PhotosRequestModel) {
         let request = API.PhotosRequest(model: requestModel)
@@ -23,4 +26,10 @@ class ResultViewModel {
         }
     }
     
+    func addPhotoToFavoriteList(tag: Int) {
+        let photos = self.photos.value
+        var photo = photos[tag]
+        photo.favorite = true
+        self.photos.value = photos
+    }
 }

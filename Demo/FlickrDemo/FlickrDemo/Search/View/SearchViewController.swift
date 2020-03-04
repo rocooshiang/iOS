@@ -26,6 +26,9 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
+        searchContent.text = "Taiwan"
+        countOfDisplayed.text = "20"
+        adjustSearchButton(enable: true)
     }
     
     func initView() {

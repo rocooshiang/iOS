@@ -17,11 +17,17 @@ class SearchViewModel {
     
     func gotoResultPage(searchContent: String, countOfDisplayed: String) {
         
-        if let vc = viewController.storyboard?.instantiateViewController(withIdentifier: "ResultViewController") as? ResultViewController {
+//        if let vc = viewController.storyboard?.instantiateViewController(withIdentifier: "ResultViewController") as? ResultViewController {
+//            vc.photosRequestModel = PhotosRequestModel(searchContent: searchContent, countOfDisplayed: countOfDisplayed)
+//            viewController.navigationController?.pushViewController(vc, animated: true)
+//        }
+
+        if let vc = viewController.storyboard?.instantiateViewController(withIdentifier: "ResultTabBarController") as? ResultTabBarController {
             vc.photosRequestModel = PhotosRequestModel(searchContent: searchContent, countOfDisplayed: countOfDisplayed)
+            
             viewController.navigationController?.pushViewController(vc, animated: true)
         }
-                
+        
     }
     
 }

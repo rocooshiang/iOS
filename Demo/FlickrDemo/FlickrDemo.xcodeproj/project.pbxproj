@@ -11,6 +11,7 @@
 		3F43D61E240E7CD5004B6CCA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F43D61D240E7CD5004B6CCA /* Assets.xcassets */; };
 		3F43D629240E7D3C004B6CCA /* FlickrStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F43D628240E7D3C004B6CCA /* FlickrStoryboard.storyboard */; };
 		3F43D62C240E7DFF004B6CCA /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F43D62B240E7DFF004B6CCA /* SearchViewController.swift */; };
+		3FA450F9240FA0F9007EAF55 /* FavoritesPhotoCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA450F8240FA0F9007EAF55 /* FavoritesPhotoCVCell.swift */; };
 		3FC57E9D240E8435005C8B9F /* General.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC57E9C240E8435005C8B9F /* General.swift */; };
 		3FC57EA4240E9863005C8B9F /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC57EA3240E9863005C8B9F /* SearchViewModel.swift */; };
 		3FC57EA6240E9976005C8B9F /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC57EA5240E9976005C8B9F /* Photo.swift */; };
@@ -20,6 +21,8 @@
 		3FC57EB3240EA28F005C8B9F /* ResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC57EB2240EA28F005C8B9F /* ResultViewModel.swift */; };
 		3FC57EB5240EA2EE005C8B9F /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC57EB4240EA2EE005C8B9F /* ResultViewController.swift */; };
 		3FC57EB7240EB770005C8B9F /* PhotosCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC57EB6240EB770005C8B9F /* PhotosCVCell.swift */; };
+		3FC57EB9240F91C8005C8B9F /* ResultTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC57EB8240F91C8005C8B9F /* ResultTabBarController.swift */; };
+		3FC57EBB240F99A4005C8B9F /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC57EBA240F99A4005C8B9F /* FavoritesViewController.swift */; };
 		E4983EB79B8E3E29A131F59B /* Pods_FlickrDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28E17D40F507F05AC3D36292 /* Pods_FlickrDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +34,7 @@
 		3F43D622240E7CD5004B6CCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F43D628240E7D3C004B6CCA /* FlickrStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FlickrStoryboard.storyboard; sourceTree = "<group>"; };
 		3F43D62B240E7DFF004B6CCA /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		3FA450F8240FA0F9007EAF55 /* FavoritesPhotoCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesPhotoCVCell.swift; sourceTree = "<group>"; };
 		3FC57E9C240E8435005C8B9F /* General.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = General.swift; sourceTree = "<group>"; };
 		3FC57EA3240E9863005C8B9F /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		3FC57EA5240E9976005C8B9F /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
@@ -40,6 +44,8 @@
 		3FC57EB2240EA28F005C8B9F /* ResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewModel.swift; sourceTree = "<group>"; };
 		3FC57EB4240EA2EE005C8B9F /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		3FC57EB6240EB770005C8B9F /* PhotosCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCVCell.swift; sourceTree = "<group>"; };
+		3FC57EB8240F91C8005C8B9F /* ResultTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTabBarController.swift; sourceTree = "<group>"; };
+		3FC57EBA240F99A4005C8B9F /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		46882FAB9B6C579062EC7607 /* Pods-FlickrDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlickrDemo.release.xcconfig"; path = "Target Support Files/Pods-FlickrDemo/Pods-FlickrDemo.release.xcconfig"; sourceTree = "<group>"; };
 		AA4FB1C18D4A037FDF4E8C51 /* Pods-FlickrDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlickrDemo.debug.xcconfig"; path = "Target Support Files/Pods-FlickrDemo/Pods-FlickrDemo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -163,8 +169,11 @@
 		3FC57EAF240EA265005C8B9F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3FC57EB8240F91C8005C8B9F /* ResultTabBarController.swift */,
 				3FC57EB4240EA2EE005C8B9F /* ResultViewController.swift */,
+				3FC57EBA240F99A4005C8B9F /* FavoritesViewController.swift */,
 				3FC57EB6240EB770005C8B9F /* PhotosCVCell.swift */,
+				3FA450F8240FA0F9007EAF55 /* FavoritesPhotoCVCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -324,13 +333,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FC57EBB240F99A4005C8B9F /* FavoritesViewController.swift in Sources */,
 				3FC57EA9240E9BDF005C8B9F /* APIRequestList.swift in Sources */,
 				3FC57EB3240EA28F005C8B9F /* ResultViewModel.swift in Sources */,
+				3FC57EB9240F91C8005C8B9F /* ResultTabBarController.swift in Sources */,
 				3FC57E9D240E8435005C8B9F /* General.swift in Sources */,
 				3FC57EAB240E9C74005C8B9F /* Extension.swift in Sources */,
 				3FC57EB7240EB770005C8B9F /* PhotosCVCell.swift in Sources */,
 				3FC57EA6240E9976005C8B9F /* Photo.swift in Sources */,
 				3FC57EB5240EA2EE005C8B9F /* ResultViewController.swift in Sources */,
+				3FA450F9240FA0F9007EAF55 /* FavoritesPhotoCVCell.swift in Sources */,
 				3FC57EAD240E9D09005C8B9F /* PhotosRequest.swift in Sources */,
 				3F43D62C240E7DFF004B6CCA /* SearchViewController.swift in Sources */,
 				3FC57EA4240E9863005C8B9F /* SearchViewModel.swift in Sources */,

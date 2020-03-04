@@ -14,11 +14,15 @@ class PhotosCVCell: UICollectionViewCell {
     
     @IBOutlet weak var photo: UIImageView!
     @IBOutlet weak var title: BasicUILabel!
+    @IBOutlet weak var add: UIButton!
     
     func setup(photo: Photo) {
         self.photo.sd_setImage(with: photo.imageUrl, placeholderImage: "default".image())
         self.title.text = photo.title
+        print("photo.favorite: \(photo.favorite)")
+//        self.add.isHidden = photo.favorite
     }
+    
 }
 
 

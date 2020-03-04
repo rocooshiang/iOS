@@ -15,7 +15,7 @@ class ResultViewController: UIViewController {
     var photosRequestModel: PhotosRequestModel!
     
     lazy var viewModel: ResultViewModel = {
-        return ResultViewModel()
+        return ResultViewModel.share
     }()
     
     override func viewDidLoad() {
@@ -36,6 +36,7 @@ class ResultViewController: UIViewController {
     }
     
     func initView() {
+        self.navigationController?.navigationItem.title = "收尋結果 美食"
         collectionView.delegate = self
         collectionView.dataSource = self
     }
@@ -54,12 +55,17 @@ extension ResultViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let photo = viewModel.photos.value[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotosCVCell", for: indexPath) as! PhotosCVCell
         cell.setup(photo: photo)
+//        cell.add.tag = indexPath.row
+//        cell.add.addTarget(self, action: #selector(addToFavoriteList(sender:)), for: .touchUpInside)
         return cell
+    }
+    
+    @objc func addToFavoriteList(sender: UIButton) {
+        viewModel.addPhotoToFavoriteList(tag: sender.tag)        
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (view.bounds.width - 10) / 2
-        print("width: \(width)")
+        let width = (view.bounds.width - 10) / 2        
         return CGSize(width: width, height: width + 30)
     }
 
