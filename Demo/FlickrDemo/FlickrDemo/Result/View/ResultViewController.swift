@@ -7,7 +7,6 @@
 //
 
 import UIKit
-// 065058019
 class ResultViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
@@ -25,6 +24,7 @@ class ResultViewController: UIViewController {
     }
     
     func initBinding() {
+        viewModel.photos.value.removeAll()
         viewModel.photos.addObserver(fireNow: false) { [weak self] _ in
             guard let `self` = self else { return }
             DispatchQueue.main.async {
@@ -55,13 +55,13 @@ extension ResultViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let photo = viewModel.photos.value[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotosCVCell", for: indexPath) as! PhotosCVCell
         cell.setup(photo: photo)
-//        cell.add.tag = indexPath.row
-//        cell.add.addTarget(self, action: #selector(addToFavoriteList(sender:)), for: .touchUpInside)
+        cell.add.tag = indexPath.row
+        cell.add.addTarget(self, action: #selector(addToFavoriteList(sender:)), for: .touchUpInside)
         return cell
     }
     
-    @objc func addToFavoriteList(sender: UIButton) {
-        viewModel.addPhotoToFavoriteList(tag: sender.tag)        
+    @objc func addToFavoriteList(sender: UIButton) {        
+        viewModel.addPhotoToFavoriteList(tag: sender.tag)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

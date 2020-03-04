@@ -16,7 +16,6 @@ class FavoritesPhotoCVCell: UICollectionViewCell {
     @IBOutlet weak var title: BasicUILabel!
     
     func setup(photo: Photo) {
-        print("19")
         self.photo.sd_setImage(with: photo.imageUrl, placeholderImage: "default".image())
         self.title.text = photo.title
     }

@@ -19,8 +19,22 @@ class FavoritesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
+        initBinding()
     }
     
+    override func viewWillAppear(_ animated: Bool) {        
+        viewModel.fetchFavorites()
+    }
+    
+    func initBinding() {
+        viewModel.favorites.value.removeAll()
+        viewModel.favorites.addObserver(fireNow: false) { [weak self] _ in
+            guard let `self` = self else { return }
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+    }
     
     func initView() {
         self.navigationController?.navigationItem.title = "我的最愛"
