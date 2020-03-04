@@ -1,0 +1,31 @@
+PODS:
+  - iOSCoreLibrary (0.1.0)
+  - SDWebImage (5.5.1):
+    - SDWebImage/Core (= 5.5.1)
+  - SDWebImage/Core (5.5.1)
+
+DEPENDENCIES:
+  - "iOSCoreLibrary (from `https://Rocoo@bitbucket.org/Rocoo/dunqian-ioscorelibrary.git`, branch `master`)"
+  - SDWebImage
+
+SPEC REPOS:
+  trunk:
+    - SDWebImage
+
+EXTERNAL SOURCES:
+  iOSCoreLibrary:
+    :branch: master
+    :git: "https://Rocoo@bitbucket.org/Rocoo/dunqian-ioscorelibrary.git"
+
+CHECKOUT OPTIONS:
+  iOSCoreLibrary:
+    :commit: ea91113da6c5411d627a7ed91781b661e88ccb91
+    :git: "https://Rocoo@bitbucket.org/Rocoo/dunqian-ioscorelibrary.git"
+
+SPEC CHECKSUMS:
+  iOSCoreLibrary: e11fcc1a0e0b5bbe5508a13db3656bcc2c358d4f
+  SDWebImage: 1245d058b7b8f59adef7a6da6bbafd4f1ab67041
+
+PODFILE CHECKSUM: 4a07cb9eef937b814e4b3b1123f2ee7f15becfd2
+
+COCOAPODS: 1.8.4

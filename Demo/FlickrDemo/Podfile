@@ -1,0 +1,11 @@
+
+# Uncomment the next line to define a global platform for your project
+platform :ios, '10.0'
+
+target 'FlickrDemo' do
+  use_frameworks!
+  
+  pod 'iOSCoreLibrary', :git => 'https://Rocoo@bitbucket.org/Rocoo/dunqian-ioscorelibrary.git', :branch => 'master', :project_name => 'iOSCoreLibrary'
+  pod 'SDWebImage'
+  
+end
